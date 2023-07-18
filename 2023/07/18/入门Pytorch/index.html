@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="LiXiJian">
+    
+    <title>
+        
+            PyTorch入门 |
+        
+        LiXiJian&#39;s Blog
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"LiXiJian's Blog"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.4"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                LiXiJian&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">PyTorch入门</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">LiXiJian</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-07-18 09:00:00</span>
+        <span class="mobile">2023-07-18 09:00</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p>官方文档：<a class="link" target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/index.html">PyTorch documentation — PyTorch 2.0 documentation<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h2 id="pytorch是什么"><a href="#pytorch是什么" class="headerlink" title="pytorch是什么"></a>pytorch是什么</h2><p>PyTorch 是一种<strong>开源深度学习框架</strong>，以出色的灵活性和易用性著称。这在一定程度上是因为与机器学习开发者和数据科学家所青睐的热门 Python 高级编程语言兼容。</p>
+<p>PyTorch 是一种<strong>用于构建深度学习模型的功能完备框架</strong>，是一种<strong>通常用于图像识别和语言处理等应用程序的机器学习</strong>。使用 Python 编写，因此对于大多数机器学习开发者而言，学习和使用起来相对简单。PyTorch 的独特之处在于，它完全支持 GPU，并且使用反向模式自动微分技术，因此可以动态修改计算图形。这使其成为快速实验和原型设计的常用选择。</p>
+<p>该框架将 Torch 中高效而灵活的 GPU 加速后端库与直观的 Python 前端相结合，后者专注于快速原型设计、可读代码，并支持尽可能广泛的深度学习模型。Pytorch 支持开发者使用熟悉的命令式编程方法，但仍可以输出到图形。它于 2017 年以开源形式发布，其 Python 根源使其深受机器学习开发者的喜爱。</p>
+<p>值得注意的是，PyTorch 采用了 Chainer 创新技术，称为反向模式自动微分。<strong>从本质上讲，它就像一台磁带录音机，录制完成的操作，然后回放，计算梯度。</strong>这使得 PyTorch 的调试相对简单，并且能够很好地适应某些应用程序，例如动态神经网络。由于每次迭代可能都不相同，因此非常适用于原型设计。</p>
+<h2 id="其他深度学习框架"><a href="#其他深度学习框架" class="headerlink" title="其他深度学习框架"></a>其他深度学习框架</h2><ol>
+<li>TensorFlow：由Google开发的深度学习框架，支持动态和静态图模式，提供了广泛的工具和库，适用于各种深度学习任务。</li>
+<li>Keras：Keras是一个高级神经网络API，可以在多个后端（包括TensorFlow）上运行。它提供了简单易用的接口，使得构建和训练神经网络变得更加方便。</li>
+<li>Caffe：一个由Berkeley Vision and Learning Center开发的深度学习框架，特别适用于计算机视觉任务。它提供了一个定义和训练各种深度学习模型的快速框架。</li>
+<li>MXNet：由亚马逊开发的深度学习框架，支持动态和静态图模式，具有高效的计算性能和可扩展性。</li>
+<li>Theano：一个用Python编写的数学表达式库，可以进行高性能的数值计算，特别适用于定义、优化和评估数学表达式。</li>
+<li>CNTK：由微软开发的深度学习框架，支持动态图和静态图模式，并提供了可扩展的高性能计算功能。</li>
+</ol>
+<h2 id="两大法宝dir-和help"><a href="#两大法宝dir-和help" class="headerlink" title="两大法宝dir()和help()"></a>两大法宝dir()和help()</h2><p>dir()函数，能让我们知道工具箱以及<strong>工具箱中的分隔区</strong>有什么东西<br>help()函数，能让我们知道每个工具是如何使用的，工具的使用方法</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/001.png"></p>
+<p><strong>torch分区有cuda，cuda分区有is_available,然后用help查看这个函数</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/002.png"></p>
+<h2 id="PyCharm及Jupyter使用及对比"><a href="#PyCharm及Jupyter使用及对比" class="headerlink" title="PyCharm及Jupyter使用及对比"></a>PyCharm及Jupyter使用及对比</h2><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/003.png"></p>
+<h3 id="在pytorch环境下使用jupyter"><a href="#在pytorch环境下使用jupyter" class="headerlink" title="在pytorch环境下使用jupyter"></a>在pytorch环境下使用jupyter</h3><p>在anaconda中pytorch环境中使用指令 <code>conda install nb_conda</code></p>
+<p>安装完后使用<code>jupyter notebook</code>指令打开</p>
+<p>检验</p>
+<pre><code class="python">import torch
+torch.cuda.is_available()
+</code></pre>
+<h2 id="PyTorch加载数据初认识"><a href="#PyTorch加载数据初认识" class="headerlink" title="PyTorch加载数据初认识"></a>PyTorch加载数据初认识</h2><p>Dataset和Dataloader两个类</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/004.png"></p>
+<h3 id="Dataset类"><a href="#Dataset类" class="headerlink" title="Dataset类"></a>Dataset类</h3><p>在 PyTorch 中，<code>torch.utils.data.Dataset</code> 类是<strong>用于表示数据集的抽象类</strong>。它是一个抽象基类，需要用户自定义子类来表示具体的数据集。<code>Dataset</code> 类提供了一种统一的方式来访问数据，使得数据集的读取和处理变得更加方便。</p>
+<p>要使用 <code>Dataset</code> 类，需要实现两个主要的方法：<code>__len__</code> 和 <code>__getitem__</code>。下面是这两个方法的说明：</p>
+<ol>
+<li><p><code>__len__(self)</code>：这个方法<strong>返回数据集的大小</strong>，即数据集中样本的数量。可以通过 <code>len(dataset)</code> 的方式调用这个方法。</p>
+</li>
+<li><p><code>__getitem__(self, index)</code>：这个方法<strong>用于获取数据集中指定索引位置的样本</strong>。它接受一个索引值作为参数，并返回对应的样本。可以通过 <code>dataset[index]</code> 的方式调用这个方法。</p>
+</li>
+</ol>
+<p>下面是一个示例，展示如何定义一个自定义的数据集类：</p>
+<pre><code class="python">import torch
+from torch.utils.data import Dataset
+
+class MyDataset(Dataset):
+    def __init__(self, data):
+        self.data = data
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, index):
+        sample = self.data[index]
+        # 这里可以进行一些数据预处理的操作
+        # ...
+
+        return sample
+
+# 创建数据集实例
+data = [1, 2, 3, 4, 5]
+dataset = MyDataset(data)
+
+# 访问数据集中的样本
+print(len(dataset))  # 输出：5
+print(dataset[2])  # 输出：3
+</code></pre>
+<p>通过继承 <code>torch.utils.data.Dataset</code> 类，我们可以自定义适合自己数据集的读取和处理方式。这个类还可以与 <code>torch.utils.data.DataLoader</code> 结合使用，实现对数据的批量加载和并行处理，方便训练和推理过程中的数据管道操作。</p>
+<h3 id="Dataloader类"><a href="#Dataloader类" class="headerlink" title="Dataloader类"></a>Dataloader类</h3><p>在 PyTorch 中，<code>torch.utils.data.DataLoader</code> 类是<strong>用于批量加载数据的工具类</strong>。它能够<strong>以可配置的方式加载数据集，并支持多线程和多进程的并行数据加载，从而提高数据读取的效率</strong>。<code>DataLoader</code> 类是建立在 <code>torch.utils.data.Dataset</code> 类之上的，通过将数据集对象作为参数传递给 <code>DataLoader</code>，可以方便地实现数据的批量加载。</p>
+<p>下面是 <code>DataLoader</code> 类的一些重要参数和功能：</p>
+<ul>
+<li><p><code>dataset</code>：要加载的数据集对象，通常是自定义的 <code>Dataset</code> 类的实例。</p>
+</li>
+<li><p><code>batch_size</code>：每个批次中的样本数量。默认值为 1。</p>
+</li>
+<li><p><code>shuffle</code>：是否在每个 epoch 之前<strong>对数据进行洗牌（随机重排序）</strong>。默认值为 <code>False</code>。</p>
+</li>
+<li><p><code>num_workers</code>：用于数据加载的线程数。可以设置为大于 0 的整数，以加速数据加载。默认值为 0，表示在主进程中加载数据。</p>
+<p>在window下大于0可能会报错</p>
+</li>
+<li><p><code>pin_memory</code>：如果设置为 <code>True</code>，<strong>数据将会被加载到 CUDA 的固定内存中，这可以提高数据传输到 GPU 的速度</strong>。默认值为 <code>False</code>。</p>
+</li>
+<li><p><code>drop_last</code>：如果数据集的大小不能被批次大小整除，<strong>决定是否丢弃最后一个不完整的批次</strong>。默认值为 <code>False</code>，即保留不完整的批次。</p>
+</li>
+<li><p><code>collate_fn</code>：用于将样本列表转换为批次张量的函数。默认情况下，<code>DataLoader</code> 使用 <code>torch.utils.data._utils.collate.default_collate</code> 函数进行处理。</p>
+</li>
+</ul>
+<p>下面是一个示例，展示如何使用 <code>DataLoader</code> 类加载数据集：</p>
+<pre><code class="python">import torchvision
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
+
+# 准备的测试数据集
+test_data = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor())
+
+test_loader = DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_last=True)
+# 数据集，每次抓取数据数，对数据集重新排序，主线程， 丢弃最后不完整的
+
+# 测试数据集中第一张图片及target
+img, target = test_data[0]
+print(img.shape)
+print(target)
+
+writer = SummaryWriter(&quot;dataloader&quot;)
+for epoch in range(2):
+    step = 0
+    for data in test_loader:
+        imgs, targets = data
+        writer.add_images(&quot;Epoch:&#123;&#125;&quot;.format(epoch), imgs, step)
+        step = step + 1
+
+writer.close()
+</code></pre>
+<p>通过使用 <code>DataLoader</code> 类，我们可以很方便地实现数据的批量加载和并行处理，以提高训练和推理过程中的效率。它是构建高效数据管道的重要工具之一。</p>
+<h3 id="Tensorboard类"><a href="#Tensorboard类" class="headerlink" title="Tensorboard类"></a>Tensorboard类</h3><p><code>TensorBoard</code> 是一个非常有用的工具，<strong>用于可视化和分析机器学习模型的训练过程和结果,观测每一阶段的结果</strong>。它提供了一种直观的界面，可以<u>帮助您理解模型的结构、监控指标的变化以及可视化数据流图等</u>。</p>
+<h4 id="SummaryWriter类"><a href="#SummaryWriter类" class="headerlink" title="SummaryWriter类"></a>SummaryWriter类</h4><p>在TensorFlow中，<code>SummaryWriter</code>是一个用于<strong>创建和管理TensorBoard摘要文件的类</strong>。它允许您<strong>将各种数据（如标量、图像、直方图等）写入摘要文件，以便后续在TensorBoard中进行可视化。</strong></p>
+<p>要使用<code>SummaryWriter</code>类，您需要执行以下步骤：</p>
+<ol>
+<li><p>导入<code>SummaryWriter</code>类：</p>
+<pre><code class="python">from torch.utils.tensorboard import SummaryWriter
+</code></pre>
+</li>
+<li><p>创建一个<code>SummaryWriter</code>对象，并指定摘要文件的保存路径：</p>
+<pre><code class="python">log_dir = &#39;./logs&#39;  # 摘要文件保存路径
+writer = SummaryWriter(log_dir=log_dir)
+</code></pre>
+<p>在指定的<code>log_dir</code>路径下，<code>SummaryWriter</code>将创建一个包含摘要文件的目录。</p>
+</li>
+<li><p>使用<code>writer.add_XXX</code>方法<strong>将数据添加到摘要文件</strong>中。</p>
+<p>例如，使用**<code>add_scalar</code>方法添加标量数据**：</p>
+<pre><code class="python">writer.add_scalar(&#39;loss&#39;, loss, epoch)
+</code></pre>
+<p>上述代码将在摘要文件中添加一个<strong>名为’loss’的标量数据</strong>，其值为<code>loss</code>变量的值，并指定了当前的训练轮次<code>epoch</code>。</p>
+<p>下面举例画出y&#x3D;2x直线</p>
+<pre><code class="python">from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter(&quot;logs&quot;)  # 在当前目录创建一个包含摘要文件的目录
+
+# y=3x
+for i in range(100):
+    writer.add_scalar(&quot;y=3x&quot;, 3*i, i)  # 数据标识符,要保存的值,要记录的全局步长值
+
+writer.close()
+</code></pre>
+<p>您还可以使用其他的<code>add_XXX</code>方法，例如<code>add_image</code>用于添加图像数据，<code>add_histogram</code>用于添加直方图数据等。根据您要添加的数据类型选择适当的方法。</p>
+<p><strong><code>add_image</code>用于添加图像数据</strong></p>
+<pre><code>#  下面是参数要求，括号里是规定类型
+Args:
+            tag (str): Data identifier
+            img_tensor (torch.Tensor, numpy.ndarray, or string/blobname): Image data
+            global_step (int): Global step value to record
+            walltime (float): Optional override default walltime (time.time())
+              seconds after epoch of event
+            dataformats (str): Image data format specification of the form
+              CHW, HWC, HW, WH, etc.
+</code></pre>
+<p>利用Opencv读取图片，获得numpy型图片数据</p>
+<p>从PIL到numpy，需要在add_image()中指定shape中每一个数字&#x2F;维表示的含义</p>
+</li>
+<li><p>在训练或评估过程中，持续将数据添加到摘要文件中。例如，在每个训练步骤中添加数据：</p>
+<pre><code class="python">for step, (inputs, labels) in enumerate(data_loader):
+    # 计算损失和执行训练步骤
+    loss = ...
+    optimizer.step()
+
+    # 将损失添加到摘要文件
+    writer.add_scalar(&#39;loss&#39;, loss, global_step=step)
+</code></pre>
+<p>在上述示例中，<code>global_step</code>参数用于指定当前训练步骤的全局步骤数。</p>
+</li>
+<li><p>训练或评估完成后，关闭<code>SummaryWriter</code>对象：</p>
+<pre><code class="python">writer.close()
+</code></pre>
+<p>这将确保摘要文件被正确地保存和写入。</p>
+</li>
+</ol>
+<p>在训练过程中，您可以<strong>使用TensorBoard打开指定路径的摘要文件，以可视化添加的数据</strong>。您可以通过在终端中运行以下命令启动TensorBoard服务器：</p>
+<pre><code>tensorboard --logdir=./logs
+</code></pre>
+<p>然后，在浏览器中打开<code>http://localhost:6006</code>（默认端口为6006）即可访问TensorBoard界面，并查看摘要文件中的数据可视化结果。</p>
+<p><strong>通过–port改端口</strong></p>
+<pre><code>tensorboard --logdir=logs --port=6007  # 更改端口为6007
+</code></pre>
+<p>请注意，上述示例是基于PyTorch框架的。在其他框架中（如TensorFlow），使用<code>SummaryWriter</code>类的具体步骤可能会有所不同，但基本原理是相似的。</p>
+<h3 id="Transforms类"><a href="#Transforms类" class="headerlink" title="Transforms类"></a>Transforms类</h3><p>在PyTorch中，<code>transforms</code>模块提供了一组<strong>用于数据预处理和数据增强的类和函数</strong>。这些类和函数可用于对图像和其他数据类型进行转换和操作，以便在训练神经网络时进行数据增强或规范化等操作。</p>
+<h4 id="Transforms模块中常用的类和函数的介绍"><a href="#Transforms模块中常用的类和函数的介绍" class="headerlink" title="Transforms模块中常用的类和函数的介绍"></a><code>Transforms</code>模块中常用的类和函数的介绍</h4><ol>
+<li><p><code>Compose(transforms)</code>：<br>这是一个常用的类，<strong>用于将多个转换操作组合在一起</strong>。您可以将多个转换操作传递给<code>Compose</code>的构造函数，并在应用到数据时按顺序依次执行这些转换操作。在Compose中，数据需要是 transforms类型，所以得到，Compose([transforms参数1， transforms参数2,…])</p>
+<p>示例：</p>
+<pre><code class="python">from torchvision import transforms
+
+transform = transforms.Compose([
+    transforms.Resize((256, 256)),
+    transforms.RandomCrop((224, 224)),
+    transforms.ToTensor(),
+])
+</code></pre>
+</li>
+<li><p><code>ToTensor()</code>：<br>这个类<strong>将图像或PIL图像对象转换为PyTorch张量</strong>。它还会将像素值从0-255缩放到0-1范围内，并按照通道顺序重新排列。</p>
+<p>示例：</p>
+<pre><code class="python">from torchvision import transforms
+
+transform = transforms.ToTensor()
+</code></pre>
+</li>
+<li><p><code>Resize(size)</code>：<br>这个类<strong>用于调整图像的大小</strong>。可以传递一个整数作为<code>size</code>参数，表示将图像的长和宽调整为相同的值，或者传递一个元组作为<code>size</code>参数，表示将图像的长和宽调整为指定的尺寸。</p>
+<p>示例：</p>
+<pre><code class="python">from torchvision import transforms
+
+transform = transforms.Resize((256, 256))
+</code></pre>
+</li>
+<li><p><code>RandomCrop(size)</code>：<br>这个类<strong>用于随机裁剪图像</strong>。它会从图像中随机选择一个区域，并将其裁剪为指定的尺寸。</p>
+<p>示例：</p>
+<pre><code class="python">from torchvision import transforms
+
+transform = transforms.RandomCrop((224, 224))
+</code></pre>
+</li>
+<li><p><code>Normalize(mean, std)</code>：<br>这个类用于<strong>将图像数据进行标准化</strong>。它会减去给定的均值（mean）并除以给定的标准差（std）。</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/009.png"></p>
+<p>示例：</p>
+<pre><code class="python">from torchvision import transforms
+
+transform = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+</code></pre>
+</li>
+</ol>
+<p>这些是<code>transforms</code>模块中的一些常用类，还有其他的转换类和函数可用于进行数据增强和数据预处理。您可以根据需要选择适当的转换操作，并在训练或测试时将其应用于数据。这些转换操作可以用于图像数据，也可以用于其他类型的数据，如张量或数组等。</p>
+<h4 id="transforms的结构"><a href="#transforms的结构" class="headerlink" title="transforms的结构"></a>transforms的结构</h4><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/006.png"></p>
+<h4 id="transforms的使用"><a href="#transforms的使用" class="headerlink" title="transforms的使用"></a>transforms的使用</h4><pre><code class="python">from PIL import Image
+from torch.utils.tensorboard import SummaryWriter
+from torchvision import transforms
+
+# python的用法-》 tensor数据类型
+# 通过 transforms.ToTensor去看两个问题
+# 1、transforms该如何使用 (python)
+# 2、为什么我们需要Tensor据类型
+
+img_path = &quot;data/train/ants_image/0013035.jpg&quot;
+img = Image.open(img_path)
+
+writer = SummaryWriter(&quot;logs&quot;) # 选定日志文件夹
+
+tensor_trans = transforms.ToTensor()
+tensor_img = tensor_trans(img)  # 调用__call__返回tensor类型
+
+writer.add_image(&quot;Tensor_img&quot;, tensor_img)
+
+writer.close()
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/007.png"></p>
+<h4 id="Tensor数据类型–包含了我们神经网络的基本参数"><a href="#Tensor数据类型–包含了我们神经网络的基本参数" class="headerlink" title="Tensor数据类型–包含了我们神经网络的基本参数"></a>Tensor数据类型–包含了我们神经网络的基本参数</h4><p>在机器学习和深度学习中，”Tensor”（张量）是一个<strong>多维数组（矩阵的扩展）</strong>。它是一种在数学和物理学中广泛使用的数据结构，也是许多机器学习框架（包括PyTorch和TensorFlow）中的核心数据类型。</p>
+<p>张量可以具有不同的阶（或称为维度）。以下是几个常见的阶数示例：</p>
+<ul>
+<li>零阶张量：零阶张量是一个标量，即一个单独的数值。</li>
+<li>一阶张量：一阶张量是一个向量，它包含有序排列的数值。在机器学习中，一阶张量通常表示为特征向量。</li>
+<li>二阶张量：二阶张量是一个矩阵，它由行和列组成。在机器学习中，<strong>二阶张量通常表示为特征矩阵或数据集</strong>。</li>
+<li>高阶张量：高阶张量是具有三个或更多维度的数组。在深度学习中，<strong>高阶张量经常用于表示多通道的图像、视频序列或任意形状的数据。</strong></li>
+</ul>
+<p>在PyTorch中，张量是通过<code>torch.Tensor</code>类来表示的。您可以使用<code>torch.Tensor</code>类来创建、操作和运算张量。例如，您可以使用以下代码创建一个二阶张量（2x3的矩阵）：</p>
+<pre><code class="python">import torch
+
+tensor = torch.Tensor([[1, 2, 3], [4, 5, 6]])
+</code></pre>
+<p>您可以使用各种方法和操作对张量进行操作，例如改变形状、进行数学运算、进行逐元素操作等。此外，PyTorch还提供了许多其他类型的张量，如稀疏张量、零张量、单位张量等，以满足不同的计算需求。</p>
+<p>张量是深度学习中非常重要的数据结构，它可以用于存储输入数据、模型参数以及中间计算结果。<strong>通过操作和变换张量，您可以进行前向传播、反向传播和优化等步骤，从而训练和部署机器学习模型。</strong></p>
+<h4 id="常用的Transforms"><a href="#常用的Transforms" class="headerlink" title="常用的Transforms"></a>常用的Transforms</h4><p>关注输入的三种类型，对应进行转换</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/008.png"></p>
+<h3 id="Dataset结合Transform"><a href="#Dataset结合Transform" class="headerlink" title="Dataset结合Transform"></a>Dataset结合Transform</h3><p>下载数据集，设置对应参数，比如transform组合变换</p>
+<pre><code class="python">import torchvision
+from torch.utils.tensorboard import SummaryWriter
+
+# 转化为tensor类型
+dataset_transform = torchvision.transforms.Compose([
+    torchvision.transforms.ToTensor()
+])
+
+train_set = torchvision.datasets.CIFAR10(root=&quot;./dataset2&quot;, train=True, transform=dataset_transform,
+                                         download=True)  # 设置下载路径，是训练集，确认从网上下载
+test_set = torchvision.datasets.CIFAR10(root=&quot;./dataset2&quot;, train=False, transform=dataset_transform, download=True)
+
+writer = SummaryWriter(&quot;p10&quot;)
+for i in range(10):
+    img, targe = test_set[i]
+    writer.add_image(&quot;test_set&quot;, img, i)
+
+writer.close()
+</code></pre>
+<h2 id="神经网络（Neural-Network）"><a href="#神经网络（Neural-Network）" class="headerlink" title="神经网络（Neural Network）"></a>神经网络（Neural Network）</h2><h3 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h3><p>神经网络是一种计算模型，受到生物神经系统的启发，用于处理复杂的输入数据并学习输入和输出之间的关联。它<strong>由多个称为神经元的基本单元组成</strong>，这些神<strong>经元通过连接权重相互连接</strong>，并<strong>通过激活函数对输入进行处理</strong>。</p>
+<p>以下是神经网络的基本框架：</p>
+<ol>
+<li><p>输入层（Input Layer）：神经网络的第一层，接收原始的输入数据，例如图像、文本或数字等。<strong>每个输入特征被分配给一个输入神经元。</strong></p>
+</li>
+<li><p>隐藏层（Hidden Layer）：在输入层和输出层之间可以有一个或多个隐藏层。每个隐藏层由多个神经元组成，这些神经元通过权重连接到前一层的神经元。<strong>隐藏层的作用是通过逐层处理和转换输入数据来提取更高级别的特征表示。</strong></p>
+</li>
+<li><p>输出层（Output Layer）：在隐藏层之后是输出层，它产生最终的预测或输出结果。输出层的神经元数取决于问题的类型，例如分类问题可能有多个输出神经元，<strong>每个表示一个类别</strong>。</p>
+</li>
+<li><p>权重（Weights）：神经元之间的连接具有关联的权重，<strong>它们决定了每个神经元对输入的响应程度</strong>。<strong>权重是神经网络学习过程中的可调参数，通过反向传播算法进行更新。</strong></p>
+</li>
+<li><p>激活函数（Activation Function）：每个神经元在接收到来自前一层的输入后，将其加权求和，并<strong>通过激活函数进行非线性转换</strong>。<strong>激活函数引入非线性性质，使神经网络能够学习非线性关系。</strong></p>
+</li>
+<li><p>损失函数（Loss Function）：神经网络<strong>使用损失函数衡量预测结果与真实结果之间的差异</strong>。常见的损失函数包括<strong>均方误差</strong>（Mean Squared Error）和<strong>交叉熵</strong>（Cross-Entropy）等。</p>
+</li>
+<li><p>反向传播（Backpropagation）：反向传播是神经网络中的一种训练算法，<strong>通过计算损失函数对权重的梯度，并使用梯度下降法来更新权重</strong>。反向传播从输出层向后逐层传播误差，并根据权重的贡献进行调整，以最小化损失函数。</p>
+</li>
+</ol>
+<p>通过逐层处理和学习输入数据的特征表示，神经网络能够适应各种复杂的任务，如图像识别、语音识别、自然语言处理和预测等。不同类型的神经网络，如前馈神经网络、卷积神经网络（CNN）和循环神经网络（RNN），在框架中可能会有一些细微的变化，但上述基本概念适用于大多数神经网络模型。</p>
+<h3 id="torch-reshape-tensor-shape"><a href="#torch-reshape-tensor-shape" class="headerlink" title="torch.reshape(tensor,shape)"></a>torch.reshape(tensor,shape)</h3><p><code>reshape</code> 操作的主要意义是改变张量的形状，即<strong>重新组织张量中元素的排列方式，而不改变元素本身的值。</strong></p>
+<p>重塑张量的形状对深度学习中的数据处理和模型构建有重要影响，它具有以下几个意义：</p>
+<ol>
+<li><p>适配模型：重塑操作可以将输入数据的形状与模型的输入要求相匹配。某些神经网络模型（如卷积神经网络）对输入数据的形状有特定的要求，通过重塑操作，可以将输入数据转换为满足模型输入的形状，从而进行有效的前向传播和训练。</p>
+</li>
+<li><p>处理多维数据：重塑操作可以将多维数据重新组织为所需的形状。在处理图像、文本序列等多维数据时，可以使用重塑操作将数据重新排列为适合模型输入的形状，以便进行有效的数据处理和分析。</p>
+</li>
+<li><p>维度扩展：重塑操作可以增加或减少张量的维度。通过重塑操作，可以将一维张量转换为二维张量（如批处理），将二维张量转换为三维张量（如图像的通道表示），或者在不改变元素数量的情况下调整张量的维度。</p>
+</li>
+<li><p>数据展开：有时候，为了应用某些操作，如全连接层，需要将多维张量展开为一维向量。重塑操作可以将高维张量展平为一维向量，以适应全连接层的输入要求。</p>
+</li>
+<li><p>简化计算：在一些情况下，重塑操作可以简化计算或实现特定的计算目标。例如，在矩阵乘法运算中，通过重塑操作将高维张量转换为二维矩阵，可以使用矩阵乘法的高效实现进行计算。</p>
+</li>
+</ol>
+<p>总之，重塑操作对于适配模型、处理多维数据、维度扩展、数据展开和简化计算等方面都具有重要意义，能够使数据和模型的形状相匹配，方便进行有效的深度学习任务和数据处理。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre><code class="python">input = torch.tensor([[1, -0.5],
+                      [-1, 3]])  # 二维张量，尺寸为 2x2
+
+input = torch.reshape(input, (-1, 1, 2, 2))
+print(input)
+# tensor([[[[ 1.0000, -0.5000],
+#           [-1.0000,  3.0000]]]])
+</code></pre>
+<p>reshape函数用于改变张量的形状，参数中的 <code>-1</code> <strong>表示根据其他维度的大小自动推断该维度的大小</strong>。即-1的值为总元素个数除以（其他维度值相乘）。此外，<code>(1, 2, 2)</code> 表示重塑后的张量应具有一个维度大小为 1，另外两个维度大小为 2。</p>
+<p>因此，<code>input</code> 张量经过重塑后的形状变为 <code>(1, 1, 2, 2)</code>，表示一个具有四个维度的张量，其中第一个维度大小为 1，第二个维度大小为 1，后两个维度大小为 2。</p>
+<p>这可以看作是<strong>一个批次大小为 1 的特征图，其中包含一个通道，每个通道的高度和宽度均为 2。</strong></p>
+<h3 id="采样层（Sampling-Layer）"><a href="#采样层（Sampling-Layer）" class="headerlink" title="采样层（Sampling Layer）"></a>采样层（Sampling Layer）</h3><p><strong>采样层</strong>通常在某些特定类型的神经网络中使用，例如生成对抗网络（GANs）或自动编码器（Autoencoders）。下面是有关采样层的简要介绍：</p>
+<ol>
+<li>编码层（Encoding Layer）：在自动编码器中，采样层通常位于编码层的上方。编码层负责将输入数据压缩为低维表示，而采样层则在此表示中引入随机性。</li>
+<li>解码层（Decoding Layer）：在自动编码器中，采样层通常位于解码层的下方。解码层负责将采样层中的随机样本映射回原始输入空间。</li>
+<li>高斯采样（Gaussian Sampling）：采样层通常使用高斯分布来生成随机样本。它从高斯分布中采样随机向量，然后将其用作下一层的输入。</li>
+<li>噪声注入（Noise Injection）：在生成对抗网络（GANs）中，采样层通常用于在生成器网络中注入噪声。通过在采样层引入噪声，生成器可以生成多样化和随机性较强的输出。</li>
+</ol>
+<p>​		<strong>采样层的目的是引入随机性和多样性，从而增加模型的表达能力和生成能力。</strong>它允许模型在训练过程中探索更广泛的数据分布，并生成更多样化的输出。采样层的具体实现方式可以根据不同的网络结构和任务需求而有所不同。</p>
+<h3 id="容器（Containers）"><a href="#容器（Containers）" class="headerlink" title="容器（Containers）"></a>容器（Containers）</h3><p>在 PyTorch 中，容器（Containers）是一组用于组合多个模型层的类。这些容器可以帮助构建更复杂的神经网络模型，通过嵌套不同类型的层，从而实现灵活且高效的模型构建。</p>
+<p>PyTorch 中常见的容器类包括：</p>
+<ol>
+<li><code>torch.nn.Sequential</code>：<code>Sequential</code> 是最简单和最常用的容器类，它<strong>按顺序组合多个层</strong>。在 <code>Sequential</code> 中，每个层的输出将作为下一层的输入，从而形成一个层级结构的线性模型。</li>
+</ol>
+<pre><code class="python">model = torch.nn.Sequential(
+    torch.nn.Linear(input_size, hidden_size),
+    torch.nn.ReLU(),
+    torch.nn.Linear(hidden_size, output_size)
+)
+</code></pre>
+<p>在上面的例子中，<code>Sequential</code> 容器包含了两个线性层和一个 ReLU 激活函数层，它们按照顺序连接起来构成了一个简单的前馈神经网络模型。</p>
+<ol start="2">
+<li><code>torch.nn.ModuleList</code>：<code>ModuleList</code> 是用于包含任意数量的模型层的容器。与 <code>Sequential</code> 不同，<code>ModuleList</code> 的层之间<strong>没有默认的顺序关系，需要自行定义层之间的连接方式。</strong></li>
+</ol>
+<pre><code class="python">layers = [
+    torch.nn.Linear(input_size, hidden_size),
+    torch.nn.ReLU(),
+    torch.nn.Linear(hidden_size, output_size)
+]
+model = torch.nn.ModuleList(layers)
+</code></pre>
+<p>在上面的例子中，我们使用 <code>ModuleList</code> 容器将多个层存储在 <code>layers</code> 列表中，然后将其作为一个整体赋值给 <code>model</code>。</p>
+<ol start="3">
+<li><code>torch.nn.ModuleDict</code>：<code>ModuleDict</code> 是一个用于包含任意数量的模型层的字典容器。与 <code>ModuleList</code> 类似，它也需要自行定义层之间的连接方式，但是<strong>可以使用字典的形式进行管理和访问。</strong></li>
+</ol>
+<pre><code class="python">layers = torch.nn.ModuleDict(&#123;
+    &#39;layer1&#39;: torch.nn.Linear(input_size, hidden_size),
+    &#39;activation&#39;: torch.nn.ReLU(),
+    &#39;layer2&#39;: torch.nn.Linear(hidden_size, output_size)
+&#125;)
+</code></pre>
+<p>在上面的例子中，我们使用 <code>ModuleDict</code> 容器将三个层存储在一个字典中，每个层都有一个唯一的键来访问。</p>
+<p>这些容器类可帮助组织和管理神经网络模型的层级结构，使模型构建更加灵活和可扩展。它们可以嵌套使用，并与其他类型的层级结构组合，以构建各种复杂的神经网络模型。</p>
+<h4 id="nn-Module"><a href="#nn-Module" class="headerlink" title="nn_Module"></a>nn_Module</h4><p><code>nn.Module</code> 是 PyTorch 中的一个基类，用于构建神经网络模型。它是 PyTorch 中构建自定义神经网络模型的核心组件之一。</p>
+<p><code>nn.Module</code> 提供了一组方法和属性，使我们能够<strong>方便地定义、组织和训练神经网络</strong>。通过<strong>继承 <code>nn.Module</code> 类</strong>，我们可以创建自己的网络模型，并<strong>利用其内置的功能进行前向传播、参数管理和模型保存等操作</strong>。</p>
+<p>以下是 <code>nn.Module</code> 的一些重要概念和功能：</p>
+<ol>
+<li><p>构建网络层：通过继承 <code>nn.Module</code> 类，我们可以定义自己的网络层。我们可以使用内置的网络层类，如全连接层（<code>nn.Linear</code>）、卷积层（<code>nn.Conv2d</code>）和循环神经网络层（<code>nn.RNN</code>），或者自定义一个继承自 <code>nn.Module</code> 的子类来创建自定义的网络层。</p>
+</li>
+<li><p>前向传播函数：在自定义的网络类中，我们<strong>需要实现 <code>forward</code> 函数</strong>。<code>forward</code> 函数定义了数据在网络中的前向传播过程，即输入如何通过网络层进行计算和转换以生成输出。</p>
+</li>
+<li><p>参数管理：<code>nn.Module</code> 通过 <code>parameters</code> 和 <code>named_parameters</code> 方法提供了对网络参数的管理。我们可以使用这些方法获取模型中的参数张量，并进行访问、修改或优化更新。</p>
+</li>
+<li><p>模型保存和加载：<code>nn.Module</code> 提供了 <code>state_dict</code> 和 <code>load_state_dict</code> 方法，用于方便地保存和加载模型的状态。<code>state_dict</code> 是一个 Python 字典，将每个网络层的参数名称映射到其对应的张量值，可以轻松地保存和加载模型的状态。</p>
+</li>
+<li><p>并行计算：<code>nn.Module</code> 支持在多个设备上并行计算。通过将模型移动到 GPU 上，可以使用多个 GPU 并行计算网络的前向传播和反向传播，从而加快训练速度。</p>
+</li>
+</ol>
+<p>通过继承 <code>nn.Module</code>，我们可以灵活地构建和管理复杂的神经网络模型。使用 <code>nn.Module</code> 的功能，我们可以更好地组织、训练和调整神经网络，使其适应不同的任务和数据。</p>
+<p>下面举个简单例子</p>
+<pre><code class="python">import torch
+from torch import nn
+
+
+class Tudui(nn.Module):  # 继承nn.Module
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def forward(self, input):  #前向传播
+        output = input + 1
+        return output
+
+
+tudui = Tudui()
+x = torch.tensor(1.0)
+output = tudui(x)
+print(output)
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/010.png"></p>
+<h4 id="Sequential"><a href="#Sequential" class="headerlink" title="Sequential"></a>Sequential</h4><p>它是PyTorch提供的一个容器类，<strong>用于按顺序组合多个神经网络层</strong>。</p>
+<p><code>torch.nn.Sequential</code>是<code>torch.nn.Module</code>的子类，它允许用户通过按顺序添加不同类型的层来构建神经网络模型。在<code>Sequential</code>中，每个层的输出都会成为下一个层的输入，构成了一个串联的层序列。</p>
+<p>使用<code>torch.nn.Sequential</code>，<strong>可以通过简单的方式定义神经网络模型的结构，无需手动定义<code>forward</code>函数</strong>。以下是使用<code>Sequential</code>构建一个简单的神经网络的示例：</p>
+<pre><code class="python">import torch
+import torch.nn as nn
+
+model = nn.Sequential(
+    nn.Linear(784, 256),
+    nn.ReLU(),
+    nn.Linear(256, 10),
+    nn.Softmax(dim=1)
+)
+</code></pre>
+<p>在上面的示例中，我们定义了一个具有两个全连接层和一个ReLU激活函数的神经网络。首先，我们使用<code>nn.Linear</code>添加一个具有784个输入特征和256个输出特征的全连接层，然后使用<code>nn.ReLU</code>添加ReLU激活函数。接下来，我们再次使用<code>nn.Linear</code>添加一个具有256个输入特征和10个输出特征的全连接层，最后使用<code>nn.Softmax</code>进行输出层的激活。这样就完成了一个简单的序贯模型的构建。</p>
+<p>构建完模型后，我们可以像使用普通的PyTorch模型一样使用<code>Sequential</code>模型。例如，可以使用<code>model(inputs)</code>进行前向传播计算，并使用标准的PyTorch优化器和损失函数对模型进行训练和评估。</p>
+<p>需要注意的是，<code>Sequential</code>在构建模型时非常方便，但在某些情况下可能不足以满足复杂的模型结构要求。对于更复杂的模型，可以考虑使用PyTorch提供的其他灵活的模型构建方法，如自定义<code>nn.Module</code>子类。</p>
+<p><strong>优点：代码简洁，易懂</strong></p>
+<h5 id="对图像分类简单网络搭建"><a href="#对图像分类简单网络搭建" class="headerlink" title="对图像分类简单网络搭建"></a>对图像分类简单网络搭建</h5><h6 id="搭建过程细节"><a href="#搭建过程细节" class="headerlink" title="搭建过程细节"></a>搭建过程细节</h6><p>数据集来自CIFAR10，下面是要搭建的模型</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/023.png"></p>
+<p><strong>通过卷积层要保持原来的宽高，需要依据公式：</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/024.png"></p>
+<p>​	</p>
+<p>一开始只知道Hin；dilation默认为1，不空洞；kernel_size为5；然后不知道stride,padding</p>
+<p>又因为当stride&#x3D;2，数据会拓展的很大，所以stride&#x3D;1，所以padding&#x3D;2</p>
+<p>总结：如果尺寸不变，padding都会等于2</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/025.png"></p>
+<p>Flatten后展开成1024，再通过线性变化成64，64再通过线性变化成10类别中的一种</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/026.png"></p>
+<h6 id="检验网络结构是否正确"><a href="#检验网络结构是否正确" class="headerlink" title="检验网络结构是否正确"></a>检验网络结构是否正确</h6><pre><code class="python">tudui = Tudui()
+input = torch.ones(64, 3, 32, 32)
+output = tudui(input)
+print(output.shape)
+# 正确输出：torch.Size([64, 10]) 64张图片
+# 网络结构错了就会报错
+</code></pre>
+<p><strong>想知道线性层的输入通道，可以先不执行线性层看shape,然后再搭建线性层，输入对应参数</strong></p>
+<pre><code class="python">import torch
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.conv1 = Conv2d(3, 32, 5, padding=2)
+        self.maxpool1 = MaxPool2d(2)
+        self.conv2 = Conv2d(32, 32, 5, padding=2)
+        self.maxpool2 = MaxPool2d(2)
+        self.conv3 = Conv2d(32, 64, 5, padding=2)
+        self.maxpool3 = MaxPool2d(2)
+        self.flatten = Flatten()
+        self.linear1 = Linear(1024, 64)
+        self.linear2 = Linear(64, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.maxpool1(x)
+        x = self.conv2(x)
+        x = self.maxpool2(x)
+        x = self.conv3(x)
+        x = self.maxpool3(x)
+        x = self.flatten(x)
+        # x = self.linear1(x)
+        # x = self.linear2(x)
+        return x
+
+
+tudui = Tudui()
+print(tudui)
+input = torch.ones(64, 3, 32, 32)
+output = tudui(input)
+print(output.shape)
+# torch.Size([64, 1024])
+</code></pre>
+<h6 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h6><pre><code class="python">import torch
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.conv1 = Conv2d(3, 32, 5, padding=2)
+        self.maxpool1 = MaxPool2d(2)
+        self.conv2 = Conv2d(32, 32, 5, padding=2)
+        self.maxpool2 = MaxPool2d(2)
+        self.conv3 = Conv2d(32, 64, 5, padding=2)
+        self.maxpool3 = MaxPool2d(2)
+        self.flatten = Flatten()
+        self.linear1 = Linear(1024, 64)
+        self.linear2 = Linear(64, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.maxpool1(x)
+        x = self.conv2(x)
+        x = self.maxpool2(x)
+        x = self.conv3(x)
+        x = self.maxpool3(x)
+        x = self.flatten(x)
+        x = self.linear1(x) 
+        x = self.linear2(x)
+        return x
+
+
+tudui = Tudui()
+print(tudui)
+input = torch.ones(64, 3, 32, 32)
+output = tudui(input)
+print(output.shape)
+# torch.Size([64, 10])
+</code></pre>
+<h6 id="代码二（使用Sequential）"><a href="#代码二（使用Sequential）" class="headerlink" title="代码二（使用Sequential）"></a>代码二（使用Sequential）</h6><pre><code class="python">import torch
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear, Sequential
+from torch.utils.tensorboard import SummaryWriter
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.model1 = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(1024, 64),
+            Linear(64, 10)
+        )
+
+    def forward(self, x):
+        x = self.model1(x)
+        return x
+
+
+tudui = Tudui()
+print(tudui)
+input = torch.ones(64, 3, 32, 32)
+output = tudui(input)
+print(output.shape)
+# torch.Size([64, 10])
+
+# 在tensorboard上看网络
+writer = SummaryWriter(&quot;logs_seq&quot;)
+writer.add_graph(tudui, input)
+writer.close()
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/031.png"></p>
+<h3 id="卷积操作"><a href="#卷积操作" class="headerlink" title="卷积操作"></a>卷积操作</h3><p><strong>Stride&#x3D;1表示移动的步数（步进），横向纵向都一样</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/011.png"></p>
+<p><strong>padding&#x3D;1表示在原矩阵周围的每一边加上一行或一列</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/013.png"></p>
+<p><strong>学会看参数要求</strong></p>
+<p>TORCH.NN.FUNCTIONAL.CONV2D 要求input中的tensor of shape <strong>必须有括号里四个信息</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/012.png"></p>
+<p>下面是使用例子：</p>
+<pre><code class="python">import torch
+import torch.nn.functional as F
+
+input = torch.tensor([[1, 2, 0, 3, 1],
+                      [0, 1, 2, 3, 1],
+                      [1, 2, 1, 0, 0],
+                      [5, 2, 3, 1, 1],
+                      [2, 1, 0, 1, 1]])
+
+# 卷积核
+kernel = torch.tensor([[1, 2, 1],
+                       [0, 1, 0],
+                       [2, 1, 0]])
+
+# 尺寸转换到符合函数参数要求
+input = torch.reshape(input, [1, 1, 5, 5])
+kernel = torch.reshape(kernel, [1, 1, 3, 3])
+
+print(input.shape)
+print(kernel.shape)
+
+# 进行卷积操作
+output = F.conv2d(input, kernel, stride=1)
+print(output)
+# tensor([[[[10, 12, 12],
+#           [18, 16, 16],
+#           [13,  9,  3]]]])
+
+output2 = F.conv2d(input, kernel, stride=2)
+print(output2)
+# tensor([[[[10, 12],
+#           [13,  3]]]])
+
+output3 = F.conv2d(input, kernel, stride=1, padding=1)
+print(output3)
+# tensor([[[[ 1,  3,  4, 10,  8],
+#           [ 5, 10, 12, 12,  6],
+#           [ 7, 18, 16, 16,  8],
+#           [11, 13,  9,  3,  4],
+#           [14, 13,  9,  7,  4]]]])
+</code></pre>
+<h3 id="卷积层（Convolution-Layers）"><a href="#卷积层（Convolution-Layers）" class="headerlink" title="卷积层（Convolution Layers）"></a>卷积层（Convolution Layers）</h3><p>卷积层（Convolutional Layer）是深度学习神经网络中的一种核心组件，主要用于图像处理和计算机视觉任务。它<strong>通过应用卷积操作对输入数据进行特征提取，从而实现对图像或其他类型数据的有效分析和处理。</strong></p>
+<h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>卷积层的核心思想是利用卷积操作对输入数据和一组可学习的滤波器（也称为卷积核）进行<strong>逐元素乘法和求和操作</strong>，从而<strong>生成输出特征图</strong>。<strong>这些滤波器可以捕捉输入数据中的不同特征，例如边缘、纹理、颜色等</strong>。</p>
+<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><p>在卷积层中，每个滤波器通过在输入数据上滑动来执行卷积操作。卷积操作的过程可以简单描述为以下几个步骤：</p>
+<ol>
+<li>定义卷积核的大小：指定滤波器的空间尺寸（如3x3、5x5等）和深度（与输入数据的通道数相同）。</li>
+<li>执行卷积操作：将卷积核应用于输入数据的每个位置，逐元素乘法并求和得到输出特征图的对应位置的值。这个过程可以看作是将卷积核与输入数据进行逐元素的点乘操作，然后对结果求和。</li>
+<li>滑动步幅（Stride）：在进行卷积操作时，可以指定卷积核在输入数据上滑动的步幅，控制输出特征图的尺寸。</li>
+<li>填充（Padding）：可以在输入数据的边界上添加额外的值（通常是0），以控制输出特征图的尺寸和边缘效应。常见的填充方式有”valid”（不填充）和”same”（填充后保持相同尺寸）。</li>
+</ol>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>卷积层的优点包括：</p>
+<ol>
+<li>局部连接：卷积层的卷积操作仅关注输入数据的局部区域，通过共享权重参数减少了模型的参数数量，提高了计算效率。</li>
+<li>参数共享：卷积层中的滤波器在整个输入数据上共享权重参数，使得模型对于特定特征在不同位置的识别具有平移不变性，增强了模型的泛化能力。</li>
+<li>特征提取：卷积层通过卷积操作可以自动提取输入数据的特征，无需手动设计特征提取器，减少了人工特征工程的工作量。</li>
+</ol>
+<p>卷积层是卷积神经网络（CNN）的基础，它通常与其他类型的层（如池化层、全连接层等）交替堆叠以构建深层网络结构。通过多个卷积层的叠加，网络可以逐层学习到更加抽象和复杂的特征，从而实现对输入数据的高级表示和理解。</p>
+<h4 id="torch-nn-Conv2d"><a href="#torch-nn-Conv2d" class="headerlink" title="torch.nn.Conv2d"></a>torch.nn.Conv2d</h4><p>torch.nn.Conv2d是PyTorch深度学习框架中的一个卷积层类，用于<strong>实现二维卷积操作</strong>。它对输入的二维特征图进行卷积操作，通过学习卷积核的权重参数，提取输入数据的特征并生成输出特征图。</p>
+<p>Conv2d的构造函数接受以下参数：</p>
+<ul>
+<li>in_channels：输入特征图的通道数（输入的深度）。</li>
+<li>out_channels：输出特征图的通道数（输出的深度），即<strong>卷积核的数量</strong>。</li>
+<li>kernel_size：卷积核的大小，可以是一个整数或一个元组（kh，kw）表示高度和宽度的维度。</li>
+<li>stride：卷积核的滑动步幅，默认为1。</li>
+<li>padding：输入的每一条边补充0的层数，默认为0。</li>
+<li>dilation：<strong>控制卷积核内部元素的间距</strong>，<strong>默认为1，不空洞</strong>。空洞卷积。</li>
+<li>groups：将输入和输出通道分组的数量，默认为1。</li>
+<li>bias：是否在卷积操作中使用偏置项，默认为True。</li>
+</ul>
+<p>Conv2d的前向传播函数（forward）接受输入张量，并返回卷积操作后的输出张量。下面是一个使用Conv2d的示例代码：</p>
+<pre><code class="python">import torch
+import torch.nn as nn
+
+# 创建一个Conv2d实例
+conv = nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1)
+
+# 输入数据
+input = torch.randn(1, 3, 32, 32)  # 输入尺寸为[batch_size, in_channels, height, width]
+
+# 进行卷积操作
+output = conv(input)
+
+print(output.size())
+</code></pre>
+<p>输出:</p>
+<pre><code>torch.Size([1, 16, 32, 32])
+</code></pre>
+<p>在上述示例中，输入是一个大小为1x3x32x32的特征图，其中1是batch大小，3是输入通道数，32x32是输入图像的高度和宽度。通过Conv2d进行卷积操作后，输出特征图的尺寸为1x16x32x32，其中16是输出通道数，与指定的out_channels参数相对应。</p>
+<p>Conv2d在卷积神经网络中被广泛应用，用于提取输入数据的局部特征。<strong>通过多个Conv2d层的堆叠，网络可以逐层学习到更加抽象和复杂的特征表示，从而实现对输入数据的高级表示和理解。</strong></p>
+<p><strong>out_channels&#x3D;2 那么就意味着有两个卷积核，生成两个结果</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/014.png"></p>
+<h4 id="对图像卷积的例子"><a href="#对图像卷积的例子" class="headerlink" title="对图像卷积的例子"></a>对图像卷积的例子</h4><pre><code class="python">import torch
+import torchvision
+from torch import nn
+from torch.nn import Conv2d
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=64)
+
+
+class Tutui(nn.Module):
+    def __init__(self):
+        super(Tutui, self).__init__()
+        self.conv1 = Conv2d(in_channels=3, out_channels=6, kernel_size=3, stride=1, padding=0)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        return x
+
+
+tutui = Tutui()
+writer = SummaryWriter(&quot;logs&quot;)
+step = 0
+for data in dataloader:
+    imgs, targets = data
+    output = tutui(imgs)
+    # torch.Size([64, 3, 32, 32])
+    print(imgs.shape)
+    print(output.shape)
+    writer.add_images(&quot;input&quot;, imgs, step)
+    # torch.Size([64, 6, 30, 30]) -&gt; [xxx, 3, 30, 30]
+    output = torch.reshape(output, (-1, 3, 30, 30))  # -1 表示自动计算
+    writer.add_images(&quot;output&quot;, output, step)
+    step = step + 1
+writer.close()
+</code></pre>
+<img lazyload src="/images/loading.svg" data-src="入门Pytorch/016.png" style="zoom:50%;">
+
+<h3 id="池化层（Pooling-Layer）"><a href="#池化层（Pooling-Layer）" class="headerlink" title="池化层（Pooling Layer）"></a>池化层（Pooling Layer）</h3><p>池化层（Pooling Layer）是深度学习神经网络中常用的一种<strong>层级结构</strong>，通常用于<strong>降低</strong>卷积神经网络（CNN）或其他类型的<strong>神经网络的空间维度</strong>。它的主要作用是<strong>减少特征图的尺寸，并提取出输入数据的关键特征</strong>。</p>
+<h4 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a>核心思想</h4><p><strong>池化层的输入通常是卷积层的输出特征图</strong>（feature map）。<strong>它将特征图划分为不重叠的区域，然后对每个区域进行汇聚（pooling）操作，将区域内的特征值合并为一个单一的值。这样就可以减少特征图的尺寸，并保留主要的特征信息。</strong></p>
+<p>常见的池化操作有<strong>最大池化</strong>（Max Pooling）和<strong>平均池化</strong>（Average Pooling）。<strong>最大池化选择每个区域内的最大值作为合并后的值，而平均池化则取区域内特征值的平均值作为合并后的值。</strong>这两种操作都可以有效地减少特征图的尺寸，并且对输入数据的平移不变性有一定的保持。</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p><strong>池化层的优点包括：</strong></p>
+<ol>
+<li>减少参数：通过降低特征图的尺寸，减少了后续层级需要处理的参数数量，从而降低了计算成本和内存消耗。</li>
+<li>提取主要特征：池化操作可以提取输入数据的主要特征，保留对于识别和分类任务最重要的信息，有助于提高模型的泛化能力。</li>
+<li>平移不变性：池化层在一定程度上保持了输入数据的平移不变性，即输入数据在图像中位置的改变不会显著影响池化层的输出结果。</li>
+</ol>
+<p>然而，<strong>池化操作也存在一些缺点：</strong></p>
+<ol>
+<li>信息损失：池化操作的合并过程导致了一定程度上的信息损失，因为它丢弃了合并区域内除最大值或平均值以外的其他细节信息。</li>
+<li>降低空间分辨率：池化操作会减小特征图的尺寸，降低了输入数据的空间分辨率，可能导致一些细节信息的丢失。</li>
+</ol>
+<p>尽管存在一些限制，池化层仍然是深度学习中常用且有效的组件，它在卷积神经网络等模型中被广泛应用，有助于提高模型的性能和计算效率。</p>
+<h4 id="torch-nn-MaxPool2d"><a href="#torch-nn-MaxPool2d" class="headerlink" title="torch.nn.MaxPool2d"></a>torch.nn.MaxPool2d</h4><p>torch.nn.MaxPool2d是PyTorch深度学习框架中的一个池化层类，用于实现最大池化操作。它将输入的二维特征图<strong>按照指定的池化窗口大小进行划分，并在每个窗口内选择最大值作为池化后的输出。</strong></p>
+<p>MaxPool2d的构造函数接受以下参数：</p>
+<ul>
+<li>kernel_size：池化窗口的大小，可以是一个整数或一个元组（kh，kw）表示高度和宽度的维度。</li>
+<li>stride：池化窗口的滑动步幅，<strong>默认为kernel_size</strong>。</li>
+<li>padding：输入的每一条边补充0的层数。</li>
+<li>dilation：控制窗口内元素的间距。</li>
+<li>return_indices：如果设置为True，则返回最大值的索引，用于后面的最大池化反池化操作。</li>
+<li>ceil_mode：当输入尺寸无法被池化窗口大小整除时，如果设置为True，则向上取整计算输出尺寸，<strong>保留有的数</strong>；如果设置为False，则向下取整，<strong>不完整则不取数</strong>。</li>
+</ul>
+<p>MaxPool2d的前向传播函数（forward）接受输入张量，并返回池化后的输出张量。下面是一个使用MaxPool2d的示例代码：</p>
+<pre><code class="python">import torch
+import torch.nn as nn
+
+# 创建一个MaxPool2d实例
+maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
+
+# 输入数据
+input = torch.tensor([[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]], dtype=torch.float32)
+
+# 进行最大池化操作
+output = maxpool(input)
+
+print(output)
+</code></pre>
+<p>输出:</p>
+<pre><code>tensor([[[ 6.,  8.],
+         [14., 16.]]])
+</code></pre>
+<p>在上述示例中，输入是一个1x4x4的特征图。通过MaxPool2d的池化窗口大小为2x2，步幅为2，进行最大池化操作后，输出的特征图尺寸变为1x2x2。输出张量中的每个值都是对应池化窗口内的最大值。</p>
+<p>MaxPool2d在卷积神经网络中广泛应用，通常用于减小特征图的空间尺寸、提取主要特征和实现平移不变性。</p>
+<h4 id="最大池化的使用"><a href="#最大池化的使用" class="headerlink" title="最大池化的使用"></a>最大池化的使用</h4><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/017.png"></p>
+<pre><code class="python">import torch
+from torch import nn
+from torch.nn import MaxPool2d
+
+input = torch.tensor([[1, 2, 0, 3, 1],
+                      [0, 1, 2, 3, 1],
+                      [1, 2, 1, 0, 0],
+                      [5, 2, 3, 1, 1],
+                      [2, 1, 0, 1, 1]], dtype=torch.float32)  # 不能是长整数
+input = torch.reshape(input, (-1, 1, 5, 5))  # -1表示自动计算batch_size 每次处理数量
+print(input.shape)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.maxpool1 = MaxPool2d(kernel_size=3, ceil_mode=True)
+
+    def forward(self, input):
+        output = self.maxpool1(input)
+        return output
+
+
+tudui = Tudui()
+output = tudui(input)
+print(output)
+</code></pre>
+<h4 id="处理图像最大池化例子"><a href="#处理图像最大池化例子" class="headerlink" title="处理图像最大池化例子"></a>处理图像最大池化例子</h4><pre><code class="python">import torch
+import torchvision
+from torch import nn
+from torch.nn import MaxPool2d
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=64)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.maxpool1 = MaxPool2d(kernel_size=3, ceil_mode=True)
+
+    def forward(self, input):
+        output = self.maxpool1(input)
+        return output
+
+
+tudui = Tudui()
+writer = SummaryWriter(&quot;logs&quot;)
+step = 0
+for data in dataloader:
+    imgs, target = data
+    output = tudui(imgs)
+    writer.add_images(&quot;input&quot;, imgs, step)
+    writer.add_images(&quot;output&quot;, output, step)
+    step = step + 1
+
+writer.close()
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/018.png"></p>
+<h3 id="填充层（Padding-Layers）"><a href="#填充层（Padding-Layers）" class="headerlink" title="填充层（Padding Layers）"></a>填充层（Padding Layers）</h3><p>填充层（Padding Layers）是深度学习神经网络中常用的一类层级结构，<strong>用于在输入数据周围添加额外的元素（通常是0），以控制输出特征图的尺寸和边缘效应。</strong></p>
+<p>填充层的主要作用是在卷积和池化等操作中调整输入数据的大小，以解决边缘信息的损失和尺寸变化的问题。它通过在输入数据的边界上添加零值元素，扩展输入数据的尺寸，使得在卷积或池化操作中能够保持输出特征图的尺寸和输入数据相同，或者产生更为合适的输出尺寸。</p>
+<p>常见的填充方式包括：</p>
+<ol>
+<li><p>零填充（Zero Padding）：在输入数据的边界上填充零值元素。通过在输入的上、下、左、右四个方向上添加相同数量的零值元素，可以保持特征图的尺寸不变。</p>
+</li>
+<li><p>反射填充（Reflect Padding）：在输入数据的边界上以对称方式填充元素，从而保持输入和输出的边界一致。反射填充通常应用于卷积神经网络的边缘处理，避免了零填充的平滑效果。</p>
+</li>
+<li><p>边缘填充（Edge Padding）：在输入数据的边界上填充重复边缘元素，从而保持输入和输出的边缘信息一致。边缘填充可以防止卷积操作损失边缘细节。</p>
+</li>
+</ol>
+<p>填充层的使用在卷积神经网络（CNN）中非常常见，常用于调整卷积操作后特征图的尺寸。填充层通常与卷积层、池化层等结合使用，以保持特征图尺寸的一致性和边缘信息的完整性。它在深度学习模型中起到了平衡输入和输出尺寸、减小边缘效应以及提升模型性能的作用。</p>
+<h3 id="非线性激活（Non-linear-Activations-weighted-sum-nonlinearity））"><a href="#非线性激活（Non-linear-Activations-weighted-sum-nonlinearity））" class="headerlink" title="非线性激活（Non-linear Activations (weighted sum, nonlinearity））"></a>非线性激活（Non-linear Activations (weighted sum, nonlinearity））</h3><p>非线性激活函数（Non-linear Activations）在深度学习神经网络中扮演重要角色，<strong>用于引入非线性性质，增加模型的表达能力和学习能力。非线性激活函数将线性变换的输出映射到非线性空间，使网络能够学习和表示更加复杂的函数关系。</strong></p>
+<h4 id="常用的非线性激活函数"><a href="#常用的非线性激活函数" class="headerlink" title="常用的非线性激活函数"></a>常用的非线性激活函数</h4><ol>
+<li><p>Sigmoid函数（Logistic函数）：Sigmoid函数具有S形曲线，<strong>将输入的实数值压缩到[0, 1]的范围内。它在二分类问题中常用于将输出映射到概率值，但在深层网络中容易出现梯度消失的问题。</strong></p>
+</li>
+<li><p>双曲正切函数（Tanh函数）：Tanh函数与Sigmoid函数类似，但将输入映射到[-1, 1]的范围内。与Sigmoid函数相比，Tanh函数的输出均值为0，因此更适用于中心化数据。</p>
+</li>
+<li><p>修正线性单元（ReLU函数）：<strong>ReLU函数定义为 f(x) &#x3D; max(0, x)，即输入大于0时输出本身，小于等于0时输出0。ReLU函数的特点是简单高效，且在训练过程中不会引起梯度消失问题。</strong></p>
+</li>
+<li><p>Leaky ReLU函数：Leaky ReLU函数是对ReLU函数的改进，<strong>当输入小于0时引入一个小的斜率，以解决ReLU函数在负数区域出现的”死亡神经元”问题。</strong></p>
+</li>
+<li><p>Parametric ReLU函数（PReLU函数）：PReLU函数是ReLU函数的扩展，引入了可学习的参数，用于调整负数区域的斜率。</p>
+</li>
+<li><p>Swish函数：Swish函数是近期提出的激活函数，具有平滑的非线性特性，能够保留更多信息。</p>
+</li>
+</ol>
+<p>非线性激活函数的作用是引入非线性变换，使神经网络能够学习更复杂的函数关系。<strong>它们通常在网络的隐藏层和输出层之间使用，并在网络的前向传播过程中应用于线性变换的输出。选择适当的非线性激活函数取决于任务的性质和网络的结构，合理的选择可以提高模型的性能和收敛速度。</strong></p>
+<h4 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h4><p>梯度消失指的是在深度神经网络中<strong>，梯度（导数）的数值变得非常小，接近于零。</strong>当梯度接近于零时，权重更新的步伐也会变得非常小，<strong>导致模型参数的更新缓慢或停滞，从而影响模型的性能和收敛速度。</strong></p>
+<p>梯度消失通常发生在深层网络中，特别是在使用某些激活函数（如 Sigmoid 或 Tanh 函数）时更容易出现。<strong>这些激活函数在输入较大或较小的范围内具有饱和性，导致梯度逐渐变小并趋近于零。</strong>随着网络层数的增加，梯度在每一层传播时可能会不断缩小，最终导致梯度消失的情况。</p>
+<p><strong>梯度消失会导致网络无法学习到有效的表示和特征，限制了网络的表达能力和性能。</strong>为了解决梯度消失问题，可以采取以下方法：</p>
+<ol>
+<li>使用其他激活函数：通过选择非饱和性更好的激活函数，如ReLU、Leaky ReLU、ELU等，可以减轻梯度消失的问题。</li>
+<li>初始化权重：使用合适的权重初始化方法，如Xavier初始化、He初始化等，可以更好地控制权重的范围，从而减轻梯度消失的情况。</li>
+<li>使用批标准化（Batch Normalization）：批标准化可以加速网络的收敛速度，并且对于梯度消失的问题有一定的缓解作用。</li>
+<li>使用残差连接（Residual Connection）：残差连接可以通过将输入直接添加到输出中，来减少梯度在网络中传播时的衰减，进而缓解梯度消失问题。</li>
+</ol>
+<p>综上所述，梯度消失是指梯度的数值趋近于零，常见于深层神经网络中。为了解决梯度消失问题，可以尝试使用其他激活函数、合适的权重初始化、批标准化和残差连接等方法。</p>
+<h4 id="ReLU代码举例"><a href="#ReLU代码举例" class="headerlink" title="ReLU代码举例"></a>ReLU代码举例</h4><p>参数中的inplace指示是否保留原输入值，默认为false,不进行修改</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/019.png"></p>
+<pre><code class="python">import torch
+from torch import nn
+from torch.nn import ReLU
+
+input = torch.tensor([[1, -0.5],
+                      [-1, 3]])  # 二维张量，尺寸为 2x2
+
+input = torch.reshape(input, (-1, 1, 2, 2))
+print(input.shape)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.relu1 = ReLU()  
+
+    def forward(self, input):
+        output = self.relu1(input)
+        return output
+
+tudui = Tudui()
+output = tudui(input)
+print(output)
+# tensor([[[[1., 0.],
+#           [0., 3.]]]])
+</code></pre>
+<h4 id="Sigmoid处理图像举例"><a href="#Sigmoid处理图像举例" class="headerlink" title="Sigmoid处理图像举例"></a>Sigmoid处理图像举例</h4><pre><code class="python">import torchvision
+from torch import nn
+from torch.nn import Sigmoid
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=64)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.sigmoid1 = Sigmoid()
+
+    def forward(self, input):
+        output = self.sigmoid1(input)
+        return output
+
+
+tudui = Tudui()
+writer = SummaryWriter(&quot;logs&quot;)
+step = 0
+for data in dataloader:
+    imgs, target = data
+    writer.add_images(&quot;input&quot;, imgs, step)
+    output = tudui(imgs)
+    writer.add_images(&quot;output&quot;, output, step)
+    step = step + 1
+
+writer.close()
+
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/020.png"></p>
+<h3 id="线性层（Linear-Layers）"><a href="#线性层（Linear-Layers）" class="headerlink" title="线性层（Linear Layers）"></a>线性层（Linear Layers）</h3><p>线性层（Linear Layers）是深度学习神经网络中的一种基本层级结构，也被称为<strong>全连接层</strong>（Fully Connected Layers）或<strong>仿射层</strong>（Affine Layers）。线性层在神经网络中起着重要的作用，<strong>负责对输入数据进行线性变换和特征映射。</strong></p>
+<h4 id="核心思想-2"><a href="#核心思想-2" class="headerlink" title="核心思想"></a>核心思想</h4><p>线性层的操作非常简单，<strong>它将输入数据与权重矩阵相乘，并加上偏置向量，得到输出结果</strong>。数学上，线性层的计算可以表示为：</p>
+<pre><code>output = input * weight^T + bias
+</code></pre>
+<p>其中，<code>input</code> 是输入数据的张量，<code>weight</code> 是权重矩阵，<code>bias</code> 是偏置向量，**<code>^T</code> 表示权重矩阵的转置**。输出结果 <code>output</code> 是一个与权重矩阵的行数相同的张量。</p>
+<h4 id="主要特点和作用"><a href="#主要特点和作用" class="headerlink" title="主要特点和作用"></a>主要特点和作用</h4><ul>
+<li><p>特征变换：线性层通过权重矩阵的乘法运算，将输入数据从一个特征空间映射到另一个特征空间。这种映射可以帮助神经网络学习和提取更高级别的特征表示。</p>
+</li>
+<li><p>参数学习：<strong>线性层的权重矩阵和偏置向量是需要学习的参数</strong>。在神经网络的训练过程中，通过反向传播算法，根据损失函数的梯度更新这些参数，以使网络能够逐步调整权重和偏置，以更好地拟合训练数据。</p>
+</li>
+<li><p>多样性：线性层可以堆叠在一起形成深度神经网络的隐藏层。多个线性层之间可以通过非线性激活函数进行连接，以增加网络的非线性能力。</p>
+</li>
+</ul>
+<p>线性层常用于神经网络的前向传播过程中，通常紧随输入层或其他层级结构（如卷积层或循环层）之后。它可以在深度学习模型中实现复杂的非线性映射，提取输入数据的高级特征，并为下一层的处理提供输入。线性层在各种任务中广泛应用，如图像分类、语言处理、回归分析等。</p>
+<img lazyload src="/images/loading.svg" data-src="入门Pytorch/021.png" style="zoom: 50%;">
+
+
+
+<h4 id="torch-nn-Linear"><a href="#torch-nn-Linear" class="headerlink" title="torch.nn.Linear"></a>torch.nn.Linear</h4><p><code>torch.nn.Linear</code> 是 PyTorch 中的一个类，用于创建线性层（Linear Layer）。</p>
+<p><code>torch.nn.Linear</code> 类的初始化函数如下：</p>
+<pre><code class="python">torch.nn.Linear(in_features, out_features, bias=True)
+</code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>in_features</code>：输入特征的大小（或维度），即<strong>输入张量的最后一维的大小</strong>。</li>
+<li><code>out_features</code>：输出特征的大小（或维度），即<strong>输出张量的最后一维的大小</strong>。</li>
+<li><code>bias</code>（可选）：指定是否使用偏置项，默认为 True。如果设置为 False，则线性层没有偏置项。</li>
+</ul>
+<p><code>torch.nn.Linear</code> 类定义了一个线性变换，通过权重矩阵和偏置向量将输入数据映射到输出空间。它的计算公式如下：</p>
+<pre><code>output = input * weight^T + bias
+</code></pre>
+<p>其中，<code>input</code> 是输入数据的张量，<code>weight</code> 是形状为 <code>(out_features, in_features)</code> 的权重矩阵，<code>bias</code> 是形状为 <code>(out_features,)</code> 的偏置向量。</p>
+<p>在使用 <code>torch.nn.Linear</code> 创建线性层后，可以将其作为神经网络模型的一部分，参与前向传播计算。线性层会自动学习权重和偏置，这些参数可以在模型训练期间进行优化。</p>
+<h4 id="创建一个简单的线性层例子"><a href="#创建一个简单的线性层例子" class="headerlink" title="创建一个简单的线性层例子"></a>创建一个简单的线性层例子</h4><pre><code class="python">import torch
+import torchvision
+from torch import nn
+from torch.nn import Linear
+from torch.utils.data import DataLoader
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=64)
+
+# 建立网路模型
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.linear1 = Linear(in_features=196608, out_features=10)
+
+    def forward(self, input):
+        output = self.linear1(input)
+        return output
+
+
+tudui = Tudui()
+
+step = 0
+for data in dataloader:
+    imgs, target = data
+    print(imgs.shape)
+    # output = torch.reshape(imgs, (1, 1, 1, -1))
+    output = torch.flatten(imgs)  # 直接变成一行
+    print(output.shape)
+    output = tudui(output)
+    print(output.shape)
+
+# torch.Size([64, 3, 32, 32])
+# torch.Size([196608])
+# torch.Size([10])
+
+</code></pre>
+<h3 id="不常用的层"><a href="#不常用的层" class="headerlink" title="不常用的层"></a>不常用的层</h3><h3 id="标准化层-Normalization-Layers"><a href="#标准化层-Normalization-Layers" class="headerlink" title="标准化层(Normalization Layers)"></a>标准化层(Normalization Layers)</h3><p>标准化层（Normalization Layers）是深度学习神经网络中常用的一类层级结构，用于对输入数据<strong>进行标准化处理</strong>，<strong>以加速训练过程、增强模型的鲁棒性和稳定性。</strong></p>
+<p>常见的标准化层包括以下几种：</p>
+<ol>
+<li><p>批量标准化（Batch Normalization）：批量标准化是一种常用的标准化技术，通过对每个批次的输入数据进行均值和方差的标准化，使得网络在训练过程中更稳定。它在每个批次的数据上计算均值和方差，并对输入数据进行中心化和缩放操作。批量标准化可应用于卷积层和全连接层。</p>
+</li>
+<li><p>层标准化（Layer Normalization）：层标准化是一种类似于批量标准化的标准化方法，但是在计算均值和方差时使用的是整个层级的数据，而不是每个批次。层标准化对每个样本的特征进行标准化，使得网络在样本之间的关系上更稳定。层标准化常用于循环神经网络（RNN）和自注意力模型中。</p>
+</li>
+<li><p>组标准化（Group Normalization）：组标准化是一种介于批量标准化和层标准化之间的标准化方法，它将通道分成多个组，然后对每个组内的特征进行标准化。组标准化适用于卷积层，尤其在批次较小的情况下，可以提供更好的标准化效果。</p>
+</li>
+</ol>
+<p>标准化层的主要优势包括：</p>
+<ul>
+<li>提高模型的鲁棒性：标准化层可以减少输入数据的内部协变量偏移（Internal Covariate Shift）问题，使得模型对输入数据的变化更加鲁棒。</li>
+<li>提高模型的收敛速度：标准化层有助于加速模型的训练过程，<strong>因为它可以减少梯度消失和梯度爆炸问题，使得网络更容易优化。</strong></li>
+<li>提高模型的泛化能力：标准化层对输入数据进行标准化处理，有助于提取更有意义的特征表示，提高模型的泛化能力和性能。</li>
+</ul>
+<p>标准化层在深度学习模型中得到广泛应用，可以用于各种类型的神经网络结构，包括卷积神经网络、循环神经网络和Transformer等。通过合适的标准化层的使用，可以提高模型的训练效果和表现。</p>
+<h3 id="递归层（Recurrent-Layers）"><a href="#递归层（Recurrent-Layers）" class="headerlink" title="递归层（Recurrent Layers）"></a>递归层（Recurrent Layers）</h3><p>递归层（Recurrent Layers）是深度学习神经网络中的一类关键层级结构，专门<strong>用于处理序列数据和时间序列数据</strong>。<strong>递归层通过在网络内部引入循环连接，允许网络在处理序列数据时具有记忆和上下文感知能力。</strong></p>
+<p>常见的递归层包括以下几种：</p>
+<ol>
+<li><p>简单循环层（Simple Recurrent Layer）：简单循环层是最基本的递归层，也称为循环神经网络（RNN）。它在每个时间步将当前输入与前一个时间步的隐藏状态结合，以捕捉序列数据中的时间依赖关系。然而，<strong>简单循环层在长序列中容易出现梯度消失或梯度爆炸问题。</strong></p>
+</li>
+<li><p>长短期记忆网络（Long Short-Term Memory, LSTM）：LSTM是一种改进的递归层，通过引入门控机制解决了简单循环层的梯度问题。LSTM通过输入门、遗忘门和输出门等机制，可以选择性地保留和遗忘信息，从而更好地捕捉长期依赖关系。</p>
+</li>
+<li><p>门控循环单元（Gated Recurrent Unit, GRU）：GRU是另一种改进的递归层，具有与LSTM类似的门控机制。相比于LSTM，GRU具有更简化的结构，只包含更新门和重置门。它在处理序列数据时具有较少的参数和计算开销。</p>
+</li>
+</ol>
+<p>递归层的主要特点包括：</p>
+<ul>
+<li>记忆能力：递归层通过循环连接允许网络具有记忆能力，能够捕捉序列数据中的时间依赖关系和上下文信息。</li>
+<li>参数共享：递归层在每个时间步使用相同的参数，实现参数共享，从而减少模型的参数量。</li>
+<li>序列处理：递归层能够处理可变长度的序列数据，对输入数据和输出数据的序列长度没有固定要求。</li>
+</ul>
+<p>递归层在处理自然语言处理、语音识别、机器翻译、时间序列预测等任务中广泛应用。通过引入递归层，神经网络能够从历史信息中提取特征，并在序列数据中实现更复杂的模式识别和建模能力。</p>
+<h3 id="Transformer层"><a href="#Transformer层" class="headerlink" title="Transformer层"></a>Transformer层</h3><p>Transformer层是一种用于处理序列数据的深度学习模型层级结构，最初用于机器翻译任务中。<strong>相比于传统的递归神经网络（RNN）和卷积神经网络（CNN），Transformer层在处理长序列数据时具有更好的并行计算能力，并且能够捕捉全局依赖关系。</strong></p>
+<p><strong>Transformer层主要由两个子层组成：自注意力层（Self-Attention Layer）和前馈神经网络层（Feed-Forward Neural Network Layer）。</strong></p>
+<ol>
+<li><p>自注意力层（Self-Attention Layer）：自注意力机制允许模型在序列数据中建立每个位置与其他位置之间的关联。它通过计算每个位置与其他所有位置之间的注意力权重，将序列中的每个位置与其他位置进行交互。自注意力层具有查询（query）、键（key）和值（value）的概念，通过计算查询和键之间的相似度来得到每个位置对其他位置的注意力权重，然后使用这些权重对值进行加权求和，得到每个位置的上下文表示。</p>
+</li>
+<li><p>前馈神经网络层（Feed-Forward Neural Network Layer）：前馈神经网络层对每个位置的上下文表示进行非线性变换，以捕捉更复杂的特征和模式。它通常由两个全连接层组成，中间使用激活函数（如ReLU）进行非线性变换。</p>
+</li>
+</ol>
+<p>Transformer层还包括一些其他的操作和组件，例如层标准化（Layer Normalization）、残差连接（Residual Connection）和位置编码（Positional Encoding）。层标准化用于在每个子层的输入和输出之间进行归一化处理，残差连接用于在每个子层的输出中添加原始输入的剩余信号，以便更好地传递梯度和信息。位置编码用于向输入序列中的每个位置添加位置信息，以保留序列的顺序信息。</p>
+<p>Transformer层的主要优势包括：</p>
+<ul>
+<li>并行计算：Transformer层可以并行计算每个位置的上下文表示，使得模型在处理长序列数据时具有更高的计算效率。</li>
+<li>全局依赖关系：通过自注意力机制，Transformer层能够捕捉全局的依赖关系，而不仅仅局限于局部范围内的依赖。</li>
+<li>长期依赖：相比于传统的递归神经网络，Transformer层更容易捕捉和处理长期依赖关系。</li>
+</ul>
+<p>Transformer层在自然语言处理、语音识别、图像生成等任务中得到广泛应用，并成为了处理序列数据的重要模型结构。</p>
+<h3 id="Dropout层"><a href="#Dropout层" class="headerlink" title="Dropout层"></a>Dropout层</h3><p>Dropout层是一种用于正则化深度神经网络的层级结构，<strong>旨在减轻过拟合问题</strong>。Dropout通过<strong>随机地在训练过程中将一些神经元的输出置零，以强制网络在没有某些神经元的情况下进行训练和预测。</strong></p>
+<p>Dropout层的<strong>工作原理</strong>如下：</p>
+<ol>
+<li><p>在每次训练迭代中，Dropout层以概率p随机选择一些神经元，并将它们的输出值置零。概率p是一个在[0, 1]范围内的超参数，表示每个神经元被丢弃的概率。</p>
+</li>
+<li><p>被丢弃的神经元将不会在该训练迭代中参与前向传播和反向传播过程。这样，网络在训练期间不依赖于特定的神经元，强制网络学习更加鲁棒和泛化的特征。</p>
+</li>
+<li><p>在测试或预测阶段，Dropout层不对神经元进行丢弃，而是将每个神经元的输出值乘以(1-p)进行缩放。这是为了保持网络在预测时输出的期望值与训练时相同。</p>
+</li>
+</ol>
+<p>Dropout层的主要优势包括：</p>
+<ul>
+<li><p>减轻过拟合：通过随机地丢弃神经元的输出，<strong>Dropout层可以减少神经网络的复杂性，降低模型对训练数据的过度拟合程度，从而提高模型的泛化能力。</strong></p>
+</li>
+<li><p>提高模型的鲁棒性：通过在训练过程中随机性地丢弃神经元，Dropout层强制网络学习到更健壮和鲁棒的特征表示，对于输入的微小变化也能产生稳定的输出。</p>
+</li>
+<li><p>集成多个子模型：在训练过程中，Dropout层以不同的方式丢弃神经元，从而实际上相当于训练了多个不同的子模型。在测试或预测时，可以通过对这些子模型的预测结果进行平均或集成，提高模型的性能。</p>
+</li>
+</ul>
+<p>Dropout层通常与全连接层、卷积层或递归层等其他类型的层级结构结合使用。它是一种常用的正则化技术，在训练深度神经网络时经常被应用，以减少过拟合问题并提高模型的泛化能力。</p>
+<h3 id="Sparse层"><a href="#Sparse层" class="headerlink" title="Sparse层"></a>Sparse层</h3><p>Sparse层是深度学习神经网络中的一类层级结构，<strong>用于处理稀疏数据或推断稀疏表示</strong>。它们专门设计用于处理输入数据中大量为零的元素，以有效地表示和处理稀疏特征。</p>
+<p>在传统的神经网络中，通常假设输入数据是密集的，即大部分输入特征都是非零的。然而，在许多实际应用中，输入数据往往具有稀疏性，即大部分输入特征都是零。这种情况下，<strong>传统的神经网络可能会浪费计算资源和存储空间来处理无用的零值。</strong></p>
+<p>Sparse层通过提供专门的计算和存储方式，可以高效地处理稀疏数据，节省计算和存储资源。它们可以与其他类型的层级结构（如全连接层、卷积层、递归层等）组合使用。</p>
+<p>常见的Sparse层包括：</p>
+<ol>
+<li><p>稀疏全连接层（Sparse Fully Connected Layer）：稀疏全连接层在处理稀疏数据时，只对非零特征之间的连接进行计算。这样可以节省计算资源和存储空间，并加快模型的训练和推断速度。</p>
+</li>
+<li><p>稀疏卷积层（Sparse Convolutional Layer）：稀疏卷积层用于处理稀疏的卷积输入特征图。它仅计算非零输入特征与卷积核之间的卷积操作，减少了计算和存储开销。</p>
+</li>
+<li><p>稀疏递归层（Sparse Recurrent Layer）：稀疏递归层在处理稀疏序列数据时，只对非零输入进行处理，并在计算循环连接时跳过零元素。</p>
+</li>
+</ol>
+<p>Sparse层的主要优势包括：</p>
+<ul>
+<li>节省计算资源：Sparse层仅对非零输入进行计算，减少了计算开销，提高了模型的效率。</li>
+<li>节省存储空间：Sparse层仅存储非零输入和相关参数，减少了存储空间的占用。</li>
+<li>支持稀疏性数据：Sparse层能够处理输入数据中大量为零的特征，适用于处理稀疏特征的任务。</li>
+</ul>
+<p>Sparse层在<strong>自然语言处理</strong>、推荐系统、计算机视觉等领域中得到广泛应用。它们允许在处理稀疏数据时更加高效地利用计算资源，提高模型的性能和效率。</p>
+<h3 id="损失函数（Loss-Functions）"><a href="#损失函数（Loss-Functions）" class="headerlink" title="损失函数（Loss Functions）"></a>损失函数（Loss Functions）</h3><p>作用：<strong>1.计算实际输出和目标之间的差距  2.为我们更新输出提供一定的依据(反向传播）</strong></p>
+<p>我们可以通过损失函数来看到我们的输出与目标的差距，<strong>Loss肯定越小越好</strong>，而且解答分值高，所以我们反向传播要着重训练解答这一部分来使Loss下降</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/027.png"></p>
+<p>使用不难，理解需要数学功底</p>
+<p>在机器学习和深度学习中，损失函数（Loss Function）是用来<strong>衡量模型预测结果与真实标签之间的差异程度的函数</strong>。<strong>损失函数在训练过程中起到优化模型参数的作用，通过最小化损失函数的值来提高模型的性能。</strong></p>
+<p>以下是几种常见的损失函数：</p>
+<ol>
+<li><p>均方误差（Mean Squared Error，MSE）：<strong>均方误差是回归问题中广泛使用的损失函数。</strong>它计算预测值与真实值之间差异的平方，并求取平均值作为损失函数的值。</p>
+</li>
+<li><p>交叉熵损失（Cross-Entropy Loss）：<strong>交叉熵损失通常用于分类问题中</strong>。它衡量了模型预测的概率分布与真实标签之间的差异程度。交叉熵损失在多分类问题中比均方误差更常用。</p>
+</li>
+<li><p>对数损失（Log Loss）：对数损失是交叉熵损失的二元分类特例。它在二分类问题中使用，并且通常与逻辑回归模型一起使用。</p>
+</li>
+<li><p>Hinge损失：Hinge损失通常用于支持向量机（SVM）中。它在分类问题中，对于正确分类的样本，要求预测的分数与真实标签的乘积大于某个阈值，否则会有损失。</p>
+</li>
+<li><p>KL散度（Kullback-Leibler Divergence）：KL散度用于度量两个概率分布之间的差异。它在生成模型中经常被用作损失函数，例如变分自编码器（Variational Autoencoder，VAE）。</p>
+</li>
+</ol>
+<p>这些是一些常见的损失函数，但并不是全部。根据具体的问题和模型类型，可能会选择不同的损失函数来优化模型。此外，还可以根据需要自定义损失函数，以更好地适应特定的任务。</p>
+<h4 id="L1-LOSS-绝对值损失"><a href="#L1-LOSS-绝对值损失" class="headerlink" title="L1 LOSS(绝对值损失)"></a>L1 LOSS(绝对值损失)</h4><p>L1 Loss，也称为<strong>绝对值损失</strong>（Absolute Loss），是一种用于回归问题的损失函数。它衡量模型的预测值与真实标签之间的差异的绝对值。</p>
+<p>对于一个样本，设其真实标签为y，模型的预测值为ŷ，则L1 Loss的计算公式为：</p>
+<p>L1 Loss &#x3D; |y - ŷ|</p>
+<p>L1 Loss的特点是<strong>它对异常值（outliers）具有鲁棒性，也就是说它对于极端值的影响较小</strong>。这是因为<strong>L1 Loss在计算差异时直接取绝对值，而不是平方，使得大的差异在损失计算中仍然是线性的，没有平方项的放大效果</strong>。</p>
+<p>相比于均方误差（MSE）损失函数，L1 Loss更加敏感，即对预测值与真实值之间的小差异更敏感。这可能使得模型更倾向于生成稀疏解，即对于某些特征的权重更可能为0，因为L1 Loss在0点是不可导的，当差异为0时，梯度不可定义。</p>
+<p>L1 Loss在一些应用场景中具有一定的优势，例如在稀疏信号恢复、异常检测和特征选择等任务中。然而，它也具有一些限制，例如在存在噪声或数据具有较多冗余特征的情况下，L1 Loss可能会导致不稳定的结果。</p>
+<p>总之，L1 Loss是一种用于回归问题的损失函数，它通过计算预测值与真实值之间的差异的绝对值来衡量模型的性能，具有对异常值鲁棒性和稀疏解的倾向。</p>
+<h5 id="代码例子"><a href="#代码例子" class="headerlink" title="代码例子"></a>代码例子</h5><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/028.png"></p>
+<pre><code class="python">import torch
+from torch.nn import L1Loss
+
+inputs = torch.tensor([1, 2, 3], dtype=torch.float32)
+targets = torch.tensor([1, 2, 5], dtype=torch.float32)
+
+inputs = torch.reshape(inputs, (1, 1, 1, 3))
+targets = torch.reshape(targets, (1, 1, 1, 3))
+
+loss = L1Loss()
+# loss = L1Loss(reduction=&quot;sum&quot;) 默认求平均，但也可以设置求和
+result = loss(inputs, targets)
+
+print(result)
+# tensor(0.6667)
+</code></pre>
+<h4 id="MSELoss-均方误差"><a href="#MSELoss-均方误差" class="headerlink" title="MSELoss(均方误差)"></a>MSELoss(均方误差)</h4><p>MSELoss，即均方误差损失（Mean Squared Error Loss），是一种广泛应用于回归问题的损失函数。它<strong>衡量模型的预测值与真实标签之间的差异的平方，并求取平均值作为损失函数的值。</strong></p>
+<p>对于一个样本，设其真实标签为y，模型的预测值为ŷ，则MSELoss的计算公式为：</p>
+<p>MSELoss &#x3D; (1&#x2F;n) * Σ(y - ŷ)²</p>
+<p>其中，n表示样本的数量。</p>
+<p>MSELoss的特点是它对差异较大的样本具有较大的惩罚，即<strong>较大的差异会在损失计算中得到更大的权重</strong>。这是<strong>因为平方项放大了较大差异的影响，相对于较小差异更敏感。</strong></p>
+<p><strong>与L1 Loss相比，MSELoss对异常值的敏感性较低，因为平方项在损失计算中对较大的差异有放大的效果，减小了异常值的影响。</strong></p>
+<p>MSELoss在训练神经网络模型中广泛使用，尤其是在回归问题中。它作为优化目标函数，通过梯度下降等优化算法来更新模型的参数，使得模型的预测结果与真实标签尽可能接近。</p>
+<p>然而，MSELoss也存在一些限制。例如，它可能对噪声敏感，因为平方项放大了噪声的影响。此外，MSELoss<strong>对于离群值（outliers）可能不够鲁棒，因为平方项会过度惩罚离群值的差异。</strong></p>
+<p>总之，MSELoss是一种用于回归问题的常见损失函数，通过计算预测值与真实值之间的差异的平方来衡量模型的性能。它在训练过程中寻求最小化损失函数值，使模型的预测结果尽可能接近真实标签。</p>
+<h5 id="代码例子-1"><a href="#代码例子-1" class="headerlink" title="代码例子"></a>代码例子</h5><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/029.png"></p>
+<pre><code class="python">import torch
+from torch import nn
+from torch.nn import L1Loss
+
+inputs = torch.tensor([1, 2, 3], dtype=torch.float32)
+targets = torch.tensor([1, 2, 5], dtype=torch.float32)
+
+inputs = torch.reshape(inputs, (1, 1, 1, 3))
+targets = torch.reshape(targets, (1, 1, 1, 3))
+
+loss_mse = nn.MSELoss()
+result_mse = loss_mse(inputs, targets)
+
+print(result_mse)
+# tensor(1.3333)
+</code></pre>
+<h4 id="CrossEntropyLoss（交叉熵损失）"><a href="#CrossEntropyLoss（交叉熵损失）" class="headerlink" title="CrossEntropyLoss（交叉熵损失）"></a>CrossEntropyLoss（交叉熵损失）</h4><p>CrossEntropyLoss（交叉熵损失）是一种常用的损失函数，<strong>特别适用于分类问题</strong>。它在机器学习和深度学习中广泛应用于多类别分类任务。</p>
+<p>交叉熵损失的计算基于真实标签和模型的预测概率分布之间的差异。对于一个样本，设其真实标签为y（一个one-hot向量，只有一个元素为1，其余为0），模型的预测概率分布为ŷ（也是一个与类别数相同的概率分布向量），则交叉熵损失的计算公式为：</p>
+<p>CrossEntropyLoss &#x3D; -Σ(y * log(ŷ))</p>
+<p>其中，log表示自然对数，* 表示向量的逐元素乘法。</p>
+<p>交叉熵损失的本质是通过<strong>计算真实标签的对数概率与模型的预测概率之间的差异来衡量模型的性能</strong>。<strong>当真实标签的对应元素为1时，对应的预测概率越接近1，则损失越小；反之，预测概率越接近0，则损失越大。</strong></p>
+<p>交叉熵损失的优点是它能够很好地衡量模型输出的概率分布与真实标签之间的差异，使得模型更加关注正确类别的概率，并鼓励模型学习更准确的概率分布。它在多类别分类问题中比均方误差（MSE）损失更常用，因为它更适合对概率分布的差异进行建模。</p>
+<p>需要注意的是，交叉熵损失在实际应用中通常会和<strong>激活函数Softmax</strong>一起使用。<strong>Softmax函数能够将模型的输出转化为概率分布，使得交叉熵损失能够有效地进行计算和优化。</strong></p>
+<p>总之，CrossEntropyLoss是一种常用的损失函数，用于多类别分类问题。通过计算真实标签的对数概率与模型的预测概率之间的差异，衡量模型的性能，并通过优化算法最小化损失函数值，提高模型的分类性能。</p>
+<h5 id="代码例子-2"><a href="#代码例子-2" class="headerlink" title="代码例子"></a>代码例子</h5><p>公式理解：<strong>我们的总体的目标都是为了使loss小，越小越好</strong>，公式的后半部分主要限制概率分布，如果想小，那么就是各类的预测不能都是很高（如 0.8，0.9，0.8），因为这样分类能力不强，那么前半部分因为有负号，所以就是x[class]越大越好，由output知道预测狗的概率是0.2，比较低，应该高起来。</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/030.png"></p>
+<p><strong>需要注意输入与输出的形状</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/033.png"></p>
+<pre><code class="python">import torch
+from torch import nn
+from torch.nn import L1Loss
+
+x = torch.tensor([0.1, 0.2, 0.3])
+y = torch.tensor([1])
+x = torch.reshape(x, (1, 3))
+loss_cross = nn.CrossEntropyLoss()
+result_cross = loss_cross(x, y)
+print(result_cross)
+# tensor(1.1019)
+</code></pre>
+<h4 id="损失函数结合模型"><a href="#损失函数结合模型" class="headerlink" title="损失函数结合模型"></a>损失函数结合模型</h4><pre><code class="python">import torchvision
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear, Sequential
+from torch.utils.data import DataLoader
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=1)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.model1 = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(1024, 64),
+            Linear(64, 10)
+        )
+
+    def forward(self, x):
+        x = self.model1(x)
+        return x
+
+
+loss = nn.CrossEntropyLoss()
+tudui = Tudui()
+for data in dataloader:
+    imgs, targets = data
+    outputs = tudui(imgs)
+    # print(outputs)
+    # print(targets)
+    # 计算实际输出和目标之间的差距
+    result_loss = loss(outputs, targets)
+    # result_loss.backward() 调用反向传播得到梯度值
+    print(result_loss) #j
+</code></pre>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>橙色是损失函数，梯度对应每个需要优化的参数，为使Loss减少，首先进行反向传播，得到梯度，然后通过优化器优化参数，使<strong>梯度下降</strong>，如下图所示</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/034.png"></p>
+<h3 id="优化器（torch-optim）"><a href="#优化器（torch-optim）" class="headerlink" title="优化器（torch.optim）"></a>优化器（torch.optim）</h3><p>torch.optim 是 PyTorch 中的优化器模块，<strong>用于优化神经网络模型的参数</strong>。</p>
+<p>在深度学习中，通过调整模型的参数来最小化损失函数是一个重要的任务。<strong>优化器的作用就是根据损失函数的梯度信息来更新模型的参数，以使得损失函数的值逐渐减小，从而提高模型的性能。</strong></p>
+<p>torch.optim 提供了各种常用的优化算法，如随机梯度下降（SGD）、Adam、Adagrad、RMSprop 等。每个优化算法都有其特定的优势和适用场景。</p>
+<p>使用 torch.optim 可以按照以下步骤来进行优化：</p>
+<ol>
+<li>定义模型：定义计算图结构，包括模型的参数；</li>
+<li>定义损失函数：选择适当的损失函数来衡量模型输出与真实标签之间的差距；</li>
+<li>定义优化器：选择合适的优化算法，并将模型参数传递给优化器；</li>
+<li>执行优化步骤：在每个训练迭代中，通过计算损失函数和模型参数的梯度来更新参数；</li>
+<li>重复以上步骤直至达到预定的停止条件。</li>
+</ol>
+<p>以下是一个简单的示例，展示了使用 SGD 优化器进行参数更新的代码片段：</p>
+<p><strong>model.parameters() 模型参数</strong> </p>
+<pre><code class="python">import torch.optim as optim
+
+# 定义模型和损失函数
+model = YourModel()
+loss_fn = YourLossFunction()
+
+# 定义优化器
+optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9) 
+
+# 在训练循环中执行优化步骤
+for input, target in training_data:
+    # 前向传播
+    output = model(input)
+    # 计算损失函数
+    loss = loss_fn(output, target)
+    
+    # 梯度清零
+    optimizer.zero_grad()
+    # 反向传播
+    loss.backward()
+    # 参数更新
+    optimizer.step()
+</code></pre>
+<p>在上述代码中，<code>optim.SGD()</code> 创建了一个 SGD 优化器，并将模型的参数 <code>model.parameters()</code> 传递给它。通过定义学习率 <code>lr</code> 和动量参数 <code>momentum</code>，可以对优化器进行更详细的配置。</p>
+<p>然后，在每个训练迭代中，我们依次执行：前向传播、计算损失函数、梯度清零、反向传播和参数更新等步骤。</p>
+<p>通过使用 torch.optim 模块，我们可以轻松地选择合适的优化算法，并灵活地调整相关的超参数来优化模型。</p>
+<h4 id="学习率（learning-rate）"><a href="#学习率（learning-rate）" class="headerlink" title="学习率（learning rate）"></a>学习率（learning rate）</h4><p>学习率是优化算法中的一个重要超参数，<strong>用于控制参数更新的步伐大小</strong>。</p>
+<p>学习率决定了每次参数更新时，参数沿着梯度方向调整的幅度。<strong>较大的学习率可能导致参数更新过大，错过最优解；而较小的学习率可能导致收敛速度缓慢，需要更多的迭代次数才能达到最优解。</strong></p>
+<p>通常，学习率需要经过一定的调整和尝试，以找到合适的值。如果学习率过大，可能会导致参数更新震荡或发散；如果学习率过小，可能会导致收敛速度很慢。合适的学习率可以使优化算法更好地收敛到最优解。</p>
+<p>在 PyTorch 中，学习率可以通过以下方式进行设置：</p>
+<pre><code>import torch.optim as optim
+
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+</code></pre>
+<p>在上述代码中，<code>lr</code> 参数即为学习率。这里使用了 SGD 优化器，并将学习率设置为 0.01。<strong>0.01已经算比较大了。</strong>可以根据实际需求调整学习率的数值，或者尝试不同的学习率来找到最佳值。</p>
+<p>值得注意的是，学习率通常需要随着训练的进行进行调整。<strong>一种常见的做法是使用学习率衰减（learning rate decay）策略，在训练过程中逐渐降低学习率的数值，以提高模型在后期的收敛性能。</strong></p>
+<h4 id="动量（momentum）"><a href="#动量（momentum）" class="headerlink" title="动量（momentum）"></a>动量（momentum）</h4><p>在优化算法中，动量（momentum）是一种常用的技巧，<strong>用于加速梯度下降算法的收敛速度，并帮助模型更快地找到全局最优解或局部最优解。</strong></p>
+<p>动量可以看作是给梯度下降算法增加了一种惯性的效果。在每次参数更新时，<strong>不仅考虑当前的梯度信息，还考虑历史梯度的方向和大小</strong>。这样可以使得参数更新的方向更加平滑，并且在参数空间中更快地前进。</p>
+<p>具体来说，动量算法通过引入一个称为动量（momentum）的超参数来控制历史梯度对当前梯度更新的权重。在每次参数更新时，动量算法会根据当前梯度和历史梯度的加权平均值来计算参数的更新量。这种加权平均值使得梯度更新方向更一致，在参数空间中更加稳定。</p>
+<p>动量的更新公式如下所示：</p>
+<pre><code>v = momentum * v - learning_rate * gradient
+parameter = parameter + v
+</code></pre>
+<p>其中，<code>v</code> 是历史梯度的速度向量，<code>momentum</code> 是动量超参数，<code>learning_rate</code> 是学习率，<code>gradient</code> 是当前的梯度，<code>parameter</code> 是模型的参数。</p>
+<p>通过引入动量，梯度更新的步伐可以更加平稳，避免在参数空间中陷入局部最优解的低谷。动量算法可以加速梯度下降的收敛速度，特别是在存在平坦区域或峡谷的情况下。</p>
+<p>在 PyTorch 中，<code>optim.SGD()</code> 优化器的 <code>momentum</code> 参数用于控制动量的大小。通过调整 <code>momentum</code> 的值，可以在训练过程中更好地平衡历史梯度和当前梯度的影响。</p>
+<h4 id="收敛速度（convergence-speed）"><a href="#收敛速度（convergence-speed）" class="headerlink" title="收敛速度（convergence speed）"></a>收敛速度（convergence speed）</h4><p>在深度学习中，收敛速度（convergence speed）是指<strong>模型训练过程中目标函数（或损失函数）逐渐趋于稳定的速度</strong>。</p>
+<p>当模型进行参数更新时，目标函数的值会发生变化。随着训练的进行，<strong>如果模型的参数更新使得目标函数的值逐渐减小并趋于稳定，我们称之为模型收敛</strong>。<strong>收敛速度即指的是模型从初始状态到达收敛状态所需要的时间或迭代次数。</strong></p>
+<p>收敛速度的快慢与模型的优化算法、学习率、模型架构以及数据集的大小等因素有关。一个快速收敛的模型意味着它可以在少量的训练迭代中找到较好的解决方案；相反，收敛速度较慢的模型可能需要更多的迭代来达到类似的性能。</p>
+<p>快速的收敛速度对于深度学习任务非常重要。如果收敛速度太慢，模型训练可能需要更长的时间才能达到理想的性能。此外，<strong>收敛速度也可能影响到模型的泛化能力，即模型在未见过的数据上的预测性能。</strong></p>
+<p>为了加快收敛速度，可以尝试调整学习率、优化算法的超参数设置，或者对数据进行预处理，以减少噪声和冗余。另外，合适的模型架构和初始化方法也可以对收敛速度产生影响。</p>
+<p>总之，收敛速度是评估深度学习模型训练效率的重要指标之一，快速收敛能够节省时间和计算资源，并且可能提高模型的泛化性能。</p>
+<h4 id="训练模型例子"><a href="#训练模型例子" class="headerlink" title="训练模型例子"></a>训练模型例子</h4><pre><code class="python">import torch
+import torchvision
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d, Flatten, Linear, Sequential
+from torch.utils.data import DataLoader
+
+dataset = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=False, transform=torchvision.transforms.ToTensor(),
+                                       download=True)
+dataloader = DataLoader(dataset, batch_size=1)
+
+
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.model1 = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(1024, 64),
+            Linear(64, 10)
+        )
+
+    def forward(self, x):
+        x = self.model1(x)
+        return x
+
+# 定义损失函数
+loss = nn.CrossEntropyLoss()
+# 定义模型
+tudui = Tudui()
+# 定义优化器
+optim = torch.optim.SGD(tudui.parameters(), lr=0.01)
+# 训练模型
+for epoch in range(20):
+    running_loss = 0.0
+    for data in dataloader:
+        imgs, targets = data
+        # 前向传播
+        outputs = tudui(imgs)
+        # 计算损失函数
+        result_loss = loss(outputs, targets)
+        optim.zero_grad()  # 梯度值清0
+        result_loss.backward()  # 得到梯度值
+        optim.step()  # 对参数进行调优
+        running_loss = running_loss + result_loss
+    print(running_loss)   # 查看每一轮训练的损失值
+</code></pre>
+<p>输出：</p>
+<pre><code>tensor(18765.9160, grad_fn=&lt;AddBackward0&gt;)
+tensor(16205.8760, grad_fn=&lt;AddBackward0&gt;)
+tensor(15501.1465, grad_fn=&lt;AddBackward0&gt;)
+tensor(16039.8496, grad_fn=&lt;AddBackward0&gt;)
+tensor(17907.8086, grad_fn=&lt;AddBackward0&gt;)
+tensor(19903.2168, grad_fn=&lt;AddBackward0&gt;)
+tensor(22410.9785, grad_fn=&lt;AddBackward0&gt;)
+tensor(23783.1523, grad_fn=&lt;AddBackward0&gt;)
+tensor(24639.7188, grad_fn=&lt;AddBackward0&gt;)
+tensor(25221.2559, grad_fn=&lt;AddBackward0&gt;)
+tensor(25631.4121, grad_fn=&lt;AddBackward0&gt;)
+tensor(26804.7695, grad_fn=&lt;AddBackward0&gt;)
+tensor(27353.2266, grad_fn=&lt;AddBackward0&gt;)
+tensor(28281.1348, grad_fn=&lt;AddBackward0&gt;)
+tensor(30604.7246, grad_fn=&lt;AddBackward0&gt;)
+tensor(35759.9883, grad_fn=&lt;AddBackward0&gt;)
+tensor(nan, grad_fn=&lt;AddBackward0&gt;)
+tensor(nan, grad_fn=&lt;AddBackward0&gt;)
+tensor(nan, grad_fn=&lt;AddBackward0&gt;)
+tensor(nan, grad_fn=&lt;AddBackward0&gt;)
+</code></pre>
+<p>这种<strong>损失值先减少后上升</strong>的情况可能是<strong>由于学习率设置不当、模型过拟合或者梯度爆炸等原因导致的</strong>。下面我将解释一下可能的原因：</p>
+<ol>
+<li>学习率设置不当：学习率是优化算法中的重要超参数，如果学习率过大，可能会导致参数更新过大，错过最优解；而学习率过小则收敛速度会较慢。可以尝试调整学习率的大小，通常通过逐渐减小学习率（学习率衰减）来提高模型的收敛性。</li>
+<li><strong>过拟合</strong>：模型在训练过程中可能出现过拟合的情况，<strong>即在训练集上表现良好但在测试集上表现差。</strong>过拟合可能导致训练损失持续下降，但测试损失上升。可以尝试增加正则化项、使用更多的训练数据、调整模型复杂度等方法来减少过拟合。</li>
+<li><strong>梯度爆炸</strong>：在深度神经网络中，梯度爆炸（gradient explosion）可能会导致损失值变成 NaN（Not a Number）。<strong>梯度爆炸指的是梯度的数值变得非常大，导致数值计算溢出。</strong>这种情况通常与梯度消失（gradient vanishing）相对应，其中梯度的数值变得非常小。<strong>梯度爆炸通常与网络结构、激活函数选择或者梯度裁剪等相关</strong>。可以尝试使用梯度裁剪来解决梯度爆炸问题。</li>
+</ol>
+<p>综上所述，你可以尝试调整学习率、增加正则化项、使用更多数据来减少过拟合，并注意是否有梯度爆炸的情况发生。如果问题仍然存在，我建议检查模型的架构、损失函数的定义以及数据处理等方面，确保没有其他问题导致损失值的不稳定变化。</p>
+<h2 id="现有网络模型的使用及修改"><a href="#现有网络模型的使用及修改" class="headerlink" title="现有网络模型的使用及修改"></a>现有网络模型的使用及修改</h2><h3 id="VGG16-model"><a href="#VGG16-model" class="headerlink" title="VGG16 model"></a>VGG16 model</h3><img lazyload src="/images/loading.svg" data-src="入门Pytorch/022.png" style="zoom: 50%;">
+
+<p>VGG16是一种经典的深度卷积神经网络模型，由Karen Simonyan和Andrew Zisserman在2014年提出。VGG16以其深度和简单的架构而闻名，<strong>被广泛用于计算机视觉任务，如图像分类、目标检测和图像语义分割等</strong>。</p>
+<p>VGG16的架构主要由卷积层（Convolutional Layers）和全连接层（Fully Connected Layers）组成。以下是VGG16模型的主要结构：</p>
+<ol>
+<li><p>输入层：接受输入图像的张量。</p>
+</li>
+<li><p>卷积层：VGG16模型以多个连续的卷积层堆叠而成。每个卷积层后面都跟着一个ReLU激活函数来引入非线性性质。这些卷积层使用小尺寸的卷积核（通常为3x3）和步幅为1来提取图像的特征。<strong>通过堆叠多个卷积层，VGG16模型可以捕捉更复杂的图像特征。</strong></p>
+</li>
+<li><p>池化层：在卷积层之间，VGG16模型使用最大池化层来<strong>减小特征图的尺寸，并提取最显著的特征</strong>。通常使用2x2的窗口和2的步幅进行最大池化操作。</p>
+</li>
+<li><p>全连接层：卷积层之后是三个全连接层。这些全连接层将<strong>从卷积层中提取的特征进行扁平化，并通过神经元之间的权重来学习特征之间的复杂关系。</strong></p>
+</li>
+<li><p>激活函数：在全连接层之间，VGG16模型使用ReLU激活函数来引入非线性性质。</p>
+</li>
+<li><p>Softmax层：最后一个全连接层之后是一个Softmax层，<strong>用于将模型的输出转换为类别概率分布，以进行图像分类任务。</strong></p>
+</li>
+</ol>
+<p>VGG16模型的一个重要特点是它的深度。它具有16个可训练层，其中13个是卷积层和3个是全连接层。这使得VGG16模型在大规模图像数据集上具有很强的表达能力和分类性能。</p>
+<p>VGG16模型的训练通常使用大规模图像数据集（如ImageNet）进行，通过基于反向传播算法和梯度下降来调整模型的权重和偏置。在训练完成后，VGG16模型可以用于图像分类任务，也可以通过微调（Fine-tuning）来适应特定的应用领域。</p>
+<p>总的来说，VGG16模型是一种经典的卷积神经网络，以其深度、简单的架构和强大的表达能力而闻名。它在计算机视觉领域具有重要地位，为各种图像处理任务提供了强大的特征提取和分类能力。</p>
+<pre><code class="python">import torchvision
+from torch import nn
+
+vgg16_false = torchvision.models.vgg16(pretrained=False)  # 表示模型参数都是默认的
+vgg16_true = torchvision.models.vgg16(pretrained=True)  # 表示训练集上效果较好的参数
+
+print(vgg16_true)
+#  最后一层：Linear(in_features=4096, out_features=1000, bias=True) 表明该模型区分1000类
+
+# 修改模型，因为以下数据集只有10类
+train_data = torchvision.datasets.CIFAR10(&quot;./dataset2&quot;, train=True, transform=torchvision.transforms.ToTensor(),
+                                          download=True)
+# 两种方法
+# 增加网络模型结构
+# vgg16_true.add_module(&quot;add_Linear&quot;, nn.Linear(1000, 10))
+vgg16_true.classifier.add_module(&quot;add_linear&quot;, nn.Linear(1000, 10))
+print(vgg16_true)
+
+# 修改网络模型结构
+print(vgg16_false)
+vgg16_false.classifier[6] = nn.Linear(4096, 10)
+print(vgg16_false)
+</code></pre>
+<h2 id="网络模型的保存与读取"><a href="#网络模型的保存与读取" class="headerlink" title="网络模型的保存与读取"></a>网络模型的保存与读取</h2><h3 id="模型保存"><a href="#模型保存" class="headerlink" title="模型保存"></a>模型保存</h3><h4 id="torch-save-模型名称，路径以及模型名称"><a href="#torch-save-模型名称，路径以及模型名称" class="headerlink" title="torch.save(模型名称，路径以及模型名称)"></a>torch.save(模型名称，路径以及模型名称)</h4><p>保存网络模型结构以及它的参数</p>
+<h4 id="模型名称-state-dict"><a href="#模型名称-state-dict" class="headerlink" title="模型名称.state_dict()"></a>模型名称.state_dict()</h4><p>保存训练好的模型参数为字典形式，官方推荐使用，因为相比上面的方式内存要小</p>
+<p>然后加载时先引入先训练的模型，然后再加载参数就可以了</p>
+<h4 id="陷阱"><a href="#陷阱" class="headerlink" title="陷阱"></a>陷阱</h4><p>*<em>自己创建的模型的模型用方式一保存，加载时还需要在加载模块 from model_save import <em>，才能知道模型的存在</em></em></p>
+<pre><code class="python">import torch
+import torchvision
+from torch import nn
+
+vgg16 = torchvision.models.vgg16(pretrained=False)
+
+# 保存方式1
+torch.save(vgg16, &quot;vgg16_method1.pth&quot;)
+
+# 保存方式2
+torch.save(vgg16.state_dict(), &quot;vgg16_method2.pth&quot;)
+
+# 陷阱
+class Tudui(nn.Module):
+    def __init__(self):
+        super(Tudui, self).__init__()
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=3)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        return x
+
+tudui = Tudui()
+torch.save(tudui, &quot;tudui_method1.pth&quot;)
+</code></pre>
+<h3 id="模型读取"><a href="#模型读取" class="headerlink" title="模型读取"></a>模型读取</h3><h4 id="torch-load（模型路径）"><a href="#torch-load（模型路径）" class="headerlink" title="torch.load（模型路径）"></a>torch.load（模型路径）</h4><p>不同保存方式对应不同的加载方式</p>
+<h4 id="模型名称-load-state-dict-torch-load-“模型路径”"><a href="#模型名称-load-state-dict-torch-load-“模型路径”" class="headerlink" title="模型名称.load_state_dict(torch.load(“模型路径”))"></a>模型名称.load_state_dict(torch.load(“模型路径”))</h4><p>这个方式能打印出整个网络结构</p>
+<pre><code class="python">import torch
+import torchvision.models
+from model_save import *
+# 方式1-》保存方式1，加载模型
+model = torch.load(&quot;vgg16_method1.pth&quot;)
+# print(model)
+
+# 方式2
+model = torch.load(&quot;vgg16_method2.pth&quot;)
+# print(model)  #只有字典参数
+# 以下加载方式可以打印出网络结构
+vgg16 = torchvision.models.vgg16(pretrained=False)
+vgg16.load_state_dict(torch.load(&quot;vgg16_method2.pth&quot;))
+print(vgg16)
+
+# 陷阱1
+# class Tudui(nn.Module):
+#     def __init__(self):
+#         super(Tudui, self).__init__()
+#         self.conv1 = nn.Conv2d(3, 64, kernel_size=3)
+#
+#     def forward(self, x):
+#         x = self.conv1(x)
+#         return x
+
+model = torch.load(&#39;tudui_method1.pth&#39;)
+print(model)
+</code></pre>
+<h3 id="模型文件-pth"><a href="#模型文件-pth" class="headerlink" title="模型文件.pth"></a>模型文件.pth</h3><h2 id="完整的模型训练套路"><a href="#完整的模型训练套路" class="headerlink" title="完整的模型训练套路"></a>完整的模型训练套路</h2><p>准备数据集（训练集和测试集）</p>
+<p>定义训练的设备</p>
+<p>获取数据集长度</p>
+<p>利用DataLoader来加载数据集</p>
+<p>搭建神经网络（可以另建立一个文件保存模型，然后在训练模块引入）</p>
+<p>定义损失函数</p>
+<p>定义优化器</p>
+<p>设置训练网络的一些参数：记录训练的次数；记录测试的次数；训练的轮数</p>
+<p>设置tensorboard</p>
+<p>训练步骤：model.train() ，获取训练数据，传参到模型，计算损失值，梯度清0，损失值反向传播，进行优化，损失值等评估参数添加到tensorboard</p>
+<p>测试步骤：model.eval()，禁用梯度，获取测试数据，传参到模型，计算损失值，一轮测试集后打印整体测试集上的Loss,损失值等评估参数添加到tensorboard</p>
+<p>每训练一次保存一次这个模型</p>
+<h3 id="小细节"><a href="#小细节" class="headerlink" title="小细节"></a>小细节</h3><h4 id="item"><a href="#item" class="headerlink" title=".item()"></a>.item()</h4><p>会转化为真实数字</p>
+<pre><code class="python">import torch
+
+a = torch.tensor(5)
+
+print(a) # tensor(5)
+
+print(a.item()) # 5
+</code></pre>
+<h4 id="with-torch-no-grad-："><a href="#with-torch-no-grad-：" class="headerlink" title="with torch.no_grad()："></a>with torch.no_grad()：</h4><p>只是测试，不需要优化，不需要梯度调整</p>
+<p><code>with torch.no_grad()</code> 是 PyTorch 库提供的<strong>上下文管理器</strong>。通常在需要<strong>在特定代码块中禁用梯度计算时使用</strong>。换句话说，<code>with torch.no_grad()</code> 块中<strong>执行的任何操作都不会跟踪梯度或更新模型参数</strong>。</p>
+<p>梯度在深度学习模型的训练中非常重要，例如使用反向传播等技术计算损失函数相对于模型参数的梯度，并用于更新参数。然而，在某些情况下，您可能希望<strong>在不基于计算的梯度修改模型参数的情况下执行推断或评估。这就是 <code>torch.no_grad()</code> 的用处所在。</strong></p>
+<p>通过将一段代码用 <code>with torch.no_grad()</code> 包装起来，<strong>可以临时禁用梯度计算，同时减少内存消耗，因为不需要构建计算图</strong>。这在只关注前向传递计算而不关心梯度的情况下特别有用，例如在推断或评估过程中。</p>
+<p>以下是一个示例，说明了 <code>with torch.no_grad()</code> 的用法：</p>
+<pre><code class="python">import torch
+
+# 创建张量
+x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+
+# 定义模型
+model = torch.nn.Linear(3, 1)
+
+# 前向传递（跟踪梯度）
+y = model(x)
+
+# 禁用梯度跟踪
+with torch.no_grad():
+    # 在不跟踪梯度的情况下执行操作
+    z = y * 2
+
+# 下面的代码会引发错误，因为梯度被禁用了
+# z.backward()
+
+print(z)  # 输出：tensor([2.1246])
+</code></pre>
+<p>在上面的示例中，<code>with torch.no_grad()</code> 块用于在不跟踪梯度的情况下计算 <code>z</code>。<code>with</code> 块后面的 <code>backward()</code> 调用会引发错误，因为梯度被禁用了。生成的张量 <code>z</code> 可用于推断或评估目的。</p>
+<h4 id="outputs-argmax-1"><a href="#outputs-argmax-1" class="headerlink" title="outputs.argmax(1)"></a>outputs.argmax(1)</h4><p>方向为1，即横轴比较，找出值最大的索引</p>
+<p>方向为0，即纵轴比较，找出值最大的索引</p>
+<pre><code class="python">import torch
+
+outputs = torch.tensor([[0.1, 0.2],
+                        [0.05, 0.4]])
+print(outputs.argmax(1))  # tensor([1, 1])
+print(outputs.argmax(0))  # tensor([0, 1])
+</code></pre>
+<h4 id="分类问题：计算预测与目标的差值总和"><a href="#分类问题：计算预测与目标的差值总和" class="headerlink" title="分类问题：计算预测与目标的差值总和"></a>分类问题：计算预测与目标的差值总和</h4><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/035.png"></p>
+<pre><code class="python">import torch
+
+outputs = torch.tensor([[0.1, 0.2],
+                        [0.05, 0.4]])
+print(outputs.argmax(1))  # tensor([1, 1])
+# print(outputs.argmax(0))  # tensor([0, 1])
+preds = outputs.argmax(1)
+targets = torch.tensor([0, 1])
+print((preds == targets).sum())  # tensor(1)
+# 不相等记0，相等记1
+</code></pre>
+<h2 id="利用GPU训练"><a href="#利用GPU训练" class="headerlink" title="利用GPU训练"></a>利用GPU训练</h2><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/041.png"></p>
+<h3 id="添加-conda"><a href="#添加-conda" class="headerlink" title="添加.conda()"></a>添加.conda()</h3><p>找到网络模型，数据，损失函数，在后面添加.conda()，而且先在前面写上<code>if torch.cuda.is_available():</code></p>
+<pre><code class="python">if torch.cuda.is_available():
+    tudui = tudui.cuda()
+</code></pre>
+<h3 id="模型名称-to-device"><a href="#模型名称-to-device" class="headerlink" title="模型名称.to(device)"></a>模型名称.to(device)</h3><pre><code class="python">#device = torch.device(&quot;cuda&quot;)
+device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+tudui = tudui.to(device)
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/042.png"></p>
+<h3 id="对比CPU与GPU"><a href="#对比CPU与GPU" class="headerlink" title="对比CPU与GPU"></a>对比CPU与GPU</h3><pre><code>![042](入门Pytorch/042.png)start_time = time.time()  # 记录当前时间
+end_time = time.time()
+print(&quot;GPU训练100次的时间：&#123;&#125;&quot;.format(end_time - start_time))
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/037.png"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/038.png"></p>
+<h3 id="在Google-clab-上使用GPU"><a href="#在Google-clab-上使用GPU" class="headerlink" title="在Google clab 上使用GPU"></a>在Google clab 上使用GPU</h3><p>每周可以免费三小时</p>
+<p>显卡：Tesla T4   显存16G</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/040.png"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/039.png"></p>
+<h2 id="完整的模型验证（测试，demo）套路"><a href="#完整的模型验证（测试，demo）套路" class="headerlink" title="完整的模型验证（测试，demo）套路"></a>完整的模型验证（测试，demo）套路</h2><p>利用已经训练好的模型，然后给它输入</p>
+<p>准备验证集</p>
+<p>使验证集符合格式要求</p>
+<p>加载模型</p>
+<p>model.eval() 转化为验证模式</p>
+<p>输入数据到模型</p>
+<p>输出结果</p>
+<p>统计评估参数</p>
+<h3 id="图像分类例子"><a href="#图像分类例子" class="headerlink" title="图像分类例子"></a>图像分类例子</h3><p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/043.png"></p>
+<p>训练了50次，学习率为0.001，正确率为50%的模型</p>
+<pre><code>#预测狗正确
+tensor([[-3.8260, -0.3357,  1.5236,  2.6530,  0.3178,  3.2898,  0.7866,  0.8128,
+         -5.7101, -0.5188]], device=&#39;cuda:0&#39;)
+tensor([5], device=&#39;cuda:0&#39;)
+
+#预测飞机正确
+tensor([[ 4.6880,  3.5238, -1.3195, -2.6347,  0.2436, -4.1909,  0.1004, -2.4206,
+          2.9612,  1.8590]], device=&#39;cuda:0&#39;)
+tensor([0], device=&#39;cuda:0&#39;)
+
+#预测卡车正确
+tensor([[-0.4304,  2.7188, -1.1246, -1.1036, -2.5601, -0.8800, -1.3761,  0.4736,
+         -0.5407,  4.1166]], device=&#39;cuda:0&#39;)
+tensor([9], device=&#39;cuda:0&#39;)
+</code></pre>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><h5 id="image-convert-RGB"><a href="#image-convert-RGB" class="headerlink" title="image.convert(RGB)"></a>image.convert(RGB)</h5><p>在第9行要加**image&#x3D;image.convert(RGB)**。因为png格式是四个通道，除了RGB三通道外，还有一个透明度通道。所以，我们调用 image &#x3D;image.convert(RGB),保留其颜色通道。当然，如果图片本来就是三个颜色通道，经过此操作，不变。加上这一步后，可以适应png,jpg各种格式的图片。（up主可以运行，是因为不同截图软件截图保留的通道数是不一样的。）</p>
+<h5 id="model-eval"><a href="#model-eval" class="headerlink" title="model.eval()"></a>model.eval()</h5><p>model.eval() 作用等同于 self.train(False)<br>简而言之，就是<strong>评估模式</strong>。而非训练模式。<br><strong>在评估模式下，<code>batchNorm</code>层，<code>dropout</code>层等用于优化训练而添加的网络层会被关闭，从而使得评估时不会发生偏移。</strong></p>
+<pre><code>    loop:
+        model.train()    # 切换至训练模式
+        train……
+        model.eval()
+        with torch.no_grad():
+            Evaluation
+    end loop
+</code></pre>
+<h5 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h5><pre><code>Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor
+</code></pre>
+<p>从报错问题描述中可以找到错误原因</p>
+<ul>
+<li>输入的数据类型为<code>torch.cuda.FloatTensor</code>，说明输入数据在GPU中</li>
+<li>模型参数的数据类型为<code>torch.FloatTensor</code>，说明模型还在CPU</li>
+</ul>
+<p>于是要将图片数据和模型都加载到cuda上面</p>
+<p>也可以让模型从GPU映射到CPU上加载</p>
+<pre><code>model = torch.load(&quot;tudui_29_gpu.pth&quot;,map_location=torch.device(&#39;cpu&#39;))
+</code></pre>
+<h2 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h2><p>有关参数</p>
+<p>去掉require，换成default,这样在pycharm就可以直接运行</p>
+<p><img lazyload src="/images/loading.svg" data-src="/%E5%85%A5%E9%97%A8Pytorch/044.png"></p>
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p>代码：<a class="link" target="_blank" rel="noopener" href="https://github.com/xiaotudui/PyTorch-Tutorial">https://github.com/xiaotudui/PyTorch-Tutorial<i class="fa-solid fa-up-right-from-square"></i></a> </p>
+<p>蚂蚁蜜蜂&#x2F;练手数据集：链接: <a class="link" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jZoTmoFzaTLWh4lKBHVbEA">https://pan.baidu.com/s/1jZoTmoFzaTLWh4lKBHVbEA<i class="fa-solid fa-up-right-from-square"></i></a> 密码: 5suq </p>
+<p>课程资源：<a class="link" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1CvTIjuXT4tMonG0WltF-vQ?pwd=jnnp">https://pan.baidu.com/s/1CvTIjuXT4tMonG0WltF-vQ?pwd=jnnp<i class="fa-solid fa-up-right-from-square"></i></a> 提取码:jnnp</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：PyTorch入门</li>
+        <li>Post author：LiXiJian</li>
+        <li>Create time：2023-07-18 09:00:00</li>
+        <li>
+            Post link：https://redefine.evanluo.top/2023/07/18/入门Pytorch/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/07/12/%E8%B5%9B%E9%A2%98%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90%E6%A6%82%E6%8B%AC/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">数学建模赛题分析概括</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pytorch%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">pytorch是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6"><span class="nav-text">其他深度学习框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E5%A4%A7%E6%B3%95%E5%AE%9Ddir-%E5%92%8Chelp"><span class="nav-text">两大法宝dir()和help()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCharm%E5%8F%8AJupyter%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%AF%B9%E6%AF%94"><span class="nav-text">PyCharm及Jupyter使用及对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8pytorch%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%BD%BF%E7%94%A8jupyter"><span class="nav-text">在pytorch环境下使用jupyter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyTorch%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%88%9D%E8%AE%A4%E8%AF%86"><span class="nav-text">PyTorch加载数据初认识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataset%E7%B1%BB"><span class="nav-text">Dataset类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataloader%E7%B1%BB"><span class="nav-text">Dataloader类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tensorboard%E7%B1%BB"><span class="nav-text">Tensorboard类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SummaryWriter%E7%B1%BB"><span class="nav-text">SummaryWriter类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforms%E7%B1%BB"><span class="nav-text">Transforms类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Transforms%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">Transforms模块中常用的类和函数的介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transforms%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">transforms的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transforms%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">transforms的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tensor%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E2%80%93%E5%8C%85%E5%90%AB%E4%BA%86%E6%88%91%E4%BB%AC%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="nav-text">Tensor数据类型–包含了我们神经网络的基本参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84Transforms"><span class="nav-text">常用的Transforms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataset%E7%BB%93%E5%90%88Transform"><span class="nav-text">Dataset结合Transform</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88Neural-Network%EF%BC%89"><span class="nav-text">神经网络（Neural Network）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-text">基本框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-reshape-tensor-shape"><span class="nav-text">torch.reshape(tensor,shape)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E5%B1%82%EF%BC%88Sampling-Layer%EF%BC%89"><span class="nav-text">采样层（Sampling Layer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%EF%BC%88Containers%EF%BC%89"><span class="nav-text">容器（Containers）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nn-Module"><span class="nav-text">nn_Module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sequential"><span class="nav-text">Sequential</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%AE%80%E5%8D%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA"><span class="nav-text">对图像分类简单网络搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E7%BB%86%E8%8A%82"><span class="nav-text">搭建过程细节</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE"><span class="nav-text">检验网络结构是否正确</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%B8%80"><span class="nav-text">代码一</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BA%8C%EF%BC%88%E4%BD%BF%E7%94%A8Sequential%EF%BC%89"><span class="nav-text">代码二（使用Sequential）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C"><span class="nav-text">卷积操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82%EF%BC%88Convolution-Layers%EF%BC%89"><span class="nav-text">卷积层（Convolution Layers）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-nn-Conv2d"><span class="nav-text">torch.nn.Conv2d</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-text">对图像卷积的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96%E5%B1%82%EF%BC%88Pooling-Layer%EF%BC%89"><span class="nav-text">池化层（Pooling Layer）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-1"><span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-nn-MaxPool2d"><span class="nav-text">torch.nn.MaxPool2d</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">最大池化的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%9B%BE%E5%83%8F%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E4%BE%8B%E5%AD%90"><span class="nav-text">处理图像最大池化例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E5%B1%82%EF%BC%88Padding-Layers%EF%BC%89"><span class="nav-text">填充层（Padding Layers）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%BF%80%E6%B4%BB%EF%BC%88Non-linear-Activations-weighted-sum-nonlinearity%EF%BC%89%EF%BC%89"><span class="nav-text">非线性激活（Non-linear Activations (weighted sum, nonlinearity））</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-text">常用的非线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1"><span class="nav-text">梯度消失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ReLU%E4%BB%A3%E7%A0%81%E4%B8%BE%E4%BE%8B"><span class="nav-text">ReLU代码举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sigmoid%E5%A4%84%E7%90%86%E5%9B%BE%E5%83%8F%E4%B8%BE%E4%BE%8B"><span class="nav-text">Sigmoid处理图像举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%B1%82%EF%BC%88Linear-Layers%EF%BC%89"><span class="nav-text">线性层（Linear Layers）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-2"><span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-text">主要特点和作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-nn-Linear"><span class="nav-text">torch.nn.Linear</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BA%BF%E6%80%A7%E5%B1%82%E4%BE%8B%E5%AD%90"><span class="nav-text">创建一个简单的线性层例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%82"><span class="nav-text">不常用的层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E5%B1%82-Normalization-Layers"><span class="nav-text">标准化层(Normalization Layers)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%B1%82%EF%BC%88Recurrent-Layers%EF%BC%89"><span class="nav-text">递归层（Recurrent Layers）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transformer%E5%B1%82"><span class="nav-text">Transformer层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout%E5%B1%82"><span class="nav-text">Dropout层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sparse%E5%B1%82"><span class="nav-text">Sparse层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%EF%BC%88Loss-Functions%EF%BC%89"><span class="nav-text">损失函数（Loss Functions）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#L1-LOSS-%E7%BB%9D%E5%AF%B9%E5%80%BC%E6%8D%9F%E5%A4%B1"><span class="nav-text">L1 LOSS(绝对值损失)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BE%8B%E5%AD%90"><span class="nav-text">代码例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MSELoss-%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE"><span class="nav-text">MSELoss(均方误差)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BE%8B%E5%AD%90-1"><span class="nav-text">代码例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CrossEntropyLoss%EF%BC%88%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%EF%BC%89"><span class="nav-text">CrossEntropyLoss（交叉熵损失）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BE%8B%E5%AD%90-2"><span class="nav-text">代码例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%BB%93%E5%90%88%E6%A8%A1%E5%9E%8B"><span class="nav-text">损失函数结合模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8%EF%BC%88torch-optim%EF%BC%89"><span class="nav-text">优化器（torch.optim）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%EF%BC%88learning-rate%EF%BC%89"><span class="nav-text">学习率（learning rate）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E9%87%8F%EF%BC%88momentum%EF%BC%89"><span class="nav-text">动量（momentum）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E9%80%9F%E5%BA%A6%EF%BC%88convergence-speed%EF%BC%89"><span class="nav-text">收敛速度（convergence speed）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E4%BE%8B%E5%AD%90"><span class="nav-text">训练模型例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E6%9C%89%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E4%BF%AE%E6%94%B9"><span class="nav-text">现有网络模型的使用及修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VGG16-model"><span class="nav-text">VGG16 model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E4%B8%8E%E8%AF%BB%E5%8F%96"><span class="nav-text">网络模型的保存与读取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98"><span class="nav-text">模型保存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-save-%E6%A8%A1%E5%9E%8B%E5%90%8D%E7%A7%B0%EF%BC%8C%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E6%A8%A1%E5%9E%8B%E5%90%8D%E7%A7%B0"><span class="nav-text">torch.save(模型名称，路径以及模型名称)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%90%8D%E7%A7%B0-state-dict"><span class="nav-text">模型名称.state_dict()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%B7%E9%98%B1"><span class="nav-text">陷阱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%BB%E5%8F%96"><span class="nav-text">模型读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-load%EF%BC%88%E6%A8%A1%E5%9E%8B%E8%B7%AF%E5%BE%84%EF%BC%89"><span class="nav-text">torch.load（模型路径）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%90%8D%E7%A7%B0-load-state-dict-torch-load-%E2%80%9C%E6%A8%A1%E5%9E%8B%E8%B7%AF%E5%BE%84%E2%80%9D"><span class="nav-text">模型名称.load_state_dict(torch.load(“模型路径”))</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6-pth"><span class="nav-text">模型文件.pth</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%A5%97%E8%B7%AF"><span class="nav-text">完整的模型训练套路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%86%E8%8A%82"><span class="nav-text">小细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#item"><span class="nav-text">.item()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#with-torch-no-grad-%EF%BC%9A"><span class="nav-text">with torch.no_grad()：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#outputs-argmax-1"><span class="nav-text">outputs.argmax(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%EF%BC%9A%E8%AE%A1%E7%AE%97%E9%A2%84%E6%B5%8B%E4%B8%8E%E7%9B%AE%E6%A0%87%E7%9A%84%E5%B7%AE%E5%80%BC%E6%80%BB%E5%92%8C"><span class="nav-text">分类问题：计算预测与目标的差值总和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8GPU%E8%AE%AD%E7%BB%83"><span class="nav-text">利用GPU训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-conda"><span class="nav-text">添加.conda()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%90%8D%E7%A7%B0-to-device"><span class="nav-text">模型名称.to(device)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94CPU%E4%B8%8EGPU"><span class="nav-text">对比CPU与GPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8Google-clab-%E4%B8%8A%E4%BD%BF%E7%94%A8GPU"><span class="nav-text">在Google clab 上使用GPU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%AA%8C%E8%AF%81%EF%BC%88%E6%B5%8B%E8%AF%95%EF%BC%8Cdemo%EF%BC%89%E5%A5%97%E8%B7%AF"><span class="nav-text">完整的模型验证（测试，demo）套路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E4%BE%8B%E5%AD%90"><span class="nav-text">图像分类例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%86%E8%8A%82"><span class="nav-text">细节</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#image-convert-RGB"><span class="nav-text">image.convert(RGB)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#model-eval"><span class="nav-text">model.eval()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-text">报错</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="nav-text">开源项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-text">学习资料</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">LiXiJian. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.4</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/12/31 16:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
