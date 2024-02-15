@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="LiXiJian">
+    
+    <title>
+        
+            2024年2月15日备战蓝桥杯-快速幂 |
+        
+        LiXiJian&#39;s Blog
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"LiXiJian's Blog"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.4"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                LiXiJian&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月15日备战蓝桥杯-快速幂</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">LiXiJian</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2024-02-15 12:00:00</span>
+        <span class="mobile">2024-02-15 12:00</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="4646-爬树的甲壳虫-数论-概率论-数学期望-逆元-快速幂"><a href="#4646-爬树的甲壳虫-数论-概率论-数学期望-逆元-快速幂" class="headerlink" title="4646.爬树的甲壳虫(数论 概率论 数学期望 逆元 快速幂)"></a>4646.爬树的甲壳虫(数论 概率论 数学期望 逆元 快速幂)</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4649/">https://www.acwing.com/problem/content/4649/<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>没弄明白期望怎么求，因为感觉结果有很多种</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">
+</code></pre>
+<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><h4 id="关于输出"><a href="#关于输出" class="headerlink" title="关于输出"></a>关于输出</h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131164911340-170800939239213.png" alt="image-20240131164911340"></p>
+<p><strong>答案是求逆元，a*b^-1</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131171154463-170800939239314.png" alt="image-20240131171154463"></p>
+<p>因此，为了保证不出现无解的情况，额外增加限制条件 yi−xi≠998244353（如不增加此条件，则可能出现无解情况，此为比赛原题考虑不周）。<strong>如果&#x3D; 就会出现（c*p ）mod p &#x3D;&#x3D; 0</strong></p>
+<h4 id="关于数学期望"><a href="#关于数学期望" class="headerlink" title="关于数学期望"></a>关于数学期望</h4><p>答案有无限多种路径</p>
+<p><strong>X(i)表示从高度i开始爬，爬到树顶的事件。求E(x(0))</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131185635331-170800939239315.png" alt="image-20240131185635331"></p>
+<p>写出集合X式子</p>
+<p><strong>加1表示要Xi要向上走一步，即集合里每个路径加1</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131190217170-170800939239416.png" alt="image-20240131190217170"></p>
+<p>根据期望性质，列出期望式子</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131191027508-170800939239417.png" alt="image-20240131191027508"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131191541181-170800939239418.png" alt="image-20240131191541181"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131192115995-170800939239419.png" alt="image-20240131192115995"></p>
+<p>由于E(x(0))是我们要求的，即上面的f0（因为前面假设了fi&#x3D;E(xi)），即gn，所以最终输出的答案是gn</p>
+<img lazyload src="/images/loading.svg" data-src="../2024年2月15日备战蓝桥杯-快速幂.assets/image-20240131194017151-170800939239520.png" alt="image-20240131194017151" style="zoom:80%;">
+
+<h4 id="关于逆元运算"><a href="#关于逆元运算" class="headerlink" title="关于逆元运算"></a>关于逆元运算</h4><p><strong>逆元运算，不是-1次方</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131192852746-170800939239521.png" alt="image-20240131192852746"></p>
+<p><strong>费马定理</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131193433665-170800939239622.png" alt="image-20240131193433665"></p>
+<p>所以最终代码体现是 </p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240131195322512-170800939239623.png" alt="image-20240131195322512"></p>
+<h3 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h3><pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    static int P=998244353;
+    public static void main(String[] args) &#123;
+
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        long res=0;//即g0
+        while(n--!=0) &#123;
+            int x=scanner.nextInt(),y=scanner.nextInt();
+            res = (res+1)*y%P*qmi(y-x,P-2)%P;
+        &#125;
+        System.out.print(res);
+        scanner.close();
+    &#125;
+
+    public static long qmi(int a, int b) &#123;
+        long res=1;
+        long t=a;
+        while(b&gt;0) &#123;
+            if((b&amp;1)==1) res=res*t%P;
+            t=t*t%P;
+            b&gt;&gt;=1;
+        &#125;
+        return res;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="416-麦森数-高精度-快速幂-数学"><a href="#416-麦森数-高精度-快速幂-数学" class="headerlink" title="416. 麦森数(高精度,快速幂,数学)"></a>416. 麦森数(高精度,快速幂,数学)</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/418/">416. 麦森数 - AcWing题库<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h3 id="我的思路-1"><a href="#我的思路-1" class="headerlink" title="我的思路"></a>我的思路</h3><p>快速幂求解然后转化为字符串统计长度，再输出后50位</p>
+<p>需要使用大整数来存储</p>
+<p>结果：其他都正确，就是最后一位数不正确，感觉是java与C++的高精度差异出了问题</p>
+<h3 id="我的代码-1"><a href="#我的代码-1" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int k=scanner.nextInt();
+        BigInteger res=qmi(2,k);
+        String s=String.valueOf(res);
+        int size=s.length();
+        System.out.println(size);
+        int o=500;
+        int c=1;
+        if(size&lt;o) &#123;
+            for(int i=1;i&lt;=o-size;i++,c++) &#123;
+                System.out.print(0);
+                if(c==50) &#123;
+                    c=0;
+                    System.out.println();
+                &#125;
+            &#125;
+            
+            for(int i=0;i&lt;size;i++,c++) &#123;
+                System.out.print(s.charAt(i));
+                if(c==50) &#123;
+                    c=0;
+                    System.out.println();
+                &#125;
+            
+            &#125;
+        &#125;
+        else &#123;
+            for(int i=size-o;i&lt;size;i++,c++) &#123;
+                System.out.print(s.charAt(i));
+                if(c==50) &#123;
+                    c=0;
+                    System.out.println();
+                &#125;
+            
+            &#125;
+        &#125;
+        
+        scanner.close();
+    &#125;
+
+    public static BigInteger qmi(int a,int k) &#123;
+        BigInteger res=BigInteger.ONE;
+        BigInteger t=BigInteger.valueOf(a);
+        while(k&gt;0) &#123;
+            if((k&amp;1)==1) res=res.multiply(t);
+            k&gt;&gt;=1;
+            t=t.multiply(t);
+        &#125;
+        return res;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="acwing的思路-1"><a href="#acwing的思路-1" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82.assets/image-20240214102759765-170800939239624.png" alt="image-20240214102759765"></p>
+<h3 id="acwing的C-代码"><a href="#acwing的C-代码" class="headerlink" title="acwing的C++代码"></a>acwing的C++代码</h3><pre><code class="java">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+const int N = 510;
+
+int a[N], c[N], res[N];
+
+void mul(int a[N], int b[N], int res[N])
+&#123;
+    memset(c, 0, N * 4);
+    for (int i = 0; i &lt; 500; i ++ )
+        for (int j = 0; j &lt; 500; j ++ )
+            if (i + j &lt; 500)
+                c[i + j] += a[i] * b[j];
+    for (int i = 0, t = 0; i &lt; 500; i ++ )
+    &#123;
+        t += c[i];
+        res[i] = t % 10;
+        t /= 10;
+    &#125;
+&#125;
+
+void qmi(int p)
+&#123;
+    res[0] = 1;
+    a[0] = 2;
+    while (p)
+    &#123;
+        if (p &amp; 1) mul(a, res, res);
+        mul(a, a, a);
+        p &gt;&gt;= 1;
+    &#125;
+    res[0] -- ;
+&#125;
+
+
+int main()
+&#123;
+    int p;
+    scanf(&quot;%d&quot;, &amp;p);
+    printf(&quot;%d\n&quot;, int(log10(2) * p) + 1);
+
+    qmi(p);
+    for (int i = 499, j = 0; j &lt; 10; j ++ )
+    &#123;
+        for (int k = 0; k &lt; 50; k ++, i -- )
+            printf(&quot;%d&quot;, res[i]);
+        puts(&quot;&quot;);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h3 id="acwing的java代码"><a href="#acwing的java代码" class="headerlink" title="acwing的java代码"></a>acwing的java代码</h3><pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    static int N=510;
+    static int[] res=new int[N];
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int p=scanner.nextInt();
+        System.out.println((int)(p*Math.log10(2))+1);
+        qmi(p);
+        for(int i=499,j=0;j&lt;10;j++) &#123;
+            for(int k=0;k&lt;50;k++,i--) &#123;
+                System.out.print(res[i]);
+            &#125;
+            System.out.println();
+        &#125;
+        scanner.close();
+    &#125;
+
+    public static void qmi(int p) &#123;
+        res[0]=1;
+        int[] a=new int[N];
+        a[0]=2;
+        while(p&gt;0) &#123;
+            if((p&amp;1)==1) mul(a,res,res);//res=res*a
+            p&gt;&gt;=1;
+            mul(a, a, a);//a=a*a
+        &#125;
+        res[0]--;//因为是计算2^p-1
+    &#125;
+
+    public static void mul(int[] a, int[] b, int[] res) &#123;
+        int[] c=new int[N*4];
+        for(int i=0;i&lt;500;i++) &#123;
+            for(int j=0;j&lt;500;j++) &#123;
+                c[i+j]+=a[i]*b[j];
+            &#125;
+        &#125;
+        int t=0;
+        for(int i=0;i&lt;500;i++) &#123;
+            t+=c[i];
+            res[i]=t%10;
+            t/=10;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：2024年2月15日备战蓝桥杯-快速幂</li>
+        <li>Post author：LiXiJian</li>
+        <li>Create time：2024-02-15 12:00:00</li>
+        <li>
+            Post link：https://redefine.evanluo.top/2024/02/15/2024年2月15日备战蓝桥杯-快速幂/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2024/02/14/2024%E5%B9%B42%E6%9C%8814%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%AD%90%E4%B8%B2%E5%88%86%E5%80%BC/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">2024年2月14日备战蓝桥杯-子串分值</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4646-%E7%88%AC%E6%A0%91%E7%9A%84%E7%94%B2%E5%A3%B3%E8%99%AB-%E6%95%B0%E8%AE%BA-%E6%A6%82%E7%8E%87%E8%AE%BA-%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B-%E9%80%86%E5%85%83-%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="nav-text">4646.爬树的甲壳虫(数论 概率论 数学期望 逆元 快速幂)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BE%93%E5%87%BA"><span class="nav-text">关于输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B"><span class="nav-text">关于数学期望</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%80%86%E5%85%83%E8%BF%90%E7%AE%97"><span class="nav-text">关于逆元运算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#416-%E9%BA%A6%E6%A3%AE%E6%95%B0-%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%BF%AB%E9%80%9F%E5%B9%82-%E6%95%B0%E5%AD%A6"><span class="nav-text">416. 麦森数(高精度,快速幂,数学)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF-1"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81-1"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF-1"><span class="nav-text">acwing的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84C-%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的C++代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84java%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的java代码</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">LiXiJian. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.4</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/12/31 16:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
