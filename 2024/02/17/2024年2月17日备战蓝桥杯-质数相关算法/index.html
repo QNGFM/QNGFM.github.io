@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年2月16日备战蓝桥杯-质因数个数(数论 分解质因数） |
+            2024年2月17日备战蓝桥杯-质数相关算法 |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月16日备战蓝桥杯-质因数个数(数论 分解质因数）</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月17日备战蓝桥杯-质数相关算法</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-02-16 12:00:00</span>
-        <span class="mobile">2024-02-16 12:00</span>
+        <span class="pc">2024-02-17 12:00:00</span>
+        <span class="mobile">2024-02-17 12:00</span>
     </span>
     
     
@@ -219,75 +219,197 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="4658-质因数个数-数论-分解质因数）"><a href="#4658-质因数个数-数论-分解质因数）" class="headerlink" title="4658. 质因数个数(数论 分解质因数）"></a><strong>4658. 质因数个数</strong>(数论 分解质因数）</h2><h3 id="我的思路（暴力超时）"><a href="#我的思路（暴力超时）" class="headerlink" title="我的思路（暴力超时）"></a>我的思路（暴力超时）</h3><p>先找出比n小的质数，再遍历质数是否是n的约数，由此得出个数（注定暴力超时）</p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+                <h3 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h3><p>质数的定义：只有两个正因数（1和自己）的自然数即为质数。比1大但不是素数的数称为合数。1和0既非素数也非合数。</p>
+<h4 id="试除法判定质数"><a href="#试除法判定质数" class="headerlink" title="试除法判定质数"></a>试除法判定质数</h4><h5 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">bool is_prime(int x)
+&#123;
+    if (x &lt; 2) return false;//根据定义
+    for (int i = 2; i &lt;= x / i; i ++ )//i &lt;= x / i 即 i*i&lt;=x
+        if (x % i == 0)
+            return false;
+    return true;
+&#125;
+</code></pre>
+<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><ol start="866">
+<li><h6 id="试除法判定质数-1"><a href="#试除法判定质数-1" class="headerlink" title="试除法判定质数"></a>试除法判定质数</h6></li>
+</ol>
+<pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
+
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
         int n=scanner.nextInt();
-        List&lt;Integer&gt; zhi=new ArrayList&lt;Integer&gt;();//不是引用对象，需要返回
-        zhi=findZhi(n,zhi);
-        int res=getCount(n, zhi);
-        System.out.print(res);
-        scanner.close();
-    &#125;
-
-    public static int getCount(int n, List&lt;Integer&gt; zhi) &#123;
-        int sum=0;
-        for(int i=0;i&lt;zhi.size();i++) &#123;
-            if(n%zhi.get(i)==0) sum++;
-        &#125;
-        return sum;
-    &#125;
-
-    public static List&lt;Integer&gt; findZhi(int n, List&lt;Integer&gt; zhi) &#123;
-        for(int i=2;i&lt;n;i++) &#123;
-            int j;
-            for(j=2;j*j&lt;=i;j++) &#123;
-                if(i%j==0) &#123;
-                    break;
-                &#125;
+        while(n--!=0) &#123;
+            long x=scanner.nextLong();
+            if(isPrime(x)) &#123;
+                System.out.println(&quot;Yes&quot;);
             &#125;
-            if(j*j&gt;i) &#123;
-                zhi.add(i);
+            else &#123;
+                System.out.println(&quot;No&quot;);
             &#125;
         &#125;
-        return zhi;
     &#125;
 
-    
+    public static boolean isPrime(long x) &#123;
+        if(x&lt;2) return false;
+        //试除法
+        for(long i=2;i&lt;=x/i;i++) &#123;
+            if(x%i==0) return false;
+        &#125;
+        return true;
+    &#125;
 
 &#125;
 </code></pre>
-<h3 id="acwing的思路（试除法）"><a href="#acwing的思路（试除法）" class="headerlink" title="acwing的思路（试除法）"></a>acwing的思路（试除法）</h3><p>对于30% 的评测用例，1≤n≤10000。<strong>可以一个个枚举</strong></p>
-<p>对于所有评测用例，1≤n≤10^16。<strong>试除法</strong>，根号n,即10^8,2秒内可以算完</p>
-<p><strong>2s可以算2亿次，即2*10^8</strong></p>
-<hr>
-<p><strong>第一步枚举约数</strong>，从2到根号n（因为d是n的约数，n&#x2F;d也肯定是n的约数，不用枚举完）</p>
-<p><strong>第二步得出质因子</strong>，每找到一个约数就把他除干净，如果一个数可以这整除n，那么我们把这个数给除干净，后面就不会再出现这个数，例如p可以整除n，p&#x3D;a1*a2…，如果a1前面枚举过了，是不会再出现的，所以p不会成立</p>
-<p><strong>第三步检查是否找完质因子</strong>，如果最后n&gt;1的话，会有一个大于1的质因子没有被除去</p>
-<p><strong>注意事项：涉及到10^6的变量，用long类型</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8816%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E5%9B%A0%E6%95%B0%E4%B8%AA%E6%95%B0.assets/image-20240216113753346.png" alt="image-20240216113753346"></p>
-<h3 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h3><pre><code class="java">import java.util.Scanner;
+<h4 id="试除法分解质因数"><a href="#试除法分解质因数" class="headerlink" title="试除法分解质因数"></a>试除法分解质因数</h4><p><strong>质因数（素因数或质因子）在数论里是指能整除给定正整数的质数。</strong>如2整除6，表示为2|6</p>
+<h5 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">void divide(int x)
+&#123;
+    for (int i = 2; i &lt;= x / i; i ++ )
+        if (x % i == 0)
+        &#123;
+            int s = 0;
+            while (x % i == 0) x /= i, s ++ ;
+            cout &lt;&lt; i &lt;&lt; &#39; &#39; &lt;&lt; s &lt;&lt; endl;
+        &#125;
+    if (x &gt; 1) cout &lt;&lt; x &lt;&lt; &#39; &#39; &lt;&lt; 1 &lt;&lt; endl;
+    cout &lt;&lt; endl;
+&#125;
+</code></pre>
+<h5 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h5><h6 id="867-分解质因数"><a href="#867-分解质因数" class="headerlink" title="867. 分解质因数"></a>867. 分解质因数</h6><pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
+
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
-        long n=scanner.nextLong();
-        int res=0;
-        for(long i=2;i*i&lt;=n;i++) &#123;
-            if(n%i==0) &#123;
-                while(n%i==0) n/=i;//把i除干净
-                res++;
+        int n=scanner.nextInt();
+        while(n--!=0) &#123;
+            long x=scanner.nextLong();
+            divide(x);
+        &#125;
+
+    &#125;
+
+    public static void divide(long x) &#123;
+        for(long i=2;i*i&lt;=x;i++) &#123;
+            if(x%i==0) &#123;
+                int s=0;
+                while(x%i==0) &#123;
+                    x/=i;
+                    s++;
+                &#125;
+                System.out.println(i+&quot; &quot;+s);
             &#125;
         &#125;
-        if(n&gt;1) res++;
-        System.out.print(res);
+        if(x&gt;1) System.out.println(x+&quot; &quot;+1);
+        System.out.println();
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="求素数"><a href="#求素数" class="headerlink" title="求素数"></a>求素数</h4><h5 id="朴素筛法求素数模板"><a href="#朴素筛法求素数模板" class="headerlink" title="朴素筛法求素数模板"></a>朴素筛法求素数模板</h5><p><strong>如果没被筛过，则记为素数，然后筛选素数的倍数</strong>，如2为素数，把4，6，8，10，12筛掉</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8817%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240217161804819.png" alt="image-20240217161804819"></p>
+<p>以下模板是优化后的，</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8817%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240217162731573.png" alt="image-20240217162731573"></p>
+<pre><code class="c++">int primes[N], cnt;     // primes[]存储所有素数
+bool st[N];         // st[x]存储x是否被筛掉
+
+void get_primes(int n)
+&#123;
+    for (int i = 2; i &lt;= n; i ++ )
+    &#123;
+        if (st[i]) continue;//已经被筛
+        primes[cnt ++ ] = i;
+        for (int j = i + i; j &lt;= n; j += i)
+            st[j] = true;
+    &#125;
+&#125;
+</code></pre>
+<h5 id="线性筛法求素数模板"><a href="#线性筛法求素数模板" class="headerlink" title="线性筛法求素数模板"></a>线性筛法求素数模板</h5><p>数量级为10^6，速度和朴素筛法差不多</p>
+<p><strong>数量级为10^7，线性筛法速度快一倍</strong>，时间复杂度O(n)</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8817%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240217165710397.png" alt="image-20240217165710397"></p>
+<p><strong>核心：每一个数只会被最小质因子筛掉</strong></p>
+<p>primes存的是到i为止的所有质数</p>
+<p>通过遍历当前primes来筛掉合数</p>
+<p><strong>合数不需要大于n：</strong>primes[j] &lt;&#x3D; n &#x2F; i 即 primes[j] * i &lt;&#x3D; n 因为我们只求1到n的素数，超过n的数不用筛</p>
+<p>primes[j] * i的最小质因子肯定是primes[j] ，因为primes的质数是从小到大的</p>
+<p><strong>当满足i % primes[j] &#x3D;&#x3D; 0这个条件，我们退出循环</strong>，因为此时已找到i的最小质因子，如果不结束循环，不能保证primes[j] * i的最小质因子是primes[j] ，因为i可能包含更小的质因子</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8817%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240217222109285.png" alt="image-20240217222109285"></p>
+<pre><code class="java">int primes[N], cnt;     // primes[]存储所有素数
+bool st[N];         // st[x]存储x是否被筛掉
+
+void get_primes(int n)
+&#123;
+    for (int i = 2; i &lt;= n; i ++ )
+    &#123;
+        if (!st[i]) primes[cnt ++ ] = i;
+        for (int j = 0; primes[j] &lt;= n / i; j ++ )
+        &#123;
+            st[primes[j] * i] = true;
+            if (i % primes[j] == 0) break;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h5 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h5><h6 id="868-筛质数"><a href="#868-筛质数" class="headerlink" title="868. 筛质数"></a>868. 筛质数</h6><p>朴素筛法</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    public static int N=1000000;
+    public static int cnt=0;
+    public static int[] primes=new int[N];
+    public static boolean[] st=new boolean[N];
+    
+    public static void getPrimes(int n) &#123;
+        for(int i=2;i&lt;=n;i++) &#123;
+            if(st[i]) continue;
+            primes[cnt++]=i;
+            for(int j=i+i;j&lt;=n;j+=i) st[j]=true;
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        getPrimes(n);
+        System.out.println(cnt);
+        for(int i=0;i&lt;cnt;i++) &#123;
+            System.out.print(primes[i]+&quot; &quot;);
+        &#125;
         scanner.close();
     &#125;
+
+&#125;
+</code></pre>
+<p>线性筛法</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    public static int N=1000000;
+    public static int cnt=0;
+    public static int[] primes=new int[N];
+    public static boolean[] st=new boolean[N];
+    
+    public static void getPrimes(int n) &#123;
+        for(int i=2;i&lt;=n;i++) &#123;
+            if(!st[i]) primes[cnt++]=i;
+            for(int j=0;primes[j]*i&lt;=n;j++) &#123;
+                st[primes[j]*i]=true;
+                if(i%primes[j]==0) break;
+            &#125;
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        getPrimes(n);
+        System.out.println(cnt);
+        for(int i=0;i&lt;cnt;i++) &#123;
+            System.out.print(primes[i]+&quot; &quot;);
+        &#125;
+        scanner.close();
+    &#125;
+
 &#125;
 </code></pre>
 
@@ -297,11 +419,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年2月16日备战蓝桥杯-质因数个数(数论 分解质因数）</li>
+        <li>Post title：2024年2月17日备战蓝桥杯-质数相关算法</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-02-16 12:00:00</li>
+        <li>Create time：2024-02-17 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/02/16/2024年2月16日备战蓝桥杯-质因数个数/
+            Post link：https://redefine.evanluo.top/2024/02/17/2024年2月17日备战蓝桥杯-质数相关算法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -321,10 +443,10 @@ public class Main &#123;
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/02/15/2024%E5%B9%B42%E6%9C%8815%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E9%80%9F%E5%B9%82/"
+                            href="/2024/02/16/2024%E5%B9%B42%E6%9C%8816%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E5%9B%A0%E6%95%B0%E4%B8%AA%E6%95%B0%20-%20%E5%89%AF%E6%9C%AC/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月15日备战蓝桥杯-快速幂</span>
+                                    <span class="post-nav-title-item">2024年2月16日备战蓝桥杯-质因数个数(数论 分解质因数)</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -344,7 +466,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4658-%E8%B4%A8%E5%9B%A0%E6%95%B0%E4%B8%AA%E6%95%B0-%E6%95%B0%E8%AE%BA-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0%EF%BC%89"><span class="nav-text">4658. 质因数个数(数论 分解质因数）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%88%E6%9A%B4%E5%8A%9B%E8%B6%85%E6%97%B6%EF%BC%89"><span class="nav-text">我的思路（暴力超时）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%88%E8%AF%95%E9%99%A4%E6%B3%95%EF%BC%89"><span class="nav-text">acwing的思路（试除法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0"><span class="nav-text">质数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%A4%E5%AE%9A%E8%B4%A8%E6%95%B0"><span class="nav-text">试除法判定质数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%A4%E5%AE%9A%E8%B4%A8%E6%95%B0-1"><span class="nav-text">试除法判定质数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0"><span class="nav-text">试除法分解质因数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-1"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#867-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0"><span class="nav-text">867. 分解质因数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E7%B4%A0%E6%95%B0"><span class="nav-text">求素数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="nav-text">朴素筛法求素数模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95%E6%B1%82%E7%B4%A0%E6%95%B0%E6%A8%A1%E6%9D%BF"><span class="nav-text">线性筛法求素数模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-2"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#868-%E7%AD%9B%E8%B4%A8%E6%95%B0"><span class="nav-text">868. 筛质数</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
             </div>
