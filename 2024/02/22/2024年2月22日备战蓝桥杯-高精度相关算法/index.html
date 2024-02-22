@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="LiXiJian">
+    
+    <title>
+        
+            2024年2月22日备战蓝桥杯-高精度相关算法 |
+        
+        LiXiJian&#39;s Blog
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"LiXiJian's Blog"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.4"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                LiXiJian&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月22日备战蓝桥杯-高精度相关算法</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">LiXiJian</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2024-02-22 12:00:00</span>
+        <span class="mobile">2024-02-22 12:00</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h3 id="高精度（JAVA使用）"><a href="#高精度（JAVA使用）" class="headerlink" title="高精度（JAVA使用）"></a>高精度（JAVA使用）</h3><p>笔试偶尔出现，是针对C++的，JAVA不需要</p>
+<h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>Java高精度计算通常涉及到大整数运算和高精度浮点数运算。在Java中，可以使用<strong>BigInteger类进行大整数运算</strong>，而<strong>BigDecimal类则用于高精度浮点数运算</strong>。</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/34210/">AcWing 791. 高精度加法（Java） - AcWing<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><p><strong>定义</strong></p>
+<pre><code class="java">BigInteger a = BigInteger.valueof(100);
+BigDecimal b = BigDecimal.valueOf(0.2);
+BigDecimal b1 = new BigDecimal(Double.toString(0.2));
+</code></pre>
+<p><strong>0和1的表示</strong></p>
+<pre><code class="java">BigInteger.ZERO
+BigInteger.ONE
+</code></pre>
+<p><strong>加减乘除求余运算</strong></p>
+<pre><code class="java">BigDecimal c1 = a1.add(b1); //加法
+BigDecimal c2 = a1.subtract(b1); //减法
+BigDecimal c3 = a1.multiply(b1); // 乘法
+BigDecimal c4 = a1.divide(b1); // 除法
+BigDecimal c5 = a1.remainder(b1); // 浮点数求余
+BigInteger[] c6 = a.divideAndRemainder(b); //返回值为数组，分别为a/b和a%b
+ c[0]为商；c[1]为余数
+BigInteger c7=a1.mod(b); //整数求余
+</code></pre>
+<p><strong>除法运算</strong>（能舍入）</p>
+<p>public BigDecimal divide(另一个BigDecimal对象 , 精确几位 , 舍入模式)</p>
+<pre><code class="java">BigDecimal x = BigDecimal.valueOf(0.1);
+BigDecimal y = BigDecimal.valueOf(0.3);
+BigDecimal k = x.divide(y,2, RoundingMode.HALF_UP); // 保留两位小数
+</code></pre>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><h5 id="计算100的阶乘"><a href="#计算100的阶乘" class="headerlink" title="计算100的阶乘"></a>计算100的阶乘</h5><pre><code class="java">import java.math.BigInteger;
+
+public class LargeIntegerCalculation &#123;
+    public static void main(String[] args) &#123;
+        // 例题：计算100的阶乘
+        BigInteger result = calculateFactorial(BigInteger.valueOf(100));
+        System.out.println(&quot;100的阶乘结果为：&quot; + result);
+    &#125;
+
+    public static BigInteger calculateFactorial(BigInteger num) &#123;
+        if (num.equals(BigInteger.ZERO) || num.equals(BigInteger.ONE)) &#123;
+            return BigInteger.ONE;
+        &#125; else &#123;
+            return num.multiply(calculateFactorial(num.subtract(BigInteger.ONE)));
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h5 id="AcWing-791-高精度加法"><a href="#AcWing-791-高精度加法" class="headerlink" title="AcWing 791. 高精度加法"></a>AcWing 791. 高精度加法</h5><p><strong>BufferedReader读取长数据更快</strong></p>
+<pre><code class="java">import java.math.BigInteger;
+import java.io.*;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException&#123;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        BigInteger a = new BigInteger(reader.readLine());
+        BigInteger b = new BigInteger(reader.readLine());
+        System.out.println(a.add(b));
+        reader.close();
+    &#125;
+&#125;
+</code></pre>
+<h5 id="AcWing-792-高精度减法"><a href="#AcWing-792-高精度减法" class="headerlink" title="AcWing 792. 高精度减法"></a>AcWing 792. 高精度减法</h5><pre><code class="java">import java.math.BigInteger;
+import java.io.*;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException&#123;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        BigInteger a = new BigInteger(reader.readLine());
+        BigInteger b = new BigInteger(reader.readLine());
+        System.out.println(a.subtract(b));
+        reader.close();
+    &#125;
+&#125;
+</code></pre>
+<h5 id="AcWing-793-高精度乘法"><a href="#AcWing-793-高精度乘法" class="headerlink" title="AcWing 793. 高精度乘法"></a>AcWing 793. 高精度乘法</h5><pre><code class="java">import java.math.BigInteger;
+import java.io.*;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException&#123;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        BigInteger a = new BigInteger(reader.readLine());
+        BigInteger b = new BigInteger(reader.readLine());
+        System.out.println(a.multiply(b));
+        reader.close();
+    &#125;
+&#125;
+</code></pre>
+<h5 id="AcWing-794-高精度除法和求余"><a href="#AcWing-794-高精度除法和求余" class="headerlink" title="AcWing 794. 高精度除法和求余"></a>AcWing 794. 高精度除法和求余</h5><pre><code class="java">import java.io.*;
+import java.math.BigInteger;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException&#123;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BigInteger a = new BigInteger(reader.readLine());
+        BigInteger b = new BigInteger(reader.readLine());
+
+        BigInteger[] c = a.divideAndRemainder(b); //返回值为数组，分别为a/b和a%b
+        System.out.println(c[0]);
+        System.out.println(c[1]);
+        //System.out.println(a.divide(b));
+        //System.out.println(a.mod(b));
+        reader.close();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="高精度（手写板）"><a href="#高精度（手写板）" class="headerlink" title="高精度（手写板）"></a>高精度（手写板）</h3><h4 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h4><h5 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h5><p>数组低位存实际数高位，方便进位</p>
+<p>实际计算模拟人工</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240127210512189.png" alt="image-20240127210512189"></p>
+<h5 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">// C = A + B, A &gt;= 0, B &gt;= 0
+vector&lt;int&gt; add(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B)
+&#123;
+    if (A.size() &lt; B.size()) return add(B, A);
+
+    vector&lt;int&gt; C;
+    int t = 0;
+    for (int i = 0; i &lt; A.size(); i ++ )
+    &#123;
+        t += A[i];
+        if (i &lt; B.size()) t += B[i];
+        C.push_back(t % 10);
+        t /= 10;
+    &#125;
+
+    if (t) C.push_back(t);
+    return C;
+&#125;
+</code></pre>
+<pre><code class="java">public static List&lt;Integer&gt; add(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        if (A.size() &lt; B.size()) &#123;
+            return add(B, A);
+        &#125;
+
+        List&lt;Integer&gt; C = new ArrayList&lt;&gt;();
+        int t = 0;
+        for (int i = 0; i &lt; A.size(); i++) &#123;
+            t += A.get(i);
+            if (i &lt; B.size()) &#123;
+                t += B.get(i);
+            &#125;
+            C.add(t % 10);
+            t /= 10;
+        &#125;
+
+        if (t != 0) &#123;
+            C.add(t);
+        &#125;
+        return C;
+    &#125;
+</code></pre>
+<h5 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-791-高精度加法-1"><a href="#AcWing-791-高精度加法-1" class="headerlink" title="AcWing 791. 高精度加法"></a>AcWing 791. 高精度加法</h6><pre><code class="java">import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException &#123;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        String a=new String(reader.readLine());
+        String b=new String(reader.readLine());
+        List&lt;Integer&gt; A = new ArrayList&lt;&gt;();
+        List&lt;Integer&gt; B = new ArrayList&lt;&gt;();
+        for(int i=a.length()-1;i&gt;=0;i--) &#123;
+            A.add(a.charAt(i)-&#39;0&#39;);
+        &#125;
+        for(int i=b.length()-1;i&gt;=0;i--) &#123;
+            B.add(b.charAt(i)-&#39;0&#39;);
+        &#125;
+        
+        List&lt;Integer&gt; C=add(A,B);
+        
+        for(int i=C.size()-1;i&gt;=0;i--) System.out.print(C.get(i));
+        
+        reader.close();
+    &#125;
+
+    public static List&lt;Integer&gt; add(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        if(A.size()&lt;B.size()) return add(B, A);
+        List&lt;Integer&gt; C = new ArrayList&lt;&gt;();
+        int t=0; //进位
+        for(int i=0;i&lt;A.size();i++) &#123;
+            t+=A.get(i);
+            if(i&lt;B.size()) t+=B.get(i);
+            C.add(t%10);
+            t/=10;
+        &#125;
+        if(t==1) &#123;
+            C.add(1);
+        &#125;
+        return C;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h4><h5 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h5><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240127213815689.png" alt="image-20240127213815689"></p>
+<h5 id="模板-2"><a href="#模板-2" class="headerlink" title="模板"></a>模板</h5><pre><code class="C++">// 判断是否 A&gt;=B
+bool cmp(vector&lt;int&gt;&amp; A, vector&lt;int&gt; &amp;B)
+&#123;
+    if(A.size() != B.size()) return A.size() &gt; B.size();  //直接ruturn 了就不用else
+
+    for(int i = A.size(); i &gt;= 0; i--)
+        if(A[i] != B[i])
+            return A[i] &gt; B[i];
+
+    return true; //相等
+&#125;
+// C = A - B, 满足A &gt;= B, A &gt;= 0, B &gt;= 0
+vector&lt;int&gt; sub(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B)
+&#123;
+    vector&lt;int&gt; C;
+    for (int i = 0, t = 0; i &lt; A.size(); i ++ )
+    &#123;
+        t = A[i] - t;
+        if (i &lt; B.size()) t -= B[i];
+        C.push_back((t + 10) % 10);
+        if (t &lt; 0) t = 1;
+        else t = 0;
+    &#125;
+
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+    return C;
+&#125;
+</code></pre>
+<pre><code class="java">// 判断是否 A&gt;=B
+public static boolean cmp(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        if (A.size() != B.size()) &#123;
+            return A.size() &gt; B.size();
+        &#125;
+
+        for (int i = A.size() - 1; i &gt;= 0; i--) &#123;
+            if (!A.get(i).equals(B.get(i))) &#123;
+                return A.get(i) &gt; B.get(i);
+            &#125;
+        &#125;
+
+        return true;//A==B
+&#125;
+
+public static List&lt;Integer&gt; sub(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        List&lt;Integer&gt; C = new ArrayList&lt;&gt;();
+        int t = 0;
+
+        for (int i = 0; i &lt; A.size(); i++) &#123;
+            t = A.get(i) - t;
+            if (i &lt; B.size()) &#123;
+                t -= B.get(i);
+            &#125;
+            C.add((t + 10) % 10);
+            if (t &lt; 0) &#123;
+                t = 1;//借位
+            &#125; else &#123;
+                t = 0;
+            &#125;
+        &#125;
+
+        // 去掉前导0，如：123-120=003
+        while (C.size() &gt; 1 &amp;&amp; C.get(C.size() - 1) == 0) &#123;
+            C.remove(C.size() - 1);
+        &#125;
+
+        return C;
+    &#125;
+</code></pre>
+<h5 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-792-高精度减法-1"><a href="#AcWing-792-高精度减法-1" class="headerlink" title="AcWing 792. 高精度减法"></a>AcWing 792. 高精度减法</h6><pre><code class="java">import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException &#123;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        String a=new String(reader.readLine());
+        String b=new String(reader.readLine());
+        List&lt;Integer&gt; A = new ArrayList&lt;&gt;();
+        List&lt;Integer&gt; B = new ArrayList&lt;&gt;();
+        for(int i=a.length()-1;i&gt;=0;i--) &#123;
+            A.add(a.charAt(i)-&#39;0&#39;);
+        &#125;
+        for(int i=b.length()-1;i&gt;=0;i--) &#123;
+            B.add(b.charAt(i)-&#39;0&#39;);
+        &#125;
+        List&lt;Integer&gt; C=new ArrayList&lt;&gt;();
+        
+        if(cmp(A,B)) &#123;
+            C=sub(A,B);
+            for(int i=C.size()-1;i&gt;=0;i--) System.out.print(C.get(i));
+            
+        &#125;
+        else &#123;
+            C=sub(B,A);
+            System.out.print(&#39;-&#39;);
+            for(int i=C.size()-1;i&gt;=0;i--) System.out.print(C.get(i));
+        &#125;
+        
+        
+        reader.close();
+    &#125;
+
+    public static boolean cmp(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        if(A.size()!=B.size()) return A.size()&gt;B.size();
+        for(int i=A.size()-1;i&gt;=0;i--) &#123;
+            if(A.get(i)!=B.get(i)) &#123;
+                return A.get(i)&gt;B.get(i);
+            &#125;
+        &#125;
+        return true;
+    &#125;
+
+    public static List&lt;Integer&gt; sub(List&lt;Integer&gt; A, List&lt;Integer&gt; B) &#123;
+        List&lt;Integer&gt; C=new ArrayList&lt;Integer&gt;();
+        for(int i=0,t=0;i&lt;A.size();i++) &#123;
+            t=A.get(i)-t;
+            if(i&lt;B.size()) t=t-B.get(i);
+            C.add((t+10)%10);
+            if(t&lt;0) &#123;
+                t=1;
+            &#125;
+            else &#123;
+                t=0;
+            &#125;
+        &#125;
+        while(C.size()&gt;1&amp;&amp;C.get(C.size()-1)==0) &#123;
+            C.remove(C.size()-1);
+        &#125;
+        return C;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="高精度乘法-乘小数"><a href="#高精度乘法-乘小数" class="headerlink" title="高精度乘法-乘小数"></a>高精度乘法-乘小数</h4><h5 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h5><p>高精度乘低精度</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240128112842881.png" alt="image-20240128112842881"></p>
+<h5 id="模板-3"><a href="#模板-3" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">// C = A * b, A &gt;= 0, b &gt;= 0
+vector&lt;int&gt; mul(vector&lt;int&gt; &amp;A, int b)
+&#123;
+    vector&lt;int&gt; C;
+
+    int t = 0;
+    for (int i = 0; i &lt; A.size() || t; i ++ )
+    &#123;
+        if (i &lt; A.size()) t += A[i] * b;
+        C.push_back(t % 10);
+        t /= 10;
+    &#125;
+
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+
+    return C;
+&#125;
+</code></pre>
+<pre><code class="java">public static List&lt;Integer&gt; multiply(List&lt;Integer&gt; A, int b) &#123;
+        List&lt;Integer&gt; C = new ArrayList&lt;&gt;();
+
+        int t = 0;
+        for (int i = 0; i &lt; A.size() || t != 0; i++) &#123;
+            if (i &lt; A.size()) &#123;
+                t += A.get(i) * b;
+            &#125;
+            C.add(t % 10);//取个位做结果
+            t /= 10;
+        &#125;
+
+        // Remove leading zeros
+        while (C.size() &gt; 1 &amp;&amp; C.get(C.size() - 1) == 0) &#123;
+            C.remove(C.size() - 1);
+        &#125;
+
+        return C;
+    &#125;
+</code></pre>
+<h5 id="例题-3"><a href="#例题-3" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-793-高精度乘法-1"><a href="#AcWing-793-高精度乘法-1" class="headerlink" title="AcWing 793. 高精度乘法"></a>AcWing 793. 高精度乘法</h6><pre><code class="java">import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException &#123;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        String a=new String(reader.readLine());
+        int b=Integer.parseInt(reader.readLine());
+        
+        List&lt;Integer&gt; A=new ArrayList&lt;Integer&gt;();
+        for(int i=a.length()-1;i&gt;=0;i--) &#123;
+            A.add(a.charAt(i)-&#39;0&#39;);
+        &#125;
+        
+        List&lt;Integer&gt; C=mul(A,b);
+        
+        for(int i=C.size()-1;i&gt;=0;i--) System.out.print(C.get(i));
+        
+        reader.close();
+    &#125;
+
+    public static List&lt;Integer&gt; mul(List&lt;Integer&gt; A, int b) &#123;
+        List&lt;Integer&gt; C=new ArrayList&lt;Integer&gt;();
+        int t=0;
+        for(int i=0;i&lt;A.size()||t!=0;i++) &#123;
+            if(i&lt;A.size()) t+=A.get(i)*b;
+            C.add(t%10);
+            t/=10;
+        &#125;
+        while(C.size()&gt;1&amp;&amp;C.get(C.size()-1)==0) &#123;
+            C.remove(C.size()-1);
+        &#125;
+        return C;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="高精度乘法-两大数"><a href="#高精度乘法-两大数" class="headerlink" title="高精度乘法-两大数"></a>高精度乘法-两大数</h4><h5 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h5><p>模仿手算过程</p>
+<p>第一步：保存每一位相乘完的结果</p>
+<p>第二步：计算进位，得出最终结果</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240215222344723.png" alt="image-20240215222344723"></p>
+<h5 id="模板-4"><a href="#模板-4" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">a[N], b[N], res[N]均为倒序
+//res=a*b,a,b为大数
+//N可以根据需要输出的位数来s
+void mul(int a[N], int b[N], int res[N])
+&#123;
+    memset(c, 0, N * 4);
+    for (int i = 0; i &lt; N; i ++ )
+        for (int j = 0; j &lt; N; j ++ )
+            if (i + j &lt; N)
+                c[i + j] += a[i] * b[j];
+    for (int i = 0, t = 0; i &lt; N; i ++ )
+    &#123;
+        t += c[i];
+        res[i] = t % 10;
+        t /= 10;
+    &#125;
+&#125;
+</code></pre>
+<h5 id="例题-4"><a href="#例题-4" class="headerlink" title="例题"></a>例题</h5><h6 id="416-麦森数-高精度-快速幂-数学"><a href="#416-麦森数-高精度-快速幂-数学" class="headerlink" title="416. 麦森数(高精度,快速幂,数学)"></a>416. 麦森数(高精度,快速幂,数学)</h6><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/418/">416. 麦森数 - AcWing题库<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    static int N=510;
+    static int[] res=new int[N];
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int p=scanner.nextInt();
+        System.out.println((int)(p*Math.log10(2))+1);
+        qmi(p);
+        for(int i=499,j=0;j&lt;10;j++) &#123;
+            for(int k=0;k&lt;50;k++,i--) &#123;
+                System.out.print(res[i]);
+            &#125;
+            System.out.println();
+        &#125;
+        scanner.close();
+    &#125;
+
+    public static void qmi(int p) &#123;
+        res[0]=1;
+        int[] a=new int[N];
+        a[0]=2;
+        while(p&gt;0) &#123;
+            if((p&amp;1)==1) mul(a,res,res);//res=res*a
+            p&gt;&gt;=1;
+            mul(a, a, a);//a=a*a
+        &#125;
+        res[0]--;//因为是计算2^p-1
+    &#125;
+
+    public static void mul(int[] a, int[] b, int[] res) &#123;
+        int[] c=new int[N*4];
+        for(int i=0;i&lt;500;i++) &#123;
+            for(int j=0;j&lt;500;j++) &#123;
+                c[i+j]+=a[i]*b[j];
+            &#125;
+        &#125;
+        int t=0;
+        for(int i=0;i&lt;500;i++) &#123;
+            t+=c[i];
+            res[i]=t%10;
+            t/=10;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="高精度除法"><a href="#高精度除法" class="headerlink" title="高精度除法"></a>高精度除法</h4><h5 id="基本思想-4"><a href="#基本思想-4" class="headerlink" title="基本思想"></a>基本思想</h5><p>高精度除低精度，为了使加减乘除统一，还是倒着存</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240128115953041.png" alt="image-20240128115953041"></p>
+<h5 id="模板-5"><a href="#模板-5" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">// A / b = C ... r, A &gt;= 0, b &gt; 0
+vector&lt;int&gt; div(vector&lt;int&gt; &amp;A, int b, int &amp;r)
+&#123;
+    vector&lt;int&gt; C;
+    r = 0;
+    for (int i = A.size() - 1; i &gt;= 0; i -- )
+    &#123;
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r %= b;
+    &#125;
+    reverse(C.begin(), C.end());
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+    return C;
+&#125;
+</code></pre>
+<pre><code class="java"> public static List&lt;Integer&gt; divide(List&lt;Integer&gt; A, int b, int[] r) &#123;
+        List&lt;Integer&gt; C = new ArrayList&lt;&gt;();
+        r[0] = 0;
+
+        for (int i = A.size() - 1; i &gt;= 0; i--) &#123;
+            r[0] = r[0] * 10 + A.get(i);
+            C.add(r[0] / b);
+            r[0] %= b;
+        &#125;
+
+        Collections.reverse(C);//变成高位在后
+
+        // Remove leading zeros
+        while (C.size() &gt; 1 &amp;&amp; C.get(C.size() - 1) == 0) &#123;
+            C.remove(C.size() - 1);
+        &#125;
+
+        return C;
+    &#125;
+</code></pre>
+<h5 id="例题-5"><a href="#例题-5" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-794-高精度除法"><a href="#AcWing-794-高精度除法" class="headerlink" title="AcWing 794. 高精度除法"></a>AcWing 794. 高精度除法</h6><pre><code class="java">import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Main &#123;
+
+    public static void main(String[] args) throws IOException &#123;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        String a=new String(reader.readLine());
+        int b=Integer.parseInt(reader.readLine());
+        
+        List&lt;Integer&gt; A=new ArrayList&lt;Integer&gt;();
+        for(int i=a.length()-1;i&gt;=0;i--) &#123;
+            A.add(a.charAt(i)-&#39;0&#39;);
+        &#125;
+        int[] r=new int[1];
+        List&lt;Integer&gt; C=div(A,b,r);
+        
+        for(int i=C.size()-1;i&gt;=0;i--) System.out.print(C.get(i));
+        System.out.println();
+        System.out.print(r[0]);
+        
+        reader.close();
+
+    &#125;
+
+    public static List&lt;Integer&gt; div(List&lt;Integer&gt; A, int b, int[] r) &#123;
+        List&lt;Integer&gt; C=new ArrayList&lt;Integer&gt;();//存商
+        r[0]=0;
+        for(int i=A.size()-1;i&gt;=0;i--) &#123;
+            r[0]=r[0]*10+A.get(i);
+            C.add(r[0]/b);
+            r[0]%=b;
+        &#125;
+        
+        Collections.reverse(C);
+        
+        while(C.size()&gt;1&amp;&amp;C.get(C.size()-1)==0) &#123;
+            C.remove(C.size()-1);
+        &#125;
+        return C;
+    &#125;
+
+&#125;
+</code></pre>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：2024年2月22日备战蓝桥杯-高精度相关算法</li>
+        <li>Post author：LiXiJian</li>
+        <li>Create time：2024-02-22 12:00:00</li>
+        <li>
+            Post link：https://redefine.evanluo.top/2024/02/22/2024年2月22日备战蓝桥杯-高精度相关算法/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2024/02/17/2024%E5%B9%B42%E6%9C%8817%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%A8%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">2024年2月17日备战蓝桥杯-质数相关算法</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%EF%BC%88JAVA%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-text">高精度（JAVA使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97100%E7%9A%84%E9%98%B6%E4%B9%98"><span class="nav-text">计算100的阶乘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-791-%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95"><span class="nav-text">AcWing 791. 高精度加法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-792-%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%87%8F%E6%B3%95"><span class="nav-text">AcWing 792. 高精度减法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-793-%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95"><span class="nav-text">AcWing 793. 高精度乘法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-794-%E9%AB%98%E7%B2%BE%E5%BA%A6%E9%99%A4%E6%B3%95%E5%92%8C%E6%B1%82%E4%BD%99"><span class="nav-text">AcWing 794. 高精度除法和求余</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%EF%BC%88%E6%89%8B%E5%86%99%E6%9D%BF%EF%BC%89"><span class="nav-text">高精度（手写板）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95"><span class="nav-text">高精度加法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-1"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-1"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-791-%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95-1"><span class="nav-text">AcWing 791. 高精度加法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%87%8F%E6%B3%95"><span class="nav-text">高精度减法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-2"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-2"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-2"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-792-%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%87%8F%E6%B3%95-1"><span class="nav-text">AcWing 792. 高精度减法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95-%E4%B9%98%E5%B0%8F%E6%95%B0"><span class="nav-text">高精度乘法-乘小数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-3"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-3"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-793-%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95-1"><span class="nav-text">AcWing 793. 高精度乘法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95-%E4%B8%A4%E5%A4%A7%E6%95%B0"><span class="nav-text">高精度乘法-两大数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-text">主要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-4"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-4"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#416-%E9%BA%A6%E6%A3%AE%E6%95%B0-%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%BF%AB%E9%80%9F%E5%B9%82-%E6%95%B0%E5%AD%A6"><span class="nav-text">416. 麦森数(高精度,快速幂,数学)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E9%99%A4%E6%B3%95"><span class="nav-text">高精度除法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-4"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-5"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-5"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-794-%E9%AB%98%E7%B2%BE%E5%BA%A6%E9%99%A4%E6%B3%95"><span class="nav-text">AcWing 794. 高精度除法</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">LiXiJian. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.4</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/12/31 16:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
