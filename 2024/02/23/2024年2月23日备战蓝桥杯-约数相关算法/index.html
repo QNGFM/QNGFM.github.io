@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="LiXiJian">
+    
+    <title>
+        
+            2024年2月23日备战蓝桥杯-约数相关算法 |
+        
+        LiXiJian&#39;s Blog
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"LiXiJian's Blog"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.4"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                LiXiJian&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月23日备战蓝桥杯-约数相关算法</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">LiXiJian</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2024-02-23 12:00:00</span>
+        <span class="mobile">2024-02-23 12:00</span>
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h3 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h3><h4 id="试除法求所有约数"><a href="#试除法求所有约数" class="headerlink" title="试除法求所有约数"></a>试除法求所有约数</h4><h5 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">vector&lt;int&gt; get_divisors(int x)
+&#123;
+    vector&lt;int&gt; res;
+    for (int i = 1; i &lt;= x / i; i ++ )
+        if (x % i == 0)
+        &#123;
+            res.push_back(i);
+            if (i != x / i) res.push_back(x / i);
+        &#125;
+    sort(res.begin(), res.end());
+    return res;
+&#125;
+</code></pre>
+<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><h6 id="869-试除法求约数"><a href="#869-试除法求约数" class="headerlink" title="869. 试除法求约数"></a>869. 试除法求约数</h6><pre><code class="java">import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main &#123;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        while(n--!=0) &#123;
+            long x=scanner.nextLong();
+            getDivisors(x);
+        &#125;
+        scanner.close();
+    &#125;
+
+    public static void getDivisors(long x) &#123;
+        List&lt;Long&gt; res=new ArrayList&lt;Long&gt;();
+        for(long i=1;i*i&lt;=x;i++) &#123;
+            if(x%i==0) &#123;
+                res.add(i);
+                if(i!=x/i) res.add(x/i);
+            &#125;
+        &#125;
+        Collections.sort(res);  // 对结果列表进行排序
+        
+        for (Long divisor : res) &#123;  // 迭代并打印排序后的因数列表
+            System.out.print(divisor+&quot; &quot;);
+        &#125;
+        System.out.println();
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="约数个数和约数之和"><a href="#约数个数和约数之和" class="headerlink" title="约数个数和约数之和"></a>约数个数和约数之和</h4><h5 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h5><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223105036163.png" alt="image-20240223105036163"></p>
+<p><strong>约数个数</strong></p>
+<p><strong>第一步</strong>：求出质因子及其指数  </p>
+<p><strong>第二步</strong>：造约数，一个质因子的指数选法取决于它的指数+1（加1是指可以取0）</p>
+<p><strong>第三步：</strong>使用乘法原理，将各质因子指数选法相乘，即可得出约数个数</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223111724257.png" alt="image-20240223111724257"></p>
+<p><strong>约数之和</strong></p>
+<p>通过一些穷举来进行理解公式</p>
+<p><strong>第一步</strong>：求出质因子及其指数  </p>
+<p><strong>第二步</strong>：按质因子分类完，通过<strong>相加，提取公因式</strong>可得 (p1^0 + p1^1 + … + p1^c1) * … * (pk^0 + pk^1 + … + pk^ck)</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223112557325.png" alt="image-20240223112557325"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223114114138.png" alt="image-20240223114114138"></p>
+<h5 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">如果 N = p1^c1 * p2^c2 * ... *pk^ck
+约数个数： (c1 + 1) * (c2 + 1) * ... * (ck + 1)
+约数之和： (p1^0 + p1^1 + ... + p1^c1) * ... * (pk^0 + pk^1 + ... + pk^ck)
+</code></pre>
+<h5 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h5><h6 id="870-约数个数"><a href="#870-约数个数" class="headerlink" title="870. 约数个数"></a>870. 约数个数</h6><p>HashMap的使用</p>
+<p><strong>插入键值对：</strong></p>
+<pre><code class="java">HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+map.put(&quot;One&quot;, 1);
+map.put(&quot;Two&quot;, 2);
+map.put(&quot;Three&quot;, 3);
+</code></pre>
+<p><strong>遍历键值对：</strong></p>
+<pre><code>for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;
+    String key = entry.getKey();
+    int value = entry.getValue();
+    // 执行操作
+&#125;
+</code></pre>
+<p><strong>默认值：</strong></p>
+<pre><code class="java">int defaultValue = map.getOrDefault(&quot;Four&quot;, 0); // 如果键&quot;Four&quot;不存在，返回默认值0
+</code></pre>
+<p><strong>易忘点：最后判断质因子</strong></p>
+<pre><code>if(x&gt;1) primes.put(x, primes.getOrDefault(x, 0)+1);
+</code></pre>
+<pre><code class="java">import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main &#123;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int MOD=(int) (1e9+7);
+        int n=scanner.nextInt();
+        Map&lt;Integer, Integer&gt; primes=new HashMap&lt;Integer, Integer&gt;();
+        while(n--!=0) &#123;
+            int x=scanner.nextInt();
+            
+            for(int i=2;i&lt;=x/i;i++) &#123;
+                while(x%i==0) &#123;
+                    x/=i;
+                    primes.put(i, primes.getOrDefault(i, 0)+1);
+                &#125;
+            &#125;
+            if(x&gt;1) primes.put(x, primes.getOrDefault(x, 0)+1);
+        &#125;
+        long res=1;
+        for(Map.Entry&lt;Integer, Integer&gt; entry:primes.entrySet()) &#123;
+            res = res*(entry.getValue()+1)%MOD;
+        &#125;
+        System.out.print(res);
+        scanner.close();
+    &#125;
+
+&#125;
+</code></pre>
+<h6 id="871-约数之和"><a href="#871-约数之和" class="headerlink" title="871. 约数之和"></a>871. 约数之和</h6><p>求(p1^0 + p1^1 + … + p1^c1)</p>
+<pre><code class="java">long t=1;
+while(c1--!=0)&#123;
+    t=(t*p+1)%MOD;
+&#125;
+</code></pre>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223153241687.png" alt="image-20240223153241687"></p>
+<p>下面是我写的，不能通过答案，因为Math.pow(z, i)这个会有大数出现</p>
+<pre><code class="java">long t=1;
+for(int i=1;i&lt;=value;i++) &#123;
+    t= (long) ((t+(long)Math.pow(z, i)%MOD)%MOD);
+&#125;
+</code></pre>
+<pre><code class="java">import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main &#123;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int MOD=(int) (1e9+7);
+        int n=scanner.nextInt();
+        Map&lt;Integer, Integer&gt; primes=new HashMap&lt;Integer, Integer&gt;();
+        while(n--!=0) &#123;
+            int x=scanner.nextInt();
+            
+            for(int i=2;i&lt;=x/i;i++) &#123;
+                while(x%i==0) &#123;
+                    x/=i;
+                    primes.put(i, primes.getOrDefault(i, 0)+1);
+                &#125;
+            &#125;
+            if(x&gt;1) primes.put(x, primes.getOrDefault(x, 0)+1);
+        &#125;
+        long res=1;
+        for(Map.Entry&lt;Integer, Integer&gt; entry:primes.entrySet()) &#123;
+            int a=entry.getValue();
+            int p=entry.getKey();
+            long t=1;
+            while(a--!=0)&#123;
+                t=(t*p+1)%MOD;
+            &#125;
+            res = res*t%MOD;
+        &#125;
+        System.out.print(res);
+        scanner.close();
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="欧几里得算法（辗转相除法）"><a href="#欧几里得算法（辗转相除法）" class="headerlink" title="欧几里得算法（辗转相除法）"></a>欧几里得算法（辗转相除法）</h4><h5 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h5><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240223161721856.png" alt="image-20240223161721856"></p>
+<h5 id="模板-2"><a href="#模板-2" class="headerlink" title="模板"></a>模板</h5><pre><code class="c++">int gcd(int a, int b)
+&#123;
+    return b ? gcd(b, a % b) : a;
+&#125;
+</code></pre>
+<h5 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h5><h6 id="872-最大公约数"><a href="#872-最大公约数" class="headerlink" title="872. 最大公约数"></a>872. 最大公约数</h6><pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        int n=scanner.nextInt();
+        while(n--!=0) &#123;
+            int a=scanner.nextInt(),b=scanner.nextInt();
+            System.out.println(gcb(a,b));
+        &#125;
+        scanner.close();
+
+    &#125;
+
+    private static int gcb(int a, int b) &#123;
+        return b!=0?gcb(b, a%b):a;
+    &#125;
+
+&#125;
+</code></pre>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：2024年2月23日备战蓝桥杯-约数相关算法</li>
+        <li>Post author：LiXiJian</li>
+        <li>Create time：2024-02-23 12:00:00</li>
+        <li>
+            Post link：https://redefine.evanluo.top/2024/02/23/2024年2月23日备战蓝桥杯-约数相关算法/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2024/02/22/2024%E5%B9%B42%E6%9C%8822%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">2024年2月22日备战蓝桥杯-高精度相关算法</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0"><span class="nav-text">约数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E6%B1%82%E6%89%80%E6%9C%89%E7%BA%A6%E6%95%B0"><span class="nav-text">试除法求所有约数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#869-%E8%AF%95%E9%99%A4%E6%B3%95%E6%B1%82%E7%BA%A6%E6%95%B0"><span class="nav-text">869. 试除法求约数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C%E7%BA%A6%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-text">约数个数和约数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-1"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#870-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0"><span class="nav-text">870. 约数个数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#871-%E7%BA%A6%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-text">871. 约数之和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%EF%BC%89"><span class="nav-text">欧几里得算法（辗转相除法）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-1"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-2"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-2"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#872-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="nav-text">872. 最大公约数</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">LiXiJian. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.4</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2022/12/31 16:45:14
+        </div>
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/runtime.js"></script>
+
+    
+<script src="/js/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
