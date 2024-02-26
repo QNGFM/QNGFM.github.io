@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块) |
+            2024年2月26日备战蓝桥杯-互质数的个数(数论 欧拉函数 快速幂) |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月26日备战蓝桥杯-互质数的个数(数论 欧拉函数 快速幂)</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-02-25 12:00:00</span>
-        <span class="mobile">2024-02-25 12:00</span>
+        <span class="pc">2024-02-26 12:00:00</span>
+        <span class="mobile">2024-02-26 12:00</span>
     </span>
     
     
@@ -219,111 +219,88 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="4662-因数平方和-数论-整数分块）"><a href="#4662-因数平方和-数论-整数分块）" class="headerlink" title="4662. 因数平方和(数论 整数分块）"></a><strong>4662. 因数平方和</strong>(数论 整数分块）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4665/">https://www.acwing.com/problem/content/4665/<i class="fa-solid fa-up-right-from-square"></i></a></p>
-<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>除以 1e9+7 的余数，即mod 1e9+7</p>
-<p>暴力：遍历求f(n)，累加，过程中进行mod</p>
-<p>结果不对，原因不详&#x3D;&gt;把t也变成long          <strong>long</strong> t&#x3D;(x&#x2F;i)%<em>MOD</em>;</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225164215714.png" alt="image-20240225164215714"></p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.util.Scanner;
+                <h2 id="4968-互质数的个数-数论-欧拉函数-快速幂）"><a href="#4968-互质数的个数-数论-欧拉函数-快速幂）" class="headerlink" title="4968. 互质数的个数(数论 欧拉函数 快速幂）"></a><strong>4968. 互质数的个数</strong>(数论 欧拉函数 快速幂）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4971/">https://www.acwing.com/problem/content/4971/<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>概念理解：<strong>互质是公约数只有1的两个整数，叫做互质整数</strong>。<strong>即最大公约数1</strong></p>
+<p>（1）两个不同的质数一定是互质数。（2）一个质数，另一个不为它的倍数，这两个数为互质数。</p>
+<p>先求出a^b(感觉范围是个问题），遍历1-a^b，通过gcb找到最大公约数是1的x</p>
+<p>如果快速幂a^b求模的话。会过滤很多数字吧，这里不懂了</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><p>暴力超时</p>
+<pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
-    
-    static int MOD=(int)1e9+7;
-
+    static final int MOD=998244353;
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt();
-        long sum=0;
-        for(int i=1;i&lt;=n;i++) &#123;
-            sum=(sum+getFn(i))%MOD;
+        long a=scanner.nextLong(),b=scanner.nextLong();
+        long n=qmi(a,b);
+        long ans=0;
+        for(long i=1;i&lt;n;i++) &#123;
+            if(gcb(i,n)==1) ans=(ans+1)%MOD;
         &#125;
-        System.out.print(sum);
+        System.out.print(ans);
         scanner.close();
     &#125;
-
-    public static long getFn(int x) &#123;
-        long temp=0;
-        for(long i=1;i&lt;=x/i;i++) &#123;
-            if(x%i==0) &#123;
-                temp=(temp+i*i)%MOD;
-                if(i!=x/i) &#123;
-                    long t=(x/i)%MOD;
-                    temp=(temp+t*t)%MOD;
-                &#125;
-            &#125;
+    public static int gcb(long a, long b) &#123;
+        return (int) (b!=0?gcb(b, a%b):a);
+    &#125;
+    public static long qmi(long a, long b) &#123;
+        long res=1;
+        long t=a;
+        while(b&gt;0) &#123;
+            if((b&amp;1)==1) res=res*t;
+            t=t*t;
+            b&gt;&gt;=1;
         &#125;
-        return temp;
+        return res;
     &#125;
 
 &#125;
 </code></pre>
-<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p>对于所有评测用例，1≤n≤1e9 <strong>不能暴力枚举，需要找数学性质</strong></p>
-<p>需要剪枝进行转换问题</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240224114101130.png" alt="image-20240224114101130"></p>
-<p>因数平方和问题变成下面的式子</p>
-<h4 id="整数分块"><a href="#整数分块" class="headerlink" title="整数分块"></a>整数分块</h4><p>$$<br>时间复杂度由O(n)变成O(2\sqrt{n})<br>$$</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225104343092.png" alt="image-20240225104343092"></p>
-<p>接下来是如何实现的问题？<strong>对于上面2这一段，开头的4好找，那么结尾5怎么找呢？</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225152506659.png" alt="image-20240225152506659"></p>
-<p>上面证明了y小于等于上界，那怎么<strong>证明y能取到上界？</strong></p>
-<h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a><strong>带余除法</strong></h4><p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225153659928.png" alt="image-20240225153659928"></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225155400153.png" alt="image-20240225155400153"></p>
-<p>先证明大于等于x，再证明小于等于x,最后说明y能取到</p>
-<p>前提：x不是任意的，是n&#x2F;i向下取整得到的</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161015779.png" alt="image-20240225161015779"></p>
-<p><strong>证明复杂，记住结论就行</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161116561.png" alt="image-20240225161116561"></p>
-<p>最终的式子如下，当i&#x3D;1,这个式子可以算出结尾y，那么y+1就是下一段的开头，我们就可以直接使i&#x3D;y+1</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161756085.png" alt="image-20240225161756085"></p>
-<h4 id="连续自然数平方和"><a href="#连续自然数平方和" class="headerlink" title="连续自然数平方和"></a>连续自然数平方和</h4><p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225163305699.png" alt="image-20240225163305699"></p>
-<p>3个相乘就是10^27会爆long（10^18）</p>
-<p>所以每两个相乘就mod；除6变成乘上逆元，逆元是要求满足逆元乘6模p等于1</p>
-<pre><code class="c++">for(int i=1;;i++)&#123;
-    if(i*6%p==1)&#123;
-        count&lt;&lt;i;
-        break;
-    &#125;
-&#125;
-得i=166666668
-
-/6=&gt;*166666668
-</code></pre>
-<pre><code class="java">static int INV = 166666668;
-public static long calc(int n) &#123;
-        return (long)n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
-&#125;
-</code></pre>
+<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><h4 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89.assets/image-20240226121542383.png" alt="image-20240226121542383"></p>
+<p>欧拉函数是包括N，题目要求不包括，<strong>当N等于1时，根据欧拉函数结果是1</strong></p>
+<p><strong>而当a^b&#x3D;&#x3D;1,题目中x取不到1，所以结果应输出0，所以代码需要判断一下</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89.assets/image-20240226124230748.png" alt="image-20240226124230748"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89.assets/image-20240226122052864.png" alt="image-20240226122052864"></p>
+<p>上面公式写反了</p>
+<p><strong>题目要求对答案取模，对a^b取模前是肯定可以整除分母的（因为都是质因子），取模后就不一定能，所以该如何取模呢？</strong></p>
+<p>分解a^b,对a^b-1取模就好，后面的单独a能整除完所有p</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89.assets/image-20240226122836211.png" alt="image-20240226122836211"></p>
 <h3 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h3><pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
-    
-    static int MOD=(int)1e9+7;
-    static int INV = 166666668;
-
+    static final int MOD=998244353;
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt();
-        long sum=0;
-        for(int i=1;i&lt;=n;) &#123;
-            int x=n/i,y=n/x;//这个除法已经向下取整
-            sum=(sum+x*(calc(y)-calc(i-1)))%MOD;//从i到y的平方和
-            i=y+1;//开始下一段
+        long a=scanner.nextLong(),b=scanner.nextLong();
+        if(a==1) &#123;
+            System.out.print(0);
+            return;
         &#125;
-        System.out.print((sum+MOD)%MOD);//因为有减法
+        long res=a,x=a;
+        for(int i=2;i&lt;=x/i;i++) &#123;
+            if(x%i==0) &#123;
+                res=res/i*(i-1);//欧拉公式
+                while(x%i==0) &#123;//把这个质因子除感觉
+                    x/=i;
+                &#125;
+            &#125;
+        &#125;
+        if(x&gt;1) res=res/x*(x-1);//确保最后一个质因子
+        res=res*qmi(a, b-1)%MOD;//欧拉公式
+        System.out.print(res);
         scanner.close();
     &#125;
-
-    public static long calc(int n) &#123;
-        return (long)n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
+    
+    public static long qmi(long a, long b) &#123;
+        long res=1;
+        while(b&gt;0) &#123;
+            if((b&amp;1)==1) res=res*a%MOD;
+            a=a*a%MOD;
+            b&gt;&gt;=1;
+        &#125;
+        return res;
     &#125;
 
-&#125;
-</code></pre>
-<p><strong>调试了很久的BUG</strong></p>
-<p>以下代码是错误的，因为n是int，两个n相乘会爆掉</p>
-<p>解决方案：1.int n改成long n 2. 返回结果加上(long)</p>
-<pre><code>public static long calc(int n) &#123;
-        return n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
 &#125;
 </code></pre>
 
@@ -333,11 +310,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</li>
+        <li>Post title：2024年2月26日备战蓝桥杯-互质数的个数(数论 欧拉函数 快速幂)</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-02-25 12:00:00</li>
+        <li>Create time：2024-02-26 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/02/25/2024年2月25日备战蓝桥杯-因数平方和(数论-整数分块）/
+            Post link：https://redefine.evanluo.top/2024/02/26/2024年2月26日备战蓝桥杯-互质数的个数(数论-欧拉函数-快速幂）/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -353,29 +330,14 @@ public class Main &#123;
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/02/26/2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月26日备战蓝桥杯-互质数的个数(数论 欧拉函数 快速幂)</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/02/23/2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
+                            href="/2024/02/25/2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月23日备战蓝桥杯-约数相关算法</span>
+                                    <span class="post-nav-title-item">2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -395,7 +357,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4662-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C-%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89"><span class="nav-text">4662. 因数平方和(数论 整数分块）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97"><span class="nav-text">整数分块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E4%BD%99%E9%99%A4%E6%B3%95"><span class="nav-text">带余除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E8%87%AA%E7%84%B6%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C"><span class="nav-text">连续自然数平方和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4968-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0-%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89"><span class="nav-text">4968. 互质数的个数(数论 欧拉函数 快速幂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">欧拉函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol>
     </div>
 </div>
             </div>
