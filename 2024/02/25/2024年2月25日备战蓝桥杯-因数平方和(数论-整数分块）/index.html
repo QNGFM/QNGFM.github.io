@@ -223,7 +223,7 @@
 <h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>除以 1e9+7 的余数，即mod 1e9+7</p>
 <p>暴力：遍历求f(n)，累加，过程中进行mod</p>
 <p>结果不对，原因不详&#x3D;&gt;把t也变成long          <strong>long</strong> t&#x3D;(x&#x2F;i)%<em>MOD</em>;</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225164215714.png" alt="image-20240225164215714"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225164215714.png" alt="image-20240225164215714"></p>
 <h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
@@ -259,23 +259,23 @@ public class Main &#123;
 </code></pre>
 <h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p>对于所有评测用例，1≤n≤1e9 <strong>不能暴力枚举，需要找数学性质</strong></p>
 <p>需要剪枝进行转换问题</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240224114101130.png" alt="image-20240224114101130"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240224114101130.png" alt="image-20240224114101130"></p>
 <p>因数平方和问题变成下面的式子</p>
 <h4 id="整数分块"><a href="#整数分块" class="headerlink" title="整数分块"></a>整数分块</h4><p>$$<br>时间复杂度由O(n)变成O(2\sqrt{n})<br>$$</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225104343092.png" alt="image-20240225104343092"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225104343092.png" alt="image-20240225104343092"></p>
 <p>接下来是如何实现的问题？<strong>对于上面2这一段，开头的4好找，那么结尾5怎么找呢？</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225152506659.png" alt="image-20240225152506659"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225152506659.png" alt="image-20240225152506659"></p>
 <p>上面证明了y小于等于上界，那怎么<strong>证明y能取到上界？</strong></p>
-<h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a><strong>带余除法</strong></h4><p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225153659928.png" alt="image-20240225153659928"></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225155400153.png" alt="image-20240225155400153"></p>
+<h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a><strong>带余除法</strong></h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225153659928.png" alt="image-20240225153659928"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225155400153.png" alt="image-20240225155400153"></p>
 <p>先证明大于等于x，再证明小于等于x,最后说明y能取到</p>
 <p>前提：x不是任意的，是n&#x2F;i向下取整得到的</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161015779.png" alt="image-20240225161015779"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225161015779.png" alt="image-20240225161015779"></p>
 <p><strong>证明复杂，记住结论就行</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161116561.png" alt="image-20240225161116561"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225161116561.png" alt="image-20240225161116561"></p>
 <p>最终的式子如下，当i&#x3D;1,这个式子可以算出结尾y，那么y+1就是下一段的开头，我们就可以直接使i&#x3D;y+1</p>
-<p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225161756085.png" alt="image-20240225161756085"></p>
-<h4 id="连续自然数平方和"><a href="#连续自然数平方和" class="headerlink" title="连续自然数平方和"></a>连续自然数平方和</h4><p><img lazyload src="/images/loading.svg" data-src="F:/学习笔记/acwing寒假每日一题.assets/image-20240225163305699.png" alt="image-20240225163305699"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225161756085.png" alt="image-20240225161756085"></p>
+<h4 id="连续自然数平方和"><a href="#连续自然数平方和" class="headerlink" title="连续自然数平方和"></a>连续自然数平方和</h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225163305699.png" alt="image-20240225163305699"></p>
 <p>3个相乘就是10^27会爆long（10^18）</p>
 <p>所以每两个相乘就mod；除6变成乘上逆元，逆元是要求满足逆元乘6模p等于1</p>
 <pre><code class="c++">for(int i=1;;i++)&#123;
