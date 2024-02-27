@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块) |
+            2024年2月27日备战蓝桥杯-仓库规划(枚举） |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月27日备战蓝桥杯-仓库规划(枚举）</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-02-25 12:00:00</span>
-        <span class="mobile">2024-02-25 12:00</span>
+        <span class="pc">2024-02-27 12:00:00</span>
+        <span class="mobile">2024-02-27 12:00</span>
     </span>
     
     
@@ -219,112 +219,88 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="4662-因数平方和-数论-整数分块）"><a href="#4662-因数平方和-数论-整数分块）" class="headerlink" title="4662. 因数平方和(数论 整数分块）"></a><strong>4662. 因数平方和</strong>(数论 整数分块）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4665/">https://www.acwing.com/problem/content/4665/<i class="fa-solid fa-up-right-from-square"></i></a></p>
-<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>除以 1e9+7 的余数，即mod 1e9+7</p>
-<p>暴力：遍历求f(n)，累加，过程中进行mod</p>
-<p>结果不对，原因不详&#x3D;&gt;把t也变成long          <strong>long</strong> t&#x3D;(x&#x2F;i)%<em>MOD</em>;</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97).assets/image-20240225164215714.png" alt="image-20240225164215714"></p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.util.Scanner;
+                <h2 id="5415-仓库规划-枚举）"><a href="#5415-仓库规划-枚举）" class="headerlink" title="5415. 仓库规划(枚举）"></a><strong>5415. 仓库规划</strong>(枚举）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5418/">https://www.acwing.com/problem/content/5418/<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>第一感觉：数据不知咋存储，用多维数组？</p>
+<p>用一维数组，下标0默认0</p>
+<p>两个问题：</p>
+<p>输入：一次性用一维数组输入</p>
+<p>枚举：第一层循环枚举每个仓库输出答案；第二层循环枚举其他仓库找上级，第三层循环进行逐个仓库的编码比较，这里确定编码位置是考验的，需要自己思考找规律，最终得出(i-1)*m+1+k，就找编号跟m的关系就行；因为最终的上级是每一个数都要大于它下级的，所以这里如果枚举到自己与其他仓库的关系是大于等于，就可以退出了</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><p>这么久来暴力枚举第一次accept</p>
+<pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
-    
-    static int MOD=(int)1e9+7;
 
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt();
-        long sum=0;
-        for(int i=1;i&lt;=n;i++) &#123;
-            sum=(sum+getFn(i))%MOD;
+        int n=scanner.nextInt(),m=scanner.nextInt();
+        int N=(int) (1e4+5);
+        int[] a=new int[N];
+        a[0]=0;
+        for(int i=1;i&lt;=n*m;i++) &#123;//一次性输入
+            a[i]=scanner.nextInt();
         &#125;
-        System.out.print(sum);
+        for(int i=1;i&lt;=n;i++) &#123;
+            int j;
+            for(j=1;j&lt;=n;j++) &#123;
+                if(j!=i) &#123;
+                    int k;
+                    for(k=0;k&lt;m;k++) &#123;
+                        int s1=a[(i-1)*m+1+k];//找编码
+                        int s2=a[(j-1)*m+1+k];
+                        if(s1&gt;=s2) break;//检查条件
+                    &#125;
+                    if(k==m) &#123;//找到上级了
+                        System.out.println(j);
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+            if(j&gt;n) System.out.println(0);//找不到上级
+        &#125;
         scanner.close();
     &#125;
 
-    public static long getFn(int x) &#123;
-        long temp=0;
-        for(long i=1;i&lt;=x/i;i++) &#123;
-            if(x%i==0) &#123;
-                temp=(temp+i*i)%MOD;
-                if(i!=x/i) &#123;
-                    long t=(x/i)%MOD;
-                    temp=(temp+t*t)%MOD;
-                &#125;
-            &#125;
-        &#125;
-        return temp;
-    &#125;
-
 &#125;
 </code></pre>
-<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p>对于所有评测用例，1≤n≤1e9 <strong>不能暴力枚举，需要找数学性质</strong></p>
-<p>需要剪枝进行转换问题</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240224114101130.png" alt="image-20240224114101130"></p>
-<p>因数平方和问题变成下面的式子</p>
-<h4 id="整数分块"><a href="#整数分块" class="headerlink" title="整数分块"></a>整数分块</h4><p>$$<br>时间复杂度由O(n)变成O(2\sqrt{n})<br>$$</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225104343092.png" alt="image-20240225104343092"></p>
-<p>接下来是如何实现的问题？<strong>对于上面2这一段，开头的4好找，那么结尾5怎么找呢？</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225152506659.png" alt="image-20240225152506659"></p>
-<p>上面证明了y小于等于上界，那怎么<strong>证明y能取到上界？</strong></p>
-<h4 id="带余除法"><a href="#带余除法" class="headerlink" title="带余除法"></a><strong>带余除法</strong></h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225153659928.png" alt="image-20240225153659928"></p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225155400153.png" alt="image-20240225155400153"></p>
-<p>先证明大于等于x，再证明小于等于x,最后说明y能取到</p>
-<p>前提：x不是任意的，是n&#x2F;i向下取整得到的</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225161015779.png" alt="image-20240225161015779"></p>
-<p><strong>证明复杂，记住结论就行</strong></p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225161116561.png" alt="image-20240225161116561"></p>
-<p>最终的式子如下，当i&#x3D;1,这个式子可以算出结尾y，那么y+1就是下一段的开头，我们就可以直接使i&#x3D;y+1</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225161756085.png" alt="image-20240225161756085"></p>
-<h4 id="连续自然数平方和"><a href="#连续自然数平方和" class="headerlink" title="连续自然数平方和"></a>连续自然数平方和</h4><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89.assets/image-20240225163305699.png" alt="image-20240225163305699"></p>
-<p>3个相乘就是10^27会爆long（10^18）</p>
-<p>所以每两个相乘就mod；除6变成乘上逆元，逆元是要求满足逆元乘6模p等于1</p>
-<pre><code class="c++">for(int i=1;;i++)&#123;
-    if(i*6%p==1)&#123;
-        count&lt;&lt;i;
-        break;
-    &#125;
-&#125;
-得i=166666668
-
-/6=&gt;*166666668
-</code></pre>
-<pre><code class="java">static int INV = 166666668;
-public static long calc(int n) &#123;
-        return (long)n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
-&#125;
-</code></pre>
+<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p>分析复杂度O(n^2m) 即10^7，可以暴力枚举</p>
+<p>用二维数组解决</p>
 <h3 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h3><pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
-    
-    static int MOD=(int)1e9+7;
-    static int INV = 166666668;
 
     public static void main(String[] args) &#123;
         Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt();
-        long sum=0;
-        for(int i=1;i&lt;=n;) &#123;
-            int x=n/i,y=n/x;//这个除法已经向下取整
-            sum=(sum+x*(calc(y)-calc(i-1)))%MOD;//从i到y的平方和
-            i=y+1;//开始下一段
+        int n=scanner.nextInt(),m=scanner.nextInt();
+        int N=1010,M=15;
+        int[][] a=new int[N][M];
+
+        for(int i=1;i&lt;=n;i++) &#123;
+            for(int j=0;j&lt;m;j++)
+            a[i][j]=scanner.nextInt();
         &#125;
-        System.out.print((sum+MOD)%MOD);//因为有减法
+        for(int i=1;i&lt;=n;i++) &#123;
+            int id=0;
+            for(int j=1;j&lt;=n;j++) &#123;
+                if(j!=i) &#123;
+                    boolean big=true;
+                    for(int k=0;k&lt;m;k++) &#123;
+                        if(a[i][k]&gt;=a[j][k]) &#123;
+                            big=false;
+                            break;
+                        &#125;
+                    &#125;
+                    if(big) &#123;
+                        id=j;
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+            System.out.println(id);
+        &#125;
         scanner.close();
     &#125;
 
-    public static long calc(int n) &#123;
-        return (long)n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
-    &#125;
-
 &#125;
-</code></pre>
-<p><strong>调试了很久的BUG</strong></p>
-<p>以下代码是错误的，因为n是int，两个n相乘会爆掉</p>
-<p>解决方案：1.int n改成long n 2. 返回结果加上(long)</p>
-<pre><code>public static long calc(int n) &#123;
-        return n*(n+1)%MOD*(2*n+1)%MOD*INV%MOD;//除6变成了乘逆元
- &#125;
 </code></pre>
 
             </div>
@@ -333,11 +309,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</li>
+        <li>Post title：2024年2月27日备战蓝桥杯-仓库规划(枚举）</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-02-25 12:00:00</li>
+        <li>Create time：2024-02-27 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/02/25/2024年2月25日备战蓝桥杯-因数平方和(数论-整数分块)/
+            Post link：https://redefine.evanluo.top/2024/02/27/2024年2月27日备战蓝桥杯-仓库规划(枚举)/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -353,29 +329,14 @@ public class Main &#123;
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/02/25/2024%E5%B9%B42%E6%9C%8825%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C(%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月25日备战蓝桥杯-因数平方和(数论 整数分块)</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/02/23/2024%E5%B9%B42%E6%9C%8823%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
+                            href="/2024/02/26/2024%E5%B9%B42%E6%9C%8826%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E4%BA%92%E8%B4%A8%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0(%E6%95%B0%E8%AE%BA-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%89/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月23日备战蓝桥杯-约数相关算法</span>
+                                    <span class="post-nav-title-item">2024年2月26日备战蓝桥杯-互质数的个数(数论 欧拉函数 快速幂)</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -395,7 +356,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4662-%E5%9B%A0%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C-%E6%95%B0%E8%AE%BA-%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97%EF%BC%89"><span class="nav-text">4662. 因数平方和(数论 整数分块）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E5%88%86%E5%9D%97"><span class="nav-text">整数分块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E4%BD%99%E9%99%A4%E6%B3%95"><span class="nav-text">带余除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E8%87%AA%E7%84%B6%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C"><span class="nav-text">连续自然数平方和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5415-%E4%BB%93%E5%BA%93%E8%A7%84%E5%88%92-%E6%9E%9A%E4%B8%BE%EF%BC%89"><span class="nav-text">5415. 仓库规划(枚举）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol>
     </div>
 </div>
             </div>
