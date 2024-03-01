@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年2月29日备战蓝桥杯-差分算法 |
+            2024年3月1日备战蓝桥杯-快读快写模板 |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年2月29日备战蓝桥杯-差分算法</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年3月1日备战蓝桥杯-快读快写模板</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-02-29 12:00:00</span>
-        <span class="mobile">2024-02-29 12:00</span>
+        <span class="pc">2024-03-01 12:00:00</span>
+        <span class="mobile">2024-03-01 12:00</span>
     </span>
     
     
@@ -219,219 +219,66 @@
             
 
             <div class="article-content markdown-body">
-                <h3 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h3><h4 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h4><h5 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h5><p>差分与前缀和是逆运算</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8829%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%AE%97%E6%B3%95.assets/image-20240229153926855.png" alt="image-20240229153926855"></p>
-<p>应用：当想给a数组的某个区间加上一个数，就不需要遍历这个区间（O(n)），只需在b数组处理O(1)。处理如下</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8829%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%AE%97%E6%B3%95.assets/image-20240229154711097.png" alt="image-20240229154711097"><strong>假设a数组初始0，那么b数组是0</strong>，初始化输入a数组相当于插入c，如b1即在[1,1]插入a1</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8829%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%AE%97%E6%B3%95.assets/image-20240229155532975.png" alt="image-20240229155532975"></p>
-<h5 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h5><pre><code>给区间[l, r]中的每个数加上c：B[l] += c, B[r + 1] -= c
-</code></pre>
-<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-797-差分"><a href="#AcWing-797-差分" class="headerlink" title="AcWing 797. 差分"></a>AcWing 797. 差分</h6><pre><code class="java">import java.util.Scanner;
+                <h3 id="更快的快读快写组合"><a href="#更快的快读快写组合" class="headerlink" title="更快的快读快写组合"></a>更快的快读快写组合</h3><pre><code class="java">import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main &#123;
-    static final int N=100010;
-    static int[] a=new int[N];
-    static int[] b=new int[N];
-    public static void main(String[] args) &#123;
-        Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt(),m=scanner.nextInt();
-        for(int i=1;i&lt;=n;i++) &#123;
-            a[i]=scanner.nextInt();
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            insert(i,i,a[i]);//构造b数组
-        &#125;
-        while(m--&gt;0) &#123;
-            int l=scanner.nextInt(),r=scanner.nextInt(),c=scanner.nextInt();
-            insert(l, r, c);//区间操作a
-        &#125;
-        //还原a数组值
-        for(int i=1;i&lt;=n;i++) b[i]+=b[i-1];
-        for(int i=1;i&lt;=n;i++) System.out.print(b[i]+&quot; &quot;);
-    &#125;
-    public static void insert(int l, int r, int c) &#123;
-        b[l]+=c;
-        b[r+1]-=c;
-        
-    &#125;
-    
 
-&#125;
-</code></pre>
-<h4 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h4><h5 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h5><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B42%E6%9C%8829%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BA%A6%E6%95%B0%E7%AE%97%E6%B3%95.assets/image-20240229161439704.png" alt="image-20240229161439704"></p>
-<p>初始化和后面的操作是一样的</p>
-<h5 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h5><pre><code>给以(x1, y1)为左上角，(x2, y2)为右下角的子矩阵中的所有元素加上c：
-S[x1, y1] += c, S[x2 + 1, y1] -= c, S[x1, y2 + 1] -= c, S[x2 + 1, y2 + 1] += c
-</code></pre>
-<h5 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h5><h6 id="AcWing-798-差分矩阵"><a href="#AcWing-798-差分矩阵" class="headerlink" title="AcWing 798. 差分矩阵"></a>AcWing 798. 差分矩阵</h6><pre><code class="java">import java.util.Scanner;
-
-public class Main &#123;
-    static int N=1010;
-    static int[][] a=new int[N][N];
-    static int[][] b=new int[N][N];
-
-
-    public static void main(String[] args) &#123;
-        Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt(),m=scanner.nextInt(),q=scanner.nextInt();
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=m;j++) &#123;
-                a[i][j]=scanner.nextInt();
-            &#125;
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=m;j++) &#123;
-                insert(i,j,i,j,a[i][j]);
-            &#125;
-        &#125;
-        
-        while(q--&gt;0) &#123;
-            int x1=scanner.nextInt(),y1=scanner.nextInt(),x2=scanner.nextInt(),y2=scanner.nextInt(),
-                    c=scanner.nextInt();
-            insert(x1, y1, x2, y2, c);
-        &#125;
-        
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=m;j++) &#123;
-                b[i][j]+=b[i-1][j]+b[i][j-1]-b[i-1][j-1];
-            &#125;
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=m;j++) &#123;
-                System.out.print(b[i][j]+&quot; &quot;);
-            &#125;
-            System.out.println();
-        &#125;
-        scanner.close();
-    &#125;
-
-
-    private static void insert(int x1, int y1, int x2, int y2, int c) &#123;
-        b[x1][y1]+=c;
-        b[x1][y2+1]-=c;
-        b[x2+1][y1]-=c;
-        b[x2+1][y2+1]+=c;
-        
-    &#125;
-
-&#125;
-</code></pre>
-<hr>
-<h2 id="5396-棋盘-差分）"><a href="#5396-棋盘-差分）" class="headerlink" title="5396. 棋盘(差分）"></a><strong>5396. 棋盘</strong>(差分）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5399/">https://www.acwing.com/problem/content/5399/<i class="fa-solid fa-up-right-from-square"></i></a></p>
-<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>初始化数组为0，变色区间统一加1</p>
-<p>然后统计数组中的数字，如果是偶数则棋子是白色；如果是奇数，则棋子是黑色（因为棋子翻一次为黑色，两次为白色，以此类推）</p>
-<p>结果是直接对2取模，0表示白色，1表示黑色</p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><p>我的代码超时了，<strong>可能是输入输出问题</strong></p>
-<pre><code class="java">import java.util.Scanner;
-
-public class Main &#123;
-    static int N=2010;
-    static int[][] b=new int[N][N];
-    public static void main(String[] args) &#123;
-        Scanner scanner=new Scanner(System.in);
-        int n=scanner.nextInt(),m=scanner.nextInt();
-        while(m--&gt;0) &#123;
-            int x1=scanner.nextInt(),y1=scanner.nextInt(),x2=scanner.nextInt(),y2=scanner.nextInt();
-            insert(x1,y1,x2,y2,1);
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=n;j++) &#123;
-                b[i][j]+=b[i-1][j]+b[i][j-1]-b[i-1][j-1];
-            &#125;
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=n;j++) &#123;
-                System.out.print(b[i][j]%2);
-            &#125;
-            System.out.println();
-        &#125;
-
-    &#125;
-    public static void insert(int x1, int y1, int x2, int y2,int c) &#123;
-        b[x1][y1]+=c;
-        b[x2+1][y1]-=c;
-        b[x1][y2+1]-=c;
-        b[x2+1][y2+1]+=c;
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>快读快写</strong></p>
-<p><strong>writer.flush();这个很重要不然不会输出</strong></p>
-<pre><code class="java">import java.io.*;
-import java.util.Scanner;
-
-
-public class Main &#123;
-    static int N=2010;
-    static int[][] b=new int[N][N];
     public static void main(String[] args) throws IOException &#123;
-        Scanner scanner=new Scanner(new BufferedInputStream(System.in));
+        FastReader reader = new FastReader();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n=scanner.nextInt(),m=scanner.nextInt();
-        while(m--&gt;0) &#123;
-            int x1=scanner.nextInt(),y1=scanner.nextInt(),x2=scanner.nextInt(),y2=scanner.nextInt();
-            insert(x1,y1,x2,y2,1);
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=n;j++) &#123;
-                b[i][j]+=b[i-1][j]+b[i][j-1]-b[i-1][j-1];
-                writer.write(Integer.toString(b[i][j] % 2));
-            &#125;
-            writer.write(&#39;\n&#39;);
-        &#125;
-        writer.flush();
-        scanner.close();
-    &#125;
-    public static void insert(int x1, int y1, int x2, int y2,int c) &#123;
-        b[x1][y1]+=c;
-        b[x2+1][y1]-=c;
-        b[x1][y2+1]-=c;
-        b[x2+1][y2+1]+=c;
+        int n = reader.nextInt();
+        int m = reader.nextInt();
+
+        writer.write(Integer.toString(n));
+        writer.write(&#39;\n&#39;);
+
+        writer.flush();//最后输出
     &#125;
 
+    static class FastReader &#123;
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader() &#123;
+            br = new BufferedReader(new InputStreamReader(System.in));
+        &#125;
+
+        String next() &#123;
+            while (st == null || !st.hasMoreElements()) &#123;
+                try &#123;
+                    st = new StringTokenizer(br.readLine());//默认空格分隔
+                &#125; catch (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            return st.nextToken();
+        &#125;
+
+        int nextInt() &#123;
+            return Integer.parseInt(next());
+        &#125;
+    &#125;
 &#125;
 </code></pre>
-<h3 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h3><p><strong>分奇偶输出结果</strong></p>
-<p>%2会有负数</p>
-<p>&amp;1不会有负数</p>
-<h3 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h3><pre><code class="java">import java.util.Scanner;
-import java.io.*;
+<h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p><code>StringTokenizer</code> 是 Java 中的一个类，用于将字符串分割成多个标记（tokens）。它是在早期版本的 Java 中引入的，但在现代 Java 中更推荐使用 <code>String.split()</code> 方法或正则表达式来进行字符串分割。</p>
+<p>使用 <code>StringTokenizer</code> 时，你可以指定一个分隔符，然后将字符串分割成多个部分，每个部分被称为一个标记。以下是一个简单的例子：</p>
+<pre><code class="java">import java.util.StringTokenizer;
 
-public class Main &#123;
-    static int N=2010;
-    static int[][] b=new int[N][N];
-    public static void main(String[] args) throws IOException&#123;
-        Scanner scanner=new Scanner(System.in);
-        BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
-        int n=scanner.nextInt(),m=scanner.nextInt();
-        while(m--&gt;0) &#123;
-            int x1=scanner.nextInt(),y1=scanner.nextInt(),x2=scanner.nextInt(),y2=scanner.nextInt();
-            b[x1][y1]++;
-            b[x2+1][y1]--;
-            b[x1][y2+1]--;
-            b[x2+1][y2+1]++;
-        &#125;
-        for(int i=1;i&lt;=n;i++) &#123;
-            for(int j=1;j&lt;=n;j++) &#123;
-                b[i][j]+=b[i-1][j]+b[i][j-1]-b[i-1][j-1];
-                writer.write(Integer.toString(b[i][j] % 2));
-            &#125;
-            writer.write(&#39;\n&#39;);
-        &#125;
-        writer.flush();
-        scanner.close();
-    &#125;
-    public static void insert(int x1, int y1, int x2, int y2,int c) &#123;
-        b[x1][y1]+=c;
-        b[x2+1][y1]-=c;
-        b[x1][y2+1]-=c;
-        b[x2+1][y2+1]+=c;
-    &#125;
+public class StringTokenizerExample &#123;
+    public static void main(String[] args) &#123;
+        String input = &quot;Java;C;C++;Python;Ruby&quot;;
+        StringTokenizer tokenizer = new StringTokenizer(input, &quot;;&quot;);
 
+        while (tokenizer.hasMoreTokens()) &#123;
+            String token = tokenizer.nextToken();
+            System.out.println(token);
+        &#125;
+    &#125;
 &#125;
 </code></pre>
+<p>在这个例子中，使用分号作为分隔符，将字符串 “Java;C;C++;Python;Ruby” 分割成多个标记，并通过 <code>StringTokenizer</code> 遍历输出每个标记。然而，请注意，由于 <code>StringTokenizer</code> 已经过时，推荐使用 <code>String.split()</code> 或正则表达式进行字符串分割，因为它们提供更灵活和强大的功能。</p>
 
             </div>
 
@@ -439,11 +286,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年2月29日备战蓝桥杯-差分算法</li>
+        <li>Post title：2024年3月1日备战蓝桥杯-快读快写模板</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-02-29 12:00:00</li>
+        <li>Create time：2024-03-01 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/02/29/2024年2月29日备战蓝桥杯-差分算法/
+            Post link：https://redefine.evanluo.top/2024/03/01/2024年3月1日备战蓝桥杯-快读快写模板/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -459,29 +306,14 @@ public class Main &#123;
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/03/01/2024%E5%B9%B43%E6%9C%881%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%BF%AB%E8%AF%BB%E5%BF%AB%E5%86%99%E6%A8%A1%E6%9D%BF/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年3月1日备战蓝桥杯-快读快写模板</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/02/28/2024%E5%B9%B42%E6%9C%8828%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%BF%BB%E8%BD%AC(%E6%80%9D%E7%BB%B4%E9%A2%98)/"
+                            href="/2024/02/29/2024%E5%B9%B42%E6%9C%8829%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年2月28日备战蓝桥杯-翻转(思维题)</span>
+                                    <span class="post-nav-title-item">2024年2月29日备战蓝桥杯-差分算法</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -501,7 +333,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E5%88%86"><span class="nav-text">差分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="nav-text">一维差分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-797-%E5%B7%AE%E5%88%86"><span class="nav-text">AcWing 797. 差分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="nav-text">二维差分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-1"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF-1"><span class="nav-text">模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AcWing-798-%E5%B7%AE%E5%88%86%E7%9F%A9%E9%98%B5"><span class="nav-text">AcWing 798. 差分矩阵</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5396-%E6%A3%8B%E7%9B%98-%E5%B7%AE%E5%88%86%EF%BC%89"><span class="nav-text">5396. 棋盘(差分）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%BF%AB%E7%9A%84%E5%BF%AB%E8%AF%BB%E5%BF%AB%E5%86%99%E7%BB%84%E5%90%88"><span class="nav-text">更快的快读快写组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTokenizer"><span class="nav-text">StringTokenizer</span></a></li></ol>
     </div>
 </div>
             </div>
