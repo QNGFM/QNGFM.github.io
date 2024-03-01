@@ -219,7 +219,37 @@
             
 
             <div class="article-content markdown-body">
-                <h3 id="更快的快读快写组合"><a href="#更快的快读快写组合" class="headerlink" title="更快的快读快写组合"></a>更快的快读快写组合</h3><pre><code class="java">import java.io.*;
+                <h3 id="快读模板"><a href="#快读模板" class="headerlink" title="快读模板"></a>快读模板</h3><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/10787634/">https://www.acwing.com/file_system/file/content/whole/index/content/10787634/<i class="fa-solid fa-up-right-from-square"></i></a></p>
+<pre><code class="java">//1快读int类型
+static class FastRead &#123;
+    StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+
+    public int nextInt() throws Exception &#123;
+        st.nextToken();
+        return (int) st.nval;
+    &#125;
+&#125;
+//2快读long类型
+static class FastRead&#123;
+    StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+    public Long nextLong() throws Exception&#123;
+        st.nextToken();
+        return (long) st.nval;
+    &#125;
+&#125;
+//3快读字符串和字符数组
+ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+</code></pre>
+<h3 id="快写模板"><a href="#快写模板" class="headerlink" title="快写模板"></a>快写模板</h3><p><strong>writer.flush();这个很重要不然不会输出</strong></p>
+<pre><code class="java">BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
+int n=scanner.nextInt();
+writer.write(Integer.toString(n));
+writer.write(&#39;\n&#39;);
+
+writer.flush();
+</code></pre>
+<h3 id="快读快写组合"><a href="#快读快写组合" class="headerlink" title="快读快写组合"></a>快读快写组合</h3><pre><code class="java">import java.io.*;
 import java.util.StringTokenizer;
 
 public class Main &#123;
@@ -237,48 +267,20 @@ public class Main &#123;
         writer.flush();//最后输出
     &#125;
 
-    static class FastReader &#123;
-        BufferedReader br;
-        StringTokenizer st;
+    static class FastRead &#123;
+        StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
 
-        public FastReader() &#123;
-            br = new BufferedReader(new InputStreamReader(System.in));
-        &#125;
-
-        String next() &#123;
-            while (st == null || !st.hasMoreElements()) &#123;
-                try &#123;
-                    st = new StringTokenizer(br.readLine());//默认空格分隔
-                &#125; catch (IOException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-            return st.nextToken();
-        &#125;
-
-        int nextInt() &#123;
-            return Integer.parseInt(next());
+        public int nextInt() throws Exception &#123;
+            st.nextToken();
+            return (int) st.nval;
         &#125;
     &#125;
 &#125;
 </code></pre>
-<h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p><code>StringTokenizer</code> 是 Java 中的一个类，用于将字符串分割成多个标记（tokens）。它是在早期版本的 Java 中引入的，但在现代 Java 中更推荐使用 <code>String.split()</code> 方法或正则表达式来进行字符串分割。</p>
-<p>使用 <code>StringTokenizer</code> 时，你可以指定一个分隔符，然后将字符串分割成多个部分，每个部分被称为一个标记。以下是一个简单的例子：</p>
-<pre><code class="java">import java.util.StringTokenizer;
-
-public class StringTokenizerExample &#123;
-    public static void main(String[] args) &#123;
-        String input = &quot;Java;C;C++;Python;Ruby&quot;;
-        StringTokenizer tokenizer = new StringTokenizer(input, &quot;;&quot;);
-
-        while (tokenizer.hasMoreTokens()) &#123;
-            String token = tokenizer.nextToken();
-            System.out.println(token);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<p>在这个例子中，使用分号作为分隔符，将字符串 “Java;C;C++;Python;Ruby” 分割成多个标记，并通过 <code>StringTokenizer</code> 遍历输出每个标记。然而，请注意，由于 <code>StringTokenizer</code> 已经过时，推荐使用 <code>String.split()</code> 或正则表达式进行字符串分割，因为它们提供更灵活和强大的功能。</p>
+<h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p><code>StringTokenizer</code> 是 Java 中的一个类，用于将字符串分割成多个标记（tokens）。它是在早期版本的 Java 中引入的.</p>
+<p><code>st.nextToken()</code> 是 <code>StringTokenizer</code> 类的方法，它用于获取下一个标记（token）。标记是通过指定的分隔符对输入字符串进行分割而得到的子字符串。在这里，<code>st</code> 是 <code>StringTokenizer</code> 的实例。</p>
+<p><code>st.nval</code> 是 <code>StringTokenizer</code> 类的字段，表示最后一次通过 <code>nextToken()</code> 方法获取的标记（token）对应的数值。由于 <code>nextToken()</code> 方法返回的是字符串，<code>nval</code> 被设计为 <code>double</code> 类型，用于存储可能是数字的标记的数值。在这里，通过 <code>(long) st.nval</code> 将 <code>double</code> 类型的数值转换为 <code>long</code> 类型，以符合返回值的类型。</p>
+<p>所以，<code>st.nextToken(); return (long) st.nval;</code> 的作用是获取下一个标记并将其转换为 <code>long</code> 类型的数值，用于处理从输入流中读取的数据。</p>
 
             </div>
 
@@ -333,7 +335,7 @@ public class StringTokenizerExample &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%BF%AB%E7%9A%84%E5%BF%AB%E8%AF%BB%E5%BF%AB%E5%86%99%E7%BB%84%E5%90%88"><span class="nav-text">更快的快读快写组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTokenizer"><span class="nav-text">StringTokenizer</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E8%AF%BB%E6%A8%A1%E6%9D%BF"><span class="nav-text">快读模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E5%86%99%E6%A8%A1%E6%9D%BF"><span class="nav-text">快写模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E8%AF%BB%E5%BF%AB%E5%86%99%E7%BB%84%E5%90%88"><span class="nav-text">快读快写组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringTokenizer"><span class="nav-text">StringTokenizer</span></a></li></ol>
     </div>
 </div>
             </div>
