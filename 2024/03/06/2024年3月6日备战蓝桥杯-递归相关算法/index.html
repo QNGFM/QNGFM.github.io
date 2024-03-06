@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年3月5日备战蓝桥杯-壁画(前缀和 枚举 思维) |
+            2024年3月6日备战蓝桥杯-递归相关算法 |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年3月5日备战蓝桥杯-壁画(前缀和 枚举 思维)</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年3月6日备战蓝桥杯-递归相关算法</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-03-05 12:00:00</span>
-        <span class="mobile">2024-03-05 12:00</span>
+        <span class="pc">2024-03-06 12:00:00</span>
+        <span class="mobile">2024-03-06 12:00</span>
     </span>
     
     
@@ -219,40 +219,213 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="562-壁画-前缀和-枚举-思维）"><a href="#562-壁画-前缀和-枚举-思维）" class="headerlink" title="562. 壁画(前缀和 枚举 思维）"></a><strong>562. 壁画</strong>(前缀和 枚举 思维）</h2><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/564/">https://www.acwing.com/problem/content/564/<i class="fa-solid fa-up-right-from-square"></i></a></p>
-<h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>将n个墙段除以2，得到要丢掉的墙段数，然后枚举出n-n&#x2F;2个连续的墙段评分最大和（使用到前缀和）</p>
-<p>暴力枚举最大前缀和，因为长度固定了</p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><pre><code class="java">import java.io.*;
-import java.util.Scanner;
-
+                <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>自己调用自己</p>
+<p><strong>任何递归都有一颗搜索树</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240305204217152.png" alt="image-20240305204217152"></p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><h5 id="AcWing-92-递归实现指数型枚举"><a href="#AcWing-92-递归实现指数型枚举" class="headerlink" title="AcWing 92. 递归实现指数型枚举"></a>AcWing 92. 递归实现指数型枚举</h5><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240305205438901.png" alt="image-20240305205438901"></p>
+<p>每一个数都有两个分支，选或者不选</p>
+<pre><code class="java">import java.util.Scanner;
 
 public class Main &#123;
-
-    public static void main(String[] args) throws Exception &#123;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
-        int T=Integer.parseInt(reader.readLine());
-        for(int k=1;k&lt;=T;k++)&#123;
-            int n=Integer.parseInt(reader.readLine());
-            String s=reader.readLine();
-            int[] a=new int[s.length()+5];
-            int[] sum=new int[s.length()+5];
-            for(int i=1;i&lt;=s.length();i++) &#123;
-                a[i]=s.charAt(i-1)-&#39;0&#39;;
-                sum[i]=sum[i-1]+a[i];
-            &#125;
-            int max=n-n/2;//连续墙段数
-            long res=0;
-            for(int i=1;i+max-1&lt;=n;i++) &#123;
-                if(sum[i+max-1]-sum[i-1]&gt;res) &#123;//找最大的得分
-                    res=sum[i+max-1]-sum[i-1];
-                &#125;
-            &#125;	
-            writer.write(String.format(&quot;Case #%d: %d%n&quot;, k,res));
-        &#125;
-        writer.flush();
+    static final int N=16;
+    static int n;
+    static int[] st=new int[N];//记录状态，0表示没有考虑，1表示选，2表示不选
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        n=scanner.nextInt();
+        
+        dfs(1);
+        
+        scanner.close();
 
     &#125;
+    public static void dfs(int u) &#123;
+        //边界条件
+        if(u&gt;n) &#123;//已经枚举完所有数
+            for(int i=1;i&lt;=n;i++) &#123;
+                if(st[i]==1) &#123;
+                    System.out.print(i+&quot; &quot;);
+                &#125;
+            &#125;
+            System.out.println();
+            return;
+        &#125;
+        
+        //第一个分支：选
+        st[u]=1;
+        dfs(u+1);
+        st[u]=0;//恢复现场
+        
+        //第一个分支：不选
+        st[u]=2;
+        dfs(u+1);
+        st[u]=0;//恢复现场
+        
+    &#125;
+
+&#125;
+</code></pre>
+<h5 id="AcWing-94-递归实现排列型枚举"><a href="#AcWing-94-递归实现排列型枚举" class="headerlink" title="AcWing 94. 递归实现排列型枚举"></a>AcWing 94. 递归实现排列型枚举</h5><p>估计时间复杂度,得出相应方法&#x3D;&gt;dfs</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240305213227315.png" alt="image-20240305213227315"></p>
+<p>按顺序枚举，能保证字典序最小</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240306204522190.png" alt="image-20240306204522190"></p>
+<p>时间复杂度分析与证明（放缩法）看的朦朦的</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240306211705168.png" alt="image-20240306211705168"></p>
+<pre><code class="java">import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class Main &#123;
+    static int N=15;
+    static int n;
+    static BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
+    static int[] st=new int[N];//0表示未放任何数
+    static boolean[] used=new boolean[N];//false表示未被使用
+    public static void main(String[] args) throws Exception&#123;
+        Scanner scanner=new Scanner(System.in);
+        n=scanner.nextInt();
+        
+        dfs(1);
+        
+        scanner.close();
+        writer.flush();
+    &#125;
+    public static void dfs(int u) throws Exception &#123;
+        //边界条件
+        if(u&gt;n) &#123;
+            for(int i=1;i&lt;=n;i++) &#123;
+                writer.write(st[i]+&quot; &quot;);
+            &#125;
+            writer.write(&quot;\n&quot;);
+            return;
+        &#125;
+        
+        //枚举每一种方案
+        for(int i=1;i&lt;=n;i++) &#123;
+            if(!used[i]) &#123;
+                st[u]=i;
+                used[i]=true;
+                dfs(u+1);
+                
+                //恢复现场
+                st[u]=0;
+                used[i]=false;
+            &#125;
+        &#125;
+        
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h4><h5 id="AcWing-93-递归实现组合型枚举"><a href="#AcWing-93-递归实现组合型枚举" class="headerlink" title="AcWing 93. 递归实现组合型枚举"></a>AcWing 93. 递归实现组合型枚举</h5><h6 id="我的思路："><a href="#我的思路：" class="headerlink" title="我的思路："></a>我的思路：</h6><p>枚举每个位置的数字，思路同94</p>
+<p>但是题目要求按照从小到大的顺序输出所有方案，所以需要加限制条件</p>
+<p><strong>当前位置枚举的数要大于上一位置的数</strong></p>
+<h6 id="我的代码："><a href="#我的代码：" class="headerlink" title="我的代码："></a>我的代码：</h6><p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240306223250877.png" alt="image-20240306223250877"></p>
+<p>acwing优化后加上快读，之前所有都是快写，跟c++比也不是一个级别，网友说：<strong>”正常，java总是用new,new一次是相当慢的“</strong></p>
+<p>百度说：<strong>”一般来说java程序执行速度要比C++慢10-30倍。“</strong></p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240306224542405.png" alt="image-20240306224542405"></p>
+<pre><code class="java">import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class Main &#123;
+    static int N=30;
+    static int n;
+    static int m;
+    static BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
+    static int[] st=new int[N];//0表示未放任何数
+    static boolean[] used=new boolean[N];//false表示未被使用
+    public static void main(String[] args) throws Exception&#123;
+        Scanner scanner=new Scanner(System.in);
+        n=scanner.nextInt();
+        m=scanner.nextInt();
+        
+        dfs(1);
+        
+        scanner.close();
+        writer.flush();
+    &#125;
+    public static void dfs(int u) throws Exception &#123;
+        //边界条件
+        if(u&gt;m) &#123;
+            for(int i=1;i&lt;=m;i++) &#123;
+                writer.write(st[i]+&quot; &quot;);
+            &#125;
+            writer.write(&quot;\n&quot;);
+            return;
+        &#125;
+        
+        //枚举每一种方案
+        for(int i=1;i&lt;=n;i++) &#123;
+            if(!used[i]&amp;&amp;i&gt;st[u-1]) &#123;
+                st[u]=i;
+                used[i]=true;
+                dfs(u+1);
+                
+                //恢复现场
+                st[u]=0;
+                used[i]=false;
+            &#125;
+        &#125;
+        
+    &#125;
+
+&#125;
+</code></pre>
+<h6 id="acwing的思路："><a href="#acwing的思路：" class="headerlink" title="acwing的思路："></a>acwing的思路：</h6><p>调用参数加入start，表示从这个数开始枚举，由此确保比前一个位置数大</p>
+<p><strong>并且进行剪枝：如果后面的数不足于达到我要输出的数量则结束</strong></p>
+<p>u表示当前位置还没选上数，u+n-start&lt;m 这条式子成立说明后面的数不足了</p>
+<p>优化完时间快3倍</p>
+<h6 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码:"></a>acwing的代码:</h6><pre><code class="java">import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class Main &#123;
+    static int N=30;
+    static int n;
+    static int m;
+    static BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
+    static int[] st=new int[N];//0表示未放任何数
+    static boolean[] used=new boolean[N];//false表示未被使用
+    public static void main(String[] args) throws Exception&#123;
+        Scanner scanner=new Scanner(System.in);
+        n=scanner.nextInt();
+        m=scanner.nextInt();
+        
+        dfs(1,1);
+        
+        scanner.close();
+        writer.flush();
+    &#125;
+    public static void dfs(int u,int start) throws Exception &#123;
+        if(u+n-start&lt;m) return; //剪枝
+        //边界条件
+        if(u&gt;m) &#123;
+            for(int i=1;i&lt;=m;i++) &#123;
+                writer.write(st[i]+&quot; &quot;);
+            &#125;
+            writer.write(&quot;\n&quot;);
+            return;
+        &#125;
+        
+        //枚举每一种方案
+        for(int i=start;i&lt;=n;i++) &#123;
+            if(!used[i]) &#123;
+                st[u]=i;
+                used[i]=true;
+                dfs(u+1,i+1);
+                
+                //恢复现场
+                st[u]=0;
+                used[i]=false;
+            &#125;
+        &#125;
+        
+    &#125;
+
 &#125;
 </code></pre>
 
@@ -262,11 +435,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年3月5日备战蓝桥杯-壁画(前缀和 枚举 思维)</li>
+        <li>Post title：2024年3月6日备战蓝桥杯-递归相关算法</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-03-05 12:00:00</li>
+        <li>Create time：2024-03-06 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/03/05/2024年3月5日备战蓝桥杯-壁画(前缀和 枚举 思维)/
+            Post link：https://redefine.evanluo.top/2024/03/06/2024年3月6日备战蓝桥杯-递归相关算法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -282,29 +455,14 @@ public class Main &#123;
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/03/06/2024%E5%B9%B43%E6%9C%886%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E5%BD%92%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年3月6日备战蓝桥杯-递归相关算法</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/03/04/2024%E5%B9%B43%E6%9C%884%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%80%9F%E6%95%99%E5%AE%A4(%E4%BA%8C%E5%88%86%20%E5%B7%AE%E5%88%86)/"
+                            href="/2024/03/05/2024%E5%B9%B43%E6%9C%885%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%A3%81%E7%94%BB(%E5%89%8D%E7%BC%80%E5%92%8C%20%E6%9E%9A%E4%B8%BE%20%E6%80%9D%E7%BB%B4)/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年3月4日备战蓝桥杯-借教室(二分 差分)</span>
+                                    <span class="post-nav-title-item">2024年3月5日备战蓝桥杯-壁画(前缀和 枚举 思维)</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -324,7 +482,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#562-%E5%A3%81%E7%94%BB-%E5%89%8D%E7%BC%80%E5%92%8C-%E6%9E%9A%E4%B8%BE-%E6%80%9D%E7%BB%B4%EF%BC%89"><span class="nav-text">562. 壁画(前缀和 枚举 思维）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">我的代码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-92-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8C%87%E6%95%B0%E5%9E%8B%E6%9E%9A%E4%B8%BE"><span class="nav-text">AcWing 92. 递归实现指数型枚举</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-94-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE"><span class="nav-text">AcWing 94. 递归实现排列型枚举</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-text">习题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-93-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E7%BB%84%E5%90%88%E5%9E%8B%E6%9E%9A%E4%B8%BE"><span class="nav-text">AcWing 93. 递归实现组合型枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">我的思路：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-text">我的代码：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">acwing的思路：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码:</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
             </div>
