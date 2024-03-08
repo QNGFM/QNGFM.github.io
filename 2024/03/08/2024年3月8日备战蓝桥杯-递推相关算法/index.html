@@ -9,7 +9,7 @@
     
     <title>
         
-            2024年3月7日备战蓝桥杯- 带分数(dfs全排列) |
+            2024年3月8日备战蓝桥杯-递推相关算法 |
         
         LiXiJian&#39;s Blog
     </title>
@@ -178,7 +178,7 @@
     <div class="post-page-container">
         <div class="article-content-container">
             <div class="article-title">
-                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年3月7日备战蓝桥杯- 带分数(dfs全排列)</h1></span>
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">2024年3月8日备战蓝桥杯-递推相关算法</h1></span>
             </div>
 
             
@@ -197,8 +197,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2024-03-07 12:00:00</span>
-        <span class="mobile">2024-03-07 12:00</span>
+        <span class="pc">2024-03-08 12:00:00</span>
+        <span class="mobile">2024-03-08 12:00</span>
     </span>
     
     
@@ -219,152 +219,148 @@
             
 
             <div class="article-content markdown-body">
-                <h5 id="AcWing-1209-带分数（dfs全排列）"><a href="#AcWing-1209-带分数（dfs全排列）" class="headerlink" title="AcWing 1209. 带分数（dfs全排列）"></a>AcWing 1209. 带分数（dfs全排列）</h5><p><a class="link" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1211/">https://www.acwing.com/problem/content/1211/<i class="fa-solid fa-up-right-from-square"></i></a></p>
-<h6 id="我的思路："><a href="#我的思路：" class="headerlink" title="我的思路："></a>我的思路：</h6><p>注意特征：带分数中，数字 1∼9 分别出现且只出现一次（不包含 0）。</p>
-<p>根据上面这一句话，可以知道是枚举，但感觉很复杂</p>
-<p>我的思路是:先排列型枚举9个数字，然后进行分割验算，切割成三部分(两层循环实现)</p>
-<p>验证等式 由 n&#x3D;a+b&#x2F;c变成 <strong>n*c&#x3D;a*c+b</strong> (除法变乘法好运算)</p>
-<h6 id="我的代码："><a href="#我的代码：" class="headerlink" title="我的代码："></a>我的代码：</h6><pre><code class="java">import java.util.Scanner;
+                <h3 id="递推"><a href="#递推" class="headerlink" title="递推"></a>递推</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p><strong>递归是总问题向下分解为同类子问题；递推是先计算子问题，再根据子问题推出推出总问题</strong></p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><h5 id="AcWing-717-简单斐波那契"><a href="#AcWing-717-简单斐波那契" class="headerlink" title="AcWing 717. 简单斐波那契"></a>AcWing 717. 简单斐波那契</h5><pre><code class="java">import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 public class Main &#123;
-    static int N=15;
-    static int n;
-    static int[] st=new int[N];
-    static boolean[] used=new boolean[N];
-    static int res=0;
-    public static void main(String[] args) &#123;
+
+    public static void main(String[] args) throws Exception &#123;
         Scanner scanner=new Scanner(System.in);
-        n=scanner.nextInt();
+        BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
+        int n=scanner.nextInt();
+        int[] f=new int[n+5];
+        f[0]=0;f[1]=1;
+        for(int i=2;i&lt;n;i++) &#123;
+            f[i]=f[i-1]+f[i-2];
+        &#125;
+        for(int i=0;i&lt;n;i++) &#123;
+            writer.write(f[i]+&quot; &quot;);
+        &#125;
         
-        dfs(1);
-        
-        System.out.print(res);
+        writer.flush();
         scanner.close();
-
-    &#125;
-
-    public static void dfs(int u) &#123;
-        if(u&gt;9) &#123;
-            for(int i=1;i&lt;=7;i++) &#123;//留两位给后面的b,c
-                for(int j=i+1;j&lt;=8;j++) &#123;//留一位给后面的c
-                    int a=getNum(1,i);
-                    int b=getNum(i+1,j);
-                    int c=getNum(j+1,9);
-                    if(check(a,b,c)) res++;
-                &#125;
-            &#125;
-        &#125;
-        
-        for(int i=1;i&lt;=9;i++) &#123;
-            if(!used[i]) &#123;
-                st[u]=i;
-                used[i]=true;
-                dfs(u+1);
-                
-                //恢复现场
-                st[u]=0;
-                used[i]=false;
-            &#125;
-        &#125;
         
     &#125;
-
-    private static boolean check(int a, int b, int c) &#123;
-        if(n*c==a*c+b) return true;
-        return false;
-    &#125;
-
-    private static int getNum(int l, int r) &#123;
-        int temp=0;
-        for(int i=r;i&gt;=l;i--) &#123;
-            temp=temp*10+st[i];
-        &#125;
-        return temp;
-    &#125;
-    
-    
 
 &#125;
 </code></pre>
-<h6 id="acwing的思路："><a href="#acwing的思路：" class="headerlink" title="acwing的思路："></a>acwing的思路：</h6><p>注意等式题目没说是整除，是带小数点的</p>
-<p>暴力思路：</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%887%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%B8%A6%E5%88%86%E6%95%B0(dfs%E5%85%A8%E6%8E%92%E5%88%97).assets/image-20240307152438438.png" alt="image-20240307152438438"></p>
-<p>优化：</p>
-<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%887%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%B8%A6%E5%88%86%E6%95%B0(dfs%E5%85%A8%E6%8E%92%E5%88%97).assets/image-20240307154722979.png" alt="image-20240307154722979"></p>
-<p>针对a的叶子节点再去枚举c</p>
-<p>判断b：根据a,c求出b，再逐位标记b中的数字，最后检查所有数字都已经用上</p>
-<h6 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码:"></a>acwing的代码:</h6><pre><code class="java">import java.util.Scanner;
+<h6 id="滚动数组：节省空间"><a href="#滚动数组：节省空间" class="headerlink" title="滚动数组：节省空间"></a>滚动数组：节省空间</h6><pre><code class="java">import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 public class Main &#123;
-    static int N=15;
-    static int n;
-    static int[] st=new int[N];
-    static boolean[] used=new boolean[N];
-    static int res=0;
-    public static void main(String[] args) &#123;
+
+    public static void main(String[] args) throws Exception &#123;
         Scanner scanner=new Scanner(System.in);
-        n=scanner.nextInt();
+        BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(System.out));
+        int n=scanner.nextInt();
+        int[] f=new int[n+5];
+        int a=0,b=1;
+        for(int i=1;i&lt;=n;i++) &#123;
+            writer.write(a+&quot; &quot;);
+            int fn=a+b;
+            a=b;b=fn;
+        &#125;
         
-        dfs_a(0,0);
         
-        System.out.print(res);
+        writer.flush();
         scanner.close();
-
+        
     &#125;
 
-    public static void dfs_a(int u,int a) &#123;//u表示枚举的位数，
-        if(a&gt;=n) return;//根据等式剪枝
-        if(a!=0) dfs_c(u,a,0);
+&#125;
+</code></pre>
+<h5 id="AcWing-95-费解的开关"><a href="#AcWing-95-费解的开关" class="headerlink" title="AcWing 95. 费解的开关"></a>AcWing 95. 费解的开关</h5><h6 id="acwing的思路"><a href="#acwing的思路" class="headerlink" title="acwing的思路"></a>acwing的思路</h6><p><strong>核心性质：1.顺序可以任意，最终结果都一样；2.每个格子只能按一次，因为按2次相当于没按</strong></p>
+<p>操作完第一行，第二行的操作是固定的，即<strong>第一行亮的下面位置是肯定不能按的，第一行不亮的下面位置肯定是要按的</strong></p>
+<p>以此类推，下一行肯定取决于上一行</p>
+<p><strong>每一行开关的操作，完全被前一行的灯的亮灭状态所决定</strong></p>
+<p>最后再判断最后一行的亮灯状态来确定这个方案是否合理</p>
+<p>问题1：如何确定第一行的状态，这里的方案是枚举，那怎么枚举呢？</p>
+<p>第一行有5个数，可以用二进制表示，1表示操作，0表示不操作，那么总共方案就是<strong>0-2^5-1&#x3D;31</strong>，总32种</p>
+<p>这样子第一行的状态就确定了，然后我们可以根据移位来判断哪个位置为1，<strong>i&gt;&gt;k&amp;1</strong> 这个等式如果等于1，那么就表示第k位是1</p>
+<p>问题2：怎么进行开关操作</p>
+<p>定义偏移量，来确定5个格子 x&#x3D;[0,0,0,1,-1] y&#x3D;[0,1,-1,0,0] </p>
+<p><img lazyload src="/images/loading.svg" data-src="/../2024%E5%B9%B43%E6%9C%888%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E6%8E%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.assets/image-20240308134633877.png" alt="image-20240308134633877"></p>
+<h6 id="acwing的代码"><a href="#acwing的代码" class="headerlink" title="acwing的代码"></a>acwing的代码</h6><pre><code class="java">import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+
+public class Main &#123;
+    static int N=6;//字符串还要留一位装&#39;\0&#39;
+    static char[][] g=new char[N][N];
+    static char[][] backup=new char[N][N];
+    static int[] dx= &#123;0,0,0,1,-1&#125;;
+    static int[] dy= &#123;0,1,-1,0,0&#125;;
+    public static void main(String[] args) throws Exception &#123;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        int n=Integer.parseInt(reader.readLine());
         
-        for(int i=1;i&lt;=9;i++) &#123;
-            if(!used[i]) &#123;
-                used[i]=true;
-                dfs_a(u+1,a*10+i);
-                
-                //恢复现场
-                used[i]=false;
+        while(n--&gt;0) &#123;
+            for(int i=0;i&lt;5;i++) &#123;//输入初始状态
+                g[i]=reader.readLine().toCharArray();
             &#125;
-        &#125;
-        
-    &#125;
-
-    private static void dfs_c(int u, int a, int c) &#123;
-        if(u&gt;=9) return;//剪枝，已经没有数给b
-        
-        if(check(a, c)) res++;
-        
-        for(int i=1;i&lt;=9;i++) &#123;
-            if(!used[i]) &#123;
-                used[i]=true;
-                dfs_c(u+1,a,c*10+i);
-                
-                //恢复现场
-                used[i]=false;
+            reader.readLine();//d
+            
+            int res=10;
+            
+            for(int i=0;i&lt;g.length;i++) &#123;
+                backup[i]=Arrays.copyOf(g[i], g[i].length);//保留一份，便于后续恢复
             &#125;
+            
+            
+            for(int op=0;op&lt;32;op++) &#123;//第一行有32种可能方案
+                int step=0;
+                for(int i=0;i&lt;5;i++) &#123;//根据op确定第一行状态
+                    if(((op&gt;&gt;i)&amp;1)==1) &#123;//1表示操作
+                        step++;
+                        turn(0,i);//发送操作位置
+                    &#125;
+                &#125;
+                
+                for(int i=0;i&lt;4;i++) &#123;//操作后四行
+                    for(int j=0;j&lt;5;j++) &#123;
+                        if(g[i][j]==&#39;0&#39;) &#123;//灯不亮
+                            step++;
+                            turn(i+1,j);//前一行状态决定下一行
+                        &#125;
+                    &#125;
+                &#125;
+                
+                boolean dark=false;//检查最后一行，一开始假设都是亮
+                for(int i=0;i&lt;5;i++) &#123;
+                    if(g[4][i]==&#39;0&#39;) &#123;
+                        dark=true;
+                        break;
+                    &#125;
+                &#125;
+                
+                if(!dark) res=Math.min(res, step);
+                for(int i=0;i&lt;backup.length;i++) &#123;
+                    g[i]=Arrays.copyOf(backup[i], backup[i].length);//保留一份，便于后续恢复
+                &#125;
+                
+                
+            &#125;
+            
+            if(res&gt;6) res=-1;
+            System.out.println(res);
         &#125;
-        
-        
-    &#125;
 
-    private static boolean check(int a, int c) &#123;
-        long b=(long)n*c-a*c;
-        if(a==0||b==0||c==0) return false;//不允许有0出现
-        boolean[] backup=used.clone();
-        
-        while(b!=0) &#123;
-            int x=(int) (b%10);
-            b/=10;
-            if(x==0||backup[x]) return false;//为0或之前用过了
-            backup[x]=true;//标记使用了
-        &#125;
-        
-        for(int i=1;i&lt;=9;i++) &#123;
-            if(!backup[i]) return false;//还有数字没填上
-        &#125;
-        
-        return true;
     &#125;
-
+    private static void turn(int x, int y) &#123;
+        for(int i=0;i&lt;5;i++) &#123;
+            int a=x+dx[i],b=y+dy[i];
+            //检查边界
+            if(a&lt;0||a&gt;=5||b&lt;0||b&gt;=5) continue;
+            g[a][b]^=1;//异或1，0变1，1变0
+        &#125;
+    &#125;
+    
 
 &#125;
 </code></pre>
@@ -375,11 +371,11 @@ public class Main &#123;
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2024年3月7日备战蓝桥杯- 带分数(dfs全排列)</li>
+        <li>Post title：2024年3月8日备战蓝桥杯-递推相关算法</li>
         <li>Post author：LiXiJian</li>
-        <li>Create time：2024-03-07 12:00:00</li>
+        <li>Create time：2024-03-08 12:00:00</li>
         <li>
-            Post link：https://redefine.evanluo.top/2024/03/07/2024年3月7日备战蓝桥杯- 带分数(dfs全排列)/
+            Post link：https://redefine.evanluo.top/2024/03/08/2024年3月8日备战蓝桥杯-递推相关算法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -395,26 +391,11 @@ public class Main &#123;
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/03/08/2024%E5%B9%B43%E6%9C%888%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E9%80%92%E6%8E%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">2024年3月8日备战蓝桥杯-递推相关算法</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/03/07/2024%E5%B9%B43%E6%9C%887%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%B8%A6%E5%88%86%E6%95%B0(dfs%E5%85%A8%E6%8E%92%E5%88%97)/"
+                            href="/2024/03/07/2024%E5%B9%B43%E6%9C%887%E6%97%A5%E5%A4%87%E6%88%98%E8%93%9D%E6%A1%A5%E6%9D%AF-%20%E5%B8%A6%E5%88%86%E6%95%B0(dfs%E5%85%A8%E6%8E%92%E5%88%97)/"
                             >
                                 <span class="title flex-center">
                                     <span class="post-nav-title-item">2024年3月7日备战蓝桥杯- 带分数(dfs全排列)</span>
@@ -437,7 +418,7 @@ public class Main &#123;
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-1209-%E5%B8%A6%E5%88%86%E6%95%B0%EF%BC%88dfs%E5%85%A8%E6%8E%92%E5%88%97%EF%BC%89"><span class="nav-text">AcWing 1209. 带分数（dfs全排列）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">我的思路：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-text">我的代码：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">acwing的思路：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码:</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E6%8E%A8"><span class="nav-text">递推</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-717-%E7%AE%80%E5%8D%95%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="nav-text">AcWing 717. 简单斐波那契</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84%EF%BC%9A%E8%8A%82%E7%9C%81%E7%A9%BA%E9%97%B4"><span class="nav-text">滚动数组：节省空间</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AcWing-95-%E8%B4%B9%E8%A7%A3%E7%9A%84%E5%BC%80%E5%85%B3"><span class="nav-text">AcWing 95. 费解的开关</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-text">acwing的思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#acwing%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-text">acwing的代码</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
             </div>
